@@ -1,0 +1,17 @@
+{
+"repository_name": "android-devcamp-2022",
+"description": "Code base Android Devcamp 2022",
+"directorate": "TECH",
+"namespace": "android-devcamp-2022",
+"security_owner": "nathania.sutedja@tokopedia.com",
+"app": [
+{
+"name": "android-devcamp",
+"description": "Project base for Android Devcamp 2022",
+"owner": "nathania.sutedja@tokopedia.com",
+"slack_channel": "dev-camp-android-2022",
+"db": []
+}
+],
+"last_update":"15/09/2022"
+}
