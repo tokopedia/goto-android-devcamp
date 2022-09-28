@@ -29,7 +29,7 @@
         </activity>
         <activity
             android:name=".day3.connecting_to_internet.weatherapp.presentation.WeatherActivity"
-            android:exported="true" >
+            android:exported="false" >
             <intent-filter>
                 <action android:name="id.co.besthome.internal.VIEW" />
 
