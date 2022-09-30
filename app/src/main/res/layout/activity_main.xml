@@ -12,12 +12,21 @@
         android:layout_centerHorizontal="true"/>
 
     <Button
+        android:id="@+id/btn_day3_mvvm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_day3"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_day_3_mvvm"
+        />
+
+    <Button
         android:id="@+id/btn_day4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/btn_day_4"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/btn_day3"/>
+        android:layout_below="@id/btn_day3_mvvm"/>
 
 
 </RelativeLayout>
