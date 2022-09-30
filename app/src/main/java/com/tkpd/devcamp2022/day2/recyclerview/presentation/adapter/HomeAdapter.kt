@@ -29,7 +29,7 @@ class HomeAdapter(
             is BannerViewHolder -> holder.bind(itemList[position] as BannerUiModel)
             is TitleViewHolder -> holder.bind(itemList[position] as TitleUiModel)
             is ProductViewHolder -> holder.bind(itemList[position] as ProductUiModel)
-            is ProductShimmeringViewHolder -> holder.bind(itemList[position] as ProductShimmeringUiModel)
+            else -> { }
         }
     }
 
