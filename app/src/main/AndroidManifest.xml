@@ -46,6 +46,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
     </application>
 
 </manifest>
