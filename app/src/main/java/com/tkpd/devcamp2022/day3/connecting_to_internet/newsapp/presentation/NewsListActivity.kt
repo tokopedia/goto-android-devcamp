@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tkpd.devcamp2022.databinding.ActivityNewsListBinding
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.ApiClient
+import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.News
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.NewsResponse
+import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.CommonUtils
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.Mapper
 import retrofit2.Call
 import retrofit2.Callback
@@ -44,23 +46,40 @@ class NewsListActivity : AppCompatActivity() {
         }
     }
 
+
     private fun getNewsData() {
+        //  TODO Connecting to Internet - NewsApp - step 5 - update to hit endpoint
+//        val news = getNewsByJsonLocal()
+
+
+        //  TODO Connecting to Internet - NewsApp - step 6 - make sure still update ui
+//        updateUI(news)
+
+
         ApiClient.create().getNews(ID_COUNTRY_INDONESIA, API_KEY)
             .enqueue(object : Callback<NewsResponse> {
                 override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
                     if (response.body() != null) {
                         val newsResponse = response.body() as NewsResponse
                         val results = newsResponse.articles
-                        if (results != null) {
-                            showLoading(false)
-                            val getNews = Mapper.toNewsObject(results)
-                            newsAdapter.setNews(getNews)
-                        }
+                        val getNews = Mapper.toNewsObject(results ?: listOf())
+                        updateUI(getNews)
                     }
                 }
 
                 override fun onFailure(call: Call<NewsResponse>, t: Throwable) {}
             })
+    }
+
+    private fun updateUI(news: List<News>) {
+        newsAdapter.setNews(news)
+        showLoading(false)
+
+    }
+
+    private fun getNewsByJsonLocal(): MutableList<News> {
+        val data = CommonUtils.getAssetJsonData(this, "newsdata.json")
+        return Mapper.stringToNewsResponse(data)
     }
 
     private fun showLoading(showLoading: Boolean) {
