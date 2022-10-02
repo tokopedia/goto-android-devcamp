@@ -1,23 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:paddingTop="10dp">
+
+    <Button
+        android:id="@+id/btn_day2_workmanager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/btn_day_2_work_manager" />
 
     <Button
         android:id="@+id/btn_day3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/btn_day_3"
-        android:layout_centerHorizontal="true"/>
+        android:layout_below="@id/btn_day2_workmanager"
+        android:layout_centerHorizontal="true"
+        android:text="@string/btn_day_3" />
 
     <Button
         android:id="@+id/btn_day4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_day_4"
+        android:layout_below="@id/btn_day3"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/btn_day3"/>
+        android:text="@string/btn_day_4" />
 
 
 </RelativeLayout>

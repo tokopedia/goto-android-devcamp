@@ -4,10 +4,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.databinding.ActivityMainBinding
+import com.tkpd.devcamp2022.day2.workmanager.WorkManagerActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.WeatherActivity
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.ui.ContactBookActivity
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -15,6 +16,10 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnDay2Workmanager.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WorkManagerActivity::class.java))
+        }
 
         binding.btnDay3.setOnClickListener {
             startActivity(Intent(this@MainActivity, WeatherActivity::class.java))
