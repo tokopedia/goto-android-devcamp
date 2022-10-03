@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/default_spacing"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="@dimen/default_spacing"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/product_shimmer_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/default_spacing">
+
+        <View
+            android:id="@+id/iv_product_shimmer"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:background="@drawable/rectangle_grey"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/tv_product_shimmer_name"
+            android:layout_width="0dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/rectangle_grey"
+            app:layout_constraintEnd_toEndOf="@id/product_shimmer_container"
+            app:layout_constraintStart_toEndOf="@id/iv_product_shimmer"
+            app:layout_constraintTop_toTopOf="@id/iv_product_shimmer" />
+
+        <View
+            android:id="@+id/tv_product_shimmer_price"
+            android:layout_width="100dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_grey"
+            app:layout_constraintStart_toEndOf="@id/iv_product_shimmer"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_shimmer_name" />
+
+        <View
+            android:id="@+id/tv_product_shimmer_location"
+            android:layout_width="150dp"
+            android:layout_height="22dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_grey"
+            app:layout_constraintStart_toEndOf="@id/iv_product_shimmer"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_shimmer_price" />
+
+        <View
+            android:id="@+id/btn_wishlist_shimmer"
+            android:layout_width="72dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_grey"
+            app:layout_constraintStart_toEndOf="@id/iv_product_shimmer"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_shimmer_location" />
+
+        <View
+            android:id="@+id/btn_add_to_cart_shimmer"
+            android:layout_width="80dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:background="@drawable/rectangle_grey"
+            app:layout_constraintStart_toEndOf="@id/btn_wishlist_shimmer"
+            app:layout_constraintTop_toBottomOf="@id/tv_product_shimmer_location" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
