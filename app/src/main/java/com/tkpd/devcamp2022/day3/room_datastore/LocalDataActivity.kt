@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.ActivityLocalDataBinding
-import com.tkpd.devcamp2022.day3.room_datastore.view.LocalDataFragment
+import com.tkpd.devcamp2022.day3.room_datastore.view.fragment.LocalDataFragment
 
 class LocalDataActivity: AppCompatActivity() {
 

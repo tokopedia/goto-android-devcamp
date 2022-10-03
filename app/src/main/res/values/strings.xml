@@ -17,4 +17,11 @@
 
     <string name="wishlist_success_message">barang berhasil disimpan di Wishlist 💜</string>
     <string name="add_to_cart_success_message">1 barang berhasil ditambahkan ke keranjang belanja 🛒</string>
+
+    <!-- Room & Datastore -->
+    <string name="datastore_login_username">Username</string>
+    <string name="datastore_login_password">Password</string>
+    <string name="datastore_login_button">Login</string>
+    <string name="datastore_login_succeed">Login Succeed</string>
+    <string name="datastore_login_failed">Login Failed</string>
 </resources>
