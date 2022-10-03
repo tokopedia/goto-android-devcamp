@@ -13,7 +13,6 @@ class ProductViewHolder(
     private val listener: Listener
 ) : HomeViewHolder(itemView) {
 
-
     private val ivProduct = itemView.findViewById<ImageView>(R.id.iv_product)
     private val tvName = itemView.findViewById<TextView>(R.id.tv_product_name)
     private val tvPrice = itemView.findViewById<TextView>(R.id.tv_product_price)
