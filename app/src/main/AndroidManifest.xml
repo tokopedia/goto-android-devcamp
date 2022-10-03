@@ -25,6 +25,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:exported="false"
+            android:name=".day4.unit_test_instrument_test.presentation.ui.ContactDetailActivity" />
     </application>
 
 </manifest>
