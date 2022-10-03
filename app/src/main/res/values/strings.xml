@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Tokopedia Devcamp 2022</string>
     <string name="btn_day_3">Day 3 - Weather</string>
+    <string name="btn_day_3_mvvm">Day 3 - MVVM, LiveData, and Coroutine</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
     <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
     <string name="btn_day_4_animation">Day 4 - Animation</string>

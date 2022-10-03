@@ -68,6 +68,8 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
