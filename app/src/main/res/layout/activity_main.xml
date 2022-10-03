@@ -36,6 +36,15 @@
             />
 
         <Button
+            android:id="@+id/btn_day3_room"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/btn_day_3_room"
+            />
+
+        <Button
             android:id="@+id/btn_day4_customview"
             android:layout_gravity="center"
             android:layout_margin="8dp"
