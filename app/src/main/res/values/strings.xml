@@ -22,6 +22,7 @@
     <string name="datastore_login_username">Username</string>
     <string name="datastore_login_password">Password</string>
     <string name="datastore_login_button">Login</string>
+    <string name="datastore_logout_button">Logout</string>
     <string name="datastore_login_succeed">Login Succeed</string>
     <string name="datastore_login_failed">Login Failed</string>
 </resources>
