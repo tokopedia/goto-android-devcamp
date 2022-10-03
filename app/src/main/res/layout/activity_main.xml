@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_day2_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/btn_day_2" />
+
+        <Button
+            android:id="@+id/btn_day3"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/btn_day_3" />
+
+        <Button
+            android:id="@+id/btn_day3_mvvm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/btn_day_3_mvvm"
+            />
+
+        <Button
+            android:id="@+id/btn_day4_customview"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_day_4_custom_view" />
+
+        <Button
+            android:id="@+id/btn_day4_animation"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_day_4_animation" />
+
+        <Button
+            android:id="@+id/btn_day4"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_day_4" />
+    </LinearLayout>
+
+
+
+</ScrollView>

@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Tokopedia Devcamp 2022</string>
+    <string name="btn_day_2">Day 2 - Tokopedia Home page</string>
+    <string name="btn_day_3">Day 3 - Weather</string>
+    <string name="btn_day_3_mvvm">Day 3 - MVVM, LiveData, and Coroutine</string>
+    <string name="btn_day_4">Day 4 - Contact Book</string>
+    <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
+    <string name="btn_day_4_animation">Day 4 - Animation</string>
+
+    <!-- Custom View & Animation -->
+    <string name="wise_word_view_quote_mark">\"</string>
+    <string name="wise_word_view_name">Alexandro</string>
+    <string name="wise_word_view_description">You can\'t control the direction of the wind, but you can adjust your sail.</string>
+    <string name="wise_word_widget_view_button_view">Change</string>
+    <string name="wise_word_widget_view_button_view_swipe">Swipe Down</string>
+
+    <string name="wishlist_success_message">barang berhasil disimpan di Wishlist 💜</string>
+    <string name="add_to_cart_success_message">1 barang berhasil ditambahkan ke keranjang belanja 🛒</string>
 </resources>

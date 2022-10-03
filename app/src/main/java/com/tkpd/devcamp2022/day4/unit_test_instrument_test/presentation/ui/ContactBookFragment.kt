@@ -60,8 +60,8 @@ class ContactBookFragment: Fragment(), ContactItemViewHolder.ContactItemListener
 
     private fun getContactList() {
         checkPermission {
-//            viewModel.getContactList()
-            viewModel.getDelayedContactList()
+            viewModel.getContactList()
+//            viewModel.getDelayedContactList()
         }
     }
 
