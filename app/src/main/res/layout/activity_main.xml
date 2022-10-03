@@ -7,17 +7,27 @@
         android:id="@+id/btn_day3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:text="@string/btn_day_3"
-        android:layout_centerHorizontal="true"/>
+        android:text="@string/btn_day_3" />
+
+    <Button
+        android:id="@+id/btn_day3_image_gallery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btn_day3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/btn_day_3_image_gallery" />
 
     <Button
         android:id="@+id/btn_day4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btn_day_4"
+        android:layout_below="@id/btn_day3_image_gallery"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/btn_day3"/>
+        android:layout_marginTop="10dp"
+        android:text="@string/btn_day_4" />
 
 
 </RelativeLayout>
