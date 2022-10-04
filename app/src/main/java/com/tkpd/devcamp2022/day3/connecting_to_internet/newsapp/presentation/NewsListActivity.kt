@@ -2,8 +2,10 @@ package com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.presentation
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.ActivityNewsListBinding
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.ApiClient
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.NewsResponse
@@ -14,10 +16,17 @@ import retrofit2.Response
 
 class NewsListActivity : AppCompatActivity() {
 
+    /**
+     *
+     * Silahkan masukkan Api Key disini ya.
+     * di API_KEY
+     * replace aja tulisan yang ada
+     *
+     */
     companion object {
-        private const val ID_COUNTRY_INDONESIA = "id"
-        private const val API_KEY = "ec91e485fad444a8a2678a4d2c6787bb"
+        private const val API_KEY = "INPUT-YOUR-NEWS-API-KEY-HERE"
     }
+
 
     private lateinit var binding: ActivityNewsListBinding
     private lateinit var newsAdapter: NewsListAdapter
@@ -27,7 +36,15 @@ class NewsListActivity : AppCompatActivity() {
 
         initBinding()
         initList()
+        emptyApiKeyChecker()
         getNewsData()
+    }
+
+    private fun emptyApiKeyChecker() {
+        if (API_KEY == "INPUT-YOUR-NEWS-API-KEY-HERE") {
+            Toast.makeText(this, getString(R.string.newsapp_apikey_warning), Toast.LENGTH_LONG).show()
+            finish()
+        }
     }
 
     private fun initBinding() {
@@ -45,7 +62,7 @@ class NewsListActivity : AppCompatActivity() {
     }
 
     private fun getNewsData() {
-        ApiClient.create().getNews(ID_COUNTRY_INDONESIA, API_KEY)
+        ApiClient.create().getNews("id", API_KEY)
             .enqueue(object : Callback<NewsResponse> {
                 override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
                     if (response.body() != null) {
