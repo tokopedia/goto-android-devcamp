@@ -2,6 +2,7 @@
     <string name="app_name">Tokopedia Devcamp 2022</string>
     <string name="btn_day_2">Day 2 - Tokopedia Home page</string>
     <string name="btn_day_3">Day 3 - Weather</string>
+    <string name="btn_day_3_news_app">Day 3 - News</string>
     <string name="btn_day_3_mvvm">Day 3 - MVVM, LiveData, and Coroutine</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
     <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
@@ -16,4 +17,8 @@
 
     <string name="wishlist_success_message">barang berhasil disimpan di Wishlist 💜</string>
     <string name="add_to_cart_success_message">1 barang berhasil ditambahkan ke keranjang belanja 🛒</string>
+
+    <!--    News -->
+    <string name="newsapp_apikey_warning">Masukkan API Key News di NewsListActivity (Variable API_KEY) terlebih dahulu ya </string>
+    <string name="newsapp_apikey_info">INPUT-YOUR-NEWS-API-KEY-HERE</string>
 </resources>
