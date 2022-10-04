@@ -106,7 +106,7 @@ class PreferenceDataStoreFragment: Fragment() {
             dataStoreManager.getUserDataStore().catch { e ->
                 e.printStackTrace()
                 withContext(Dispatchers.Main) {
-                    userNotLogin()
+                    userNotLoggedIn()
                 }
             }.collect{
                 withContext(Dispatchers.Main) {
