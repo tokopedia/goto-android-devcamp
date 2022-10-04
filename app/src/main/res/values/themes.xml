@@ -11,6 +11,11 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!-- Customize your theme here. -->x
+    </style>
+
+    <style name="Theme.MyApplication.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name ="android:windowActionBar">false</item>
+        <item name ="android:windowNoTitle">true</item>
     </style>
 </resources>

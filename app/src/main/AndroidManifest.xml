@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.tkpd.devcamp2022" >
+    package="com.tkpd.devcamp2022">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -16,10 +16,40 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".day4.custom_view_animation.CustomViewAnimationDetailActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="id.co.besthome.internal.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".day4.custom_view_animation.AnimationViewActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="id.co.besthome.internal.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".day4.custom_view_animation.CustomViewActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="id.co.besthome.internal.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".day4.unit_test_instrument_test.presentation.ui.ContactBookActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="id.co.besthome.internal.VIEW" />
 
@@ -29,7 +59,7 @@
         </activity>
         <activity
             android:name=".day3.connecting_to_internet.weatherapp.presentation.WeatherActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="id.co.besthome.internal.VIEW" />
 
@@ -38,15 +68,23 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
+        <activity
             android:name=".MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".day2.recyclerview.presentation.HomeActivity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
+
         <activity android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
+
     </application>
 
 </manifest>
