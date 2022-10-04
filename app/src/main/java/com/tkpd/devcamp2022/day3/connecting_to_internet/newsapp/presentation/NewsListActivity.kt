@@ -24,7 +24,7 @@ class NewsListActivity : AppCompatActivity() {
      *
      */
     companion object {
-        private const val API_KEY = "INPUT-YOUR-NEWS-API-KEY-HERE"
+        private const val API_KEY = "ec91e485fad444a8a2678a4d2c6787bb"
     }
 
 
