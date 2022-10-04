@@ -3,4 +3,5 @@
     <string name="btn_day_3">Day 3 - Weather</string>
     <string name="btn_day3_news_app">Day 3 - News</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
+    <string name="newsapp_apikey_warning">Masukkan API Key News terlebih dahulu ya di NewsListActivity</string>
 </resources>

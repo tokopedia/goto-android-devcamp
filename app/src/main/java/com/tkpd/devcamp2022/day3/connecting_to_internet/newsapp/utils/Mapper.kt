@@ -8,9 +8,9 @@ import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.NewsRespons
 
 object Mapper {
 
-    fun toNewsObject(results: List<ArticlesItem?>): MutableList<News> {
+    fun toNewsObject(results: List<ArticlesItem?>?): List<News> {
         val listNews = mutableListOf<News>()
-        results.forEach { news ->
+        results?.forEach { news ->
             val getNews = News(
                 news?.title,
                 news?.source?.name,
