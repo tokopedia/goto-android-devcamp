@@ -9,9 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.CreationExtras
 import com.tkpd.devcamp2022.R
-import com.tkpd.devcamp2022.databinding.FragmentLocalDataBinding
+import com.tkpd.devcamp2022.databinding.FragmentDataStoreBinding
 import com.tkpd.devcamp2022.day3.room_datastore.api.MockUserApi
 import com.tkpd.devcamp2022.day3.room_datastore.datastore.UserDataStoreManager
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
@@ -22,9 +21,9 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class LocalDataFragment: Fragment() {
+class PreferenceDataStoreFragment: Fragment() {
 
-    private var binding: FragmentLocalDataBinding? = null
+    private var binding: FragmentDataStoreBinding? = null
     lateinit var dataStoreManager: UserDataStoreManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +38,7 @@ class LocalDataFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLocalDataBinding.inflate(layoutInflater, container, false)
+        binding = FragmentDataStoreBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
 
@@ -70,30 +69,12 @@ class LocalDataFragment: Fragment() {
             clearDataStore()
         }
 
-        GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.getUserDataStore().catch { e ->
-                e.printStackTrace()
-                withContext(Dispatchers.Main) {
-                    showLoginState()
-                    hideLogoutState()
-                }
-            }.collect{
-                withContext(Dispatchers.Main) {
-                    if (it.isLoggedIn) {
-                        showLogoutState()
-                        hideLoginState()
-                    } else {
-                        showLoginState()
-                        hideLogoutState()
-                    }
-                }
-            }
-        }
-
         viewModel.user.observe(viewLifecycleOwner) {
             hideProgressBar()
             isLoggedInSucceed(it)
         }
+
+        getDataStore()
     }
 
 
@@ -118,6 +99,35 @@ class LocalDataFragment: Fragment() {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.clearUserDataStore()
         }
+    }
+
+    private fun getDataStore() {
+        GlobalScope.launch(Dispatchers.IO) {
+            dataStoreManager.getUserDataStore().catch { e ->
+                e.printStackTrace()
+                withContext(Dispatchers.Main) {
+                    userNotLogin()
+                }
+            }.collect{
+                withContext(Dispatchers.Main) {
+                    if (it.isLoggedIn) {
+                        userAlreadyLogin()
+                    } else {
+                        userNotLogin()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun userAlreadyLogin() {
+        showLogoutState()
+        hideLoginState()
+    }
+
+    private fun userNotLogin() {
+        showLoginState()
+        hideLogoutState()
     }
 
     private fun showToaster(text: String) {

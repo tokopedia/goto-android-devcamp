@@ -25,4 +25,7 @@
     <string name="datastore_logout_button">Logout</string>
     <string name="datastore_login_succeed">Login Succeed</string>
     <string name="datastore_login_failed">Login Failed</string>
+    <string name="btn_room_title">Room</string>
+    <string name="btn_preference_title">Preference DataStore</string>
+    <string name="btn_proto_title">Proto DataStore</string>
 </resources>

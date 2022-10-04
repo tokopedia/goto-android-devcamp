@@ -70,7 +70,13 @@
         <activity
             android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
         <activity
-            android:name=".day3.room_datastore.LocalDataActivity"/>
+            android:name=".day3.room_datastore.view.activity.LocalDataActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.RoomActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
