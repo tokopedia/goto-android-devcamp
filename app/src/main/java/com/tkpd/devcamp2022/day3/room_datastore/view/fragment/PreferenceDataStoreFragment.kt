@@ -113,7 +113,7 @@ class PreferenceDataStoreFragment: Fragment() {
                     if (it.isLoggedIn) {
                         userAlreadyLogin()
                     } else {
-                        userNotLogin()
+                        userNotLoggedIn()
                     }
                 }
             }
@@ -125,7 +125,7 @@ class PreferenceDataStoreFragment: Fragment() {
         hideLoginState()
     }
 
-    private fun userNotLogin() {
+    private fun userNotLoggedIn() {
         showLoginState()
         hideLogoutState()
     }
