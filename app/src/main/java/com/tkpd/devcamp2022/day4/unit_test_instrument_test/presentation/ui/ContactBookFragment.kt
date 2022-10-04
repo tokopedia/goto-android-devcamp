@@ -16,6 +16,7 @@ import com.tkpd.devcamp2022.databinding.FragmentContactBookBinding
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.contact.ContactDataSourceImpl
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.adapter.ContactBookAdapter
+import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.util.EspressoIdlingResource
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.viewholder.ContactItemViewHolder
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.viewmodel.ContactBookViewModel2
 
@@ -49,19 +50,29 @@ class ContactBookFragment: Fragment(), ContactItemViewHolder.ContactItemListener
         super.onViewCreated(view, savedInstanceState)
         initRecyclerView()
         initObserver()
+        // change all getContactList() to getDelayedContactList() to simulate long operations
         getContactList()
     }
 
     private fun initObserver() {
         viewModel.contacts.observe(viewLifecycleOwner) { contacts ->
             contactBookAdapter?.setContacts(contacts)
+            if (!EspressoIdlingResource.idlingresource.isIdleNow) {
+                EspressoIdlingResource.decrement()
+            }
         }
     }
 
     private fun getContactList() {
         checkPermission {
             viewModel.getContactList()
-//            viewModel.getDelayedContactList()
+        }
+    }
+
+    private fun getDelayedContactList() {
+        checkPermission {
+            EspressoIdlingResource.increment()
+            viewModel.getDelayedContactList()
         }
     }
 

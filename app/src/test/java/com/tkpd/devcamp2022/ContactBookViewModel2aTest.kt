@@ -5,11 +5,13 @@ import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.contact.ContactD
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.contact.ContactDataSourceImpl
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.viewmodel.ContactBookViewModel2
+import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
 import junit.framework.Assert.assertNotNull
 import junit.framework.Assert.assertTrue
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -32,6 +34,11 @@ class ContactBookViewModel2aTest {
 
         // Inject contactDataSource into ContactBookViewModel2
         viewModel = ContactBookViewModel2(contactDataSource)
+    }
+
+    @After
+    fun tearDown() {
+        clearAllMocks()
     }
 
     @Test

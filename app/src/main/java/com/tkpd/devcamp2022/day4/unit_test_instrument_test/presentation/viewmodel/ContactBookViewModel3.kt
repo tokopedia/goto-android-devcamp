@@ -42,7 +42,6 @@ class ContactBookViewModel3(
     }
 
     fun getDelayedContactListWithContext(): Job =
-        // Replace Dispatcher.IO to injected dispatcher
         viewModelScope.launch(dispatcher) {
             val data = contactDataSource.getContactList()
             delay(1000)

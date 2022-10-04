@@ -36,8 +36,6 @@ class ContactBookViewModel2(
 
     fun getDelayedContactList() {
         viewModelScope.launch {
-            EspressoIdlingResource.increment()
-
             val data = contactDataSource.getContactList()
             delay(2000)
 
@@ -46,10 +44,6 @@ class ContactBookViewModel2(
                     .formatPrefixPhoneNumber(contact.number)
             }
             _contacts.value = data
-
-            if (!EspressoIdlingResource.idlingresource.isIdleNow) {
-                EspressoIdlingResource.decrement()
-            }
         }
     }
 

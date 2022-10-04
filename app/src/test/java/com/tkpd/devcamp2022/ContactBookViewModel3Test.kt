@@ -6,6 +6,8 @@ import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.contact.ContactD
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.util.PhoneNumberFormatter
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.viewmodel.ContactBookViewModel3
+import io.mockk.clearAllMocks
+import io.mockk.clearMocks
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
@@ -17,6 +19,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -44,6 +47,11 @@ class ContactBookViewModel3Test {
         viewModel = ContactBookViewModel3(contactDataSource, UnconfinedTestDispatcher())
     }
 
+    @After
+    fun tearDown() {
+        clearAllMocks()
+    }
+
     @Test
     fun `getContactList should call formatPrefixClientNumber and validatePrefixClientNumber`() {
         // Given
@@ -65,7 +73,7 @@ class ContactBookViewModel3Test {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `getDelayedContactList should return the correct data`() = runTest {
+    fun `getDelayedContactListWithContext should return the correct data`() = runTest {
         // Given
         val data = mutableListOf(
             Contact("Misael", "081208120812"),

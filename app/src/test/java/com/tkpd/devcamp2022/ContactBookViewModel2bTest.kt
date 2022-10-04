@@ -6,21 +6,19 @@ import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.contact.ContactD
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.util.PhoneNumberFormatter
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.viewmodel.ContactBookViewModel2
+import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
-import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
 import io.mockk.mockkObject
 import io.mockk.verify
-import junit.framework.Assert
 import junit.framework.Assert.assertNotNull
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestDispatcher
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
-import kotlinx.coroutines.test.advanceTimeBy
 import kotlinx.coroutines.test.advanceUntilIdle
 import kotlinx.coroutines.test.runTest
+import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -48,6 +46,11 @@ class ContactBookViewModel2bTest {
         viewModel = ContactBookViewModel2(contactDataSource, UnconfinedTestDispatcher())
     }
 
+    @After
+    fun tearDown() {
+        clearAllMocks()
+    }
+
     @Test
     fun `getContactList should call formatPrefixClientNumber and validatePrefixClientNumber`() {
         // Given
@@ -60,7 +63,6 @@ class ContactBookViewModel2bTest {
 
         // When
         every { contactDataSource.getContactList() } returns data
-        every { PhoneNumberFormatter.formatPrefixPhoneNumber(any()) } returns "081208120812"
         viewModel.getContactList()
 
         // Then
@@ -81,7 +83,6 @@ class ContactBookViewModel2bTest {
 
         // When
         every { contactDataSource.getContactList() } returns data
-        every { PhoneNumberFormatter.formatPrefixPhoneNumber(any()) } returns "081208120812"
         viewModel.getContactList()
 
         // Then
@@ -99,6 +100,7 @@ class ContactBookViewModel2bTest {
 
         // When
         every { contactDataSource.getContactList() } returns data
+
         viewModel.getDelayedContactList()
         advanceUntilIdle()
 
