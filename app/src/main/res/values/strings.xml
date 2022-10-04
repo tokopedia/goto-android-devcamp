@@ -8,7 +8,7 @@
 
 
     <string name="btn_work_manager_once">Run Once</string>
-    <string name="btn_work_manager_cancel">Cancel Once</string>
+    <string name="btn_work_manager_cancel">Cancel Periodic</string>
     <string name="btn_work_manager_periodic">Run Periodic Task</string>
     <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
     <string name="btn_day_4_animation">Day 4 - Animation</string>

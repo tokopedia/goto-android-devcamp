@@ -50,19 +50,6 @@ class WorkManagerActivity : AppCompatActivity() {
             }
         }
 
-        binding.btnWorkmanagerCancelOnce.setOnClickListener {
-            onceRequest?.let {
-                // Cancel by Work Request Id
-                // workManager?.cancelWorkById(it.id)
-            }
-
-            // Cancel by tag
-            // workManager?.cancelAllWorkByTag(ONCE_TAG)
-
-            // Cancel by name
-            workManager?.cancelUniqueWork(ONCE_NAME)
-        }
-
         binding.btnWorkmanagerPeriodic.setOnClickListener {
             // build Data to be sent to Worker
             val data: Data = Data.Builder().apply {
@@ -85,6 +72,20 @@ class WorkManagerActivity : AppCompatActivity() {
                 workManager?.enqueue(it)
             }
         }
+
+        binding.btnWorkmanagerCancelPeriodic.setOnClickListener {
+            onceRequest?.let {
+                // Cancel by Work Request Id
+                // workManager?.cancelWorkById(it.id)
+            }
+
+            // Cancel by tag
+             workManager?.cancelAllWorkByTag(PERIODIC_TAG)
+
+            // Cancel by name
+            // workManager?.cancelUniqueWork(ONCE_NAME)
+        }
+
     }
 
     companion object {
