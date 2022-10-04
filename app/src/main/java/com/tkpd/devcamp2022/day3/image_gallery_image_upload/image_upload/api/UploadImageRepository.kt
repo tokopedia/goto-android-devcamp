@@ -41,7 +41,7 @@ class UploadImageRepository {
     }
 
     private fun createImageFormData(imageData: ImageDataForUpload): MultipartBody.Part {
-        val imageRequestBody = imageData.imageByteData.toRequestBody("image/*".toMediaTypeOrNull())
+        val imageRequestBody = imageData.imageByteData.toRequestBody()
         return MultipartBody.Part.createFormData("source", imageData.fileName, imageRequestBody)
     }
 }
