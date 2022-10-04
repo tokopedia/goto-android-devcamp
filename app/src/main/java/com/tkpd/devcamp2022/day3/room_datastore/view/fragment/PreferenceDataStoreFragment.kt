@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.FragmentDataStoreBinding
 import com.tkpd.devcamp2022.day3.room_datastore.api.MockUserApi
-import com.tkpd.devcamp2022.day3.room_datastore.datastore.UserDataStoreManager
+import com.tkpd.devcamp2022.day3.room_datastore.datastore.UserPreferenceDataStoreManager
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
 import com.tkpd.devcamp2022.day3.room_datastore.view.viewmodel.UserViewModel
 import kotlinx.coroutines.Dispatchers
@@ -24,12 +24,12 @@ import kotlinx.coroutines.withContext
 class PreferenceDataStoreFragment: Fragment() {
 
     private var binding: FragmentDataStoreBinding? = null
-    lateinit var dataStoreManager: UserDataStoreManager
+    lateinit var dataStoreManager: UserPreferenceDataStoreManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context?.let {
-            dataStoreManager = UserDataStoreManager(it)
+            dataStoreManager = UserPreferenceDataStoreManager(it)
         }
     }
 
@@ -91,19 +91,19 @@ class PreferenceDataStoreFragment: Fragment() {
 
     private fun saveToDataStore(user: User) {
         GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.saveToDataStore(user)
+            dataStoreManager.saveToPreferenceDataStore(user)
         }
     }
 
     private fun clearDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.clearUserDataStore()
+            dataStoreManager.clearUserPreferenceDataStore()
         }
     }
 
     private fun getDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.getUserDataStore().catch { e ->
+            dataStoreManager.getUserPreferenceDataStore().catch { e ->
                 e.printStackTrace()
                 withContext(Dispatchers.Main) {
                     userNotLoggedIn()

@@ -10,19 +10,18 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
 import kotlinx.coroutines.flow.map
 
-private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = UserDataStoreManager.USER_DATASTORE)
+private const val USER_DATA_STORE = "USER_DATASTORE"
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = USER_DATA_STORE)
 
-class UserDataStoreManager(val context: Context) {
+class UserPreferenceDataStoreManager(val context: Context) {
 
     companion object {
-        const val USER_DATASTORE = "USER_DATASTORE"
-
         val USER_ID = stringPreferencesKey("USER_ID")
         val IS_LOGGED_IN = booleanPreferencesKey("IS_LOGGED_IN")
         val USERNAME = stringPreferencesKey("USERNAME")
     }
 
-    suspend fun saveToDataStore(user: User) {
+    suspend fun saveToPreferenceDataStore(user: User) {
         context.dataStore.edit {
             it[USER_ID] = user.id
             it[IS_LOGGED_IN] = user.isLoggedIn
@@ -30,7 +29,7 @@ class UserDataStoreManager(val context: Context) {
         }
     }
 
-    suspend fun getUserDataStore() = context.dataStore.data.map {
+    suspend fun getUserPreferenceDataStore() = context.dataStore.data.map {
         User(
             id = it[USER_ID] ?: "",
             isLoggedIn = it[IS_LOGGED_IN] ?: false,
@@ -38,7 +37,7 @@ class UserDataStoreManager(val context: Context) {
         )
     }
 
-    suspend fun clearUserDataStore() {
+    suspend fun clearUserPreferenceDataStore() {
         context.dataStore.edit {
             it.clear()
         }
