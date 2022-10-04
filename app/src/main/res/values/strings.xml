@@ -2,4 +2,8 @@
     <string name="app_name">Tokopedia Devcamp 2022</string>
     <string name="btn_day_3">Day 3 - Weather</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
+
+    <!--WeatherApp-->
+    <string name="label_next_4_days">Next 4 days</string>
+    <string name="no_connection">Please check your connection</string>
 </resources>
