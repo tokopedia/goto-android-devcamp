@@ -19,5 +19,5 @@ interface UploadImageApi {
     suspend fun uploadMultipleImage(
         @Part("key") apiKey: RequestBody,
         @Part multipleImageFormData: List<MultipartBody.Part>,
-    ):UploadImageResultResponse
+    ): UploadImageResultResponse
 }
