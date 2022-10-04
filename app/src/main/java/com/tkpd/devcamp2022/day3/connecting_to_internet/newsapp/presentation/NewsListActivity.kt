@@ -39,7 +39,7 @@ class NewsListActivity : AppCompatActivity() {
     }
 
     private fun emptyApiKeyChecker() {
-        if (API_KEY == "INPUT-YOUR-NEWS-API-KEY-HERE") {
+        if (API_KEY == getString(R.string.newsapp_apikey_info)) {
             Toast.makeText(this, getString(R.string.newsapp_apikey_warning), Toast.LENGTH_LONG).show()
             finish()
         }
