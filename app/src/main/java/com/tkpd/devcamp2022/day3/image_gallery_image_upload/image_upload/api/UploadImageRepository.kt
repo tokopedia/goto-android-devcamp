@@ -31,13 +31,13 @@ class UploadImageRepository {
     }
 
     suspend fun uploadMultipleImage(listImageData: List<ImageDataForUpload>): UploadImageResultResponse {
-        val ls = mutableListOf<MultipartBody.Part>().apply {
+        val listImageFormData = mutableListOf<MultipartBody.Part>().apply {
             listImageData.onEach { imageData ->
                 add(createImageFormData(imageData))
             }
         }
         val apiKeyRequestBody = apiKey.toRequestBody()
-        return uploadImageApi.uploadMultipleImage(apiKeyRequestBody, ls)
+        return uploadImageApi.uploadMultipleImage(apiKeyRequestBody, listImageFormData)
     }
 
     private fun createImageFormData(imageData: ImageDataForUpload): MultipartBody.Part {
