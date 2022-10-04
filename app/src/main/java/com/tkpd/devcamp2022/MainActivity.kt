@@ -7,6 +7,7 @@ import com.tkpd.devcamp2022.databinding.ActivityMainBinding
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.HomeActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.WeatherActivity
 import com.tkpd.devcamp2022.day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity
+import com.tkpd.devcamp2022.day3.image_gallery_image_upload.image_upload.presentation.ImageUploadActivity
 import com.tkpd.devcamp2022.day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.AnimationViewActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.CustomViewActivity
@@ -35,6 +36,10 @@ class MainActivity: AppCompatActivity() {
 
         binding.btnDay3ImageGallery.setOnClickListener {
             startActivity(Intent(this@MainActivity, ImageGalleryActivity::class.java))
+        }
+
+        binding.btnDay3ImageUpload.setOnClickListener {
+            startActivity(Intent(this@MainActivity, ImageUploadActivity::class.java))
         }
 
         binding.btnDay4Customview.setOnClickListener {

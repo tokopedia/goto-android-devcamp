@@ -81,8 +81,10 @@
         </activity>
         <activity
             android:name=".day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
+        <activity
+            android:name=".day3.image_gallery_image_upload.image_upload.presentation.ImageUploadActivity"
+            android:exported="true" />
 
         <activity
             android:name=".day2.recyclerview.presentation.HomeActivity"

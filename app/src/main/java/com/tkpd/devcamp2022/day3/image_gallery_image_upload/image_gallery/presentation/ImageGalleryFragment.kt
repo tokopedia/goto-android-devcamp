@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
@@ -18,6 +19,7 @@ class ImageGalleryFragment : Fragment() {
 
     private var binding: FragmentImageGalleryBinding? = null
     private var imageGalleryResult: ActivityResultLauncher<Intent>? = null
+    private var listImageView = listOf<ImageView?>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
@@ -51,6 +53,7 @@ class ImageGalleryFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        listImageView = listOf(binding?.ivImage1, binding?.ivImage2, binding?.ivImage3)
         configButtonChooseImage()
     }
 
@@ -61,11 +64,7 @@ class ImageGalleryFragment : Fragment() {
     }
 
     private fun clearImageView() {
-        binding?.apply {
-            ivImage1.setImageResource(0)
-            ivImage2.setImageResource(0)
-            ivImage3.setImageResource(0)
-        }
+        listImageView.onEach { it?.setImageResource(0) }
     }
 
     private fun checkSelectedImage(data: Intent?) {
@@ -83,7 +82,6 @@ class ImageGalleryFragment : Fragment() {
     }
 
     private fun setMultipleImage(clipData: ClipData?, totalSelectedImage: Int) {
-        val listImageView = listOf(binding?.ivImage1, binding?.ivImage2, binding?.ivImage3)
         for (i in 0 until totalSelectedImage) {
             listImageView[i]?.setImageURI(clipData?.getItemAt(i)?.uri)
         }
@@ -96,6 +94,5 @@ class ImageGalleryFragment : Fragment() {
     private fun showToasterMaximumThreeImages() {
         Toast.makeText(context, "Maximum 3 Image", Toast.LENGTH_LONG).show()
     }
-
 
 }
