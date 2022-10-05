@@ -33,4 +33,7 @@
     <string name="btn_room_title">Room</string>
     <string name="btn_preference_title">Preference DataStore</string>
     <string name="btn_proto_title">Proto DataStore</string>
+    <string name="empty_state_title">Data kosong</string>
+    <string name="is_get_from_cached">GET FROM CACHED</string>
+    <string name="is_get_from_rest">GET FROM API</string>
 </resources>

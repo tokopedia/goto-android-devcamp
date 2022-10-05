@@ -11,19 +11,23 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun userListDao(): CachedUsersListDao
 
     companion object {
-        @Volatile private var instance: AppDatabase? = null
-        private val LOCK = Any()
+        @Volatile
+        private var INSTANCE: AppDatabase? = null
+        private const val DB_NAME = "cached-user-list.db"
 
-        operator fun invoke(context: Context)= instance ?: synchronized(
-            LOCK
-        ){
-            instance
-                ?: buildDatabase(context).also { instance = it}
+        fun buildDatabase(context: Context): AppDatabase {
+            // if the INSTANCE is not null, then return it,
+            // if it is, then create the database
+            return INSTANCE ?: synchronized(this) {
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    AppDatabase::class.java,
+                    DB_NAME
+                ).build()
+                INSTANCE = instance
+                // return instance
+                instance
+            }
         }
-
-        private fun buildDatabase(context: Context) = Room.databaseBuilder(context,
-            AppDatabase::class.java, "cached-user-list.db")
-            .fallbackToDestructiveMigration()
-            .build()
     }
 }

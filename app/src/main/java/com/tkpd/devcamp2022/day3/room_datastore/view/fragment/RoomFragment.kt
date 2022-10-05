@@ -43,8 +43,6 @@ class RoomFragment: Fragment() {
         }
     )
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -58,14 +56,21 @@ class RoomFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         fetchUserList()
         observeUserList()
+        binding?.roomSwipeRefresh?.setOnRefreshListener {
+            fetchUserList()
+        }
     }
 
     private fun fetchUserList() {
-        viewModel.getUserList(true)
+        loadingState()
+        binding?.toggleRoom?.isChecked?.let {
+            viewModel.getUserList(it)
+        }
     }
 
     private fun observeUserList() {
         viewModel.stateUserList.observe(viewLifecycleOwner){
+            binding?.roomSwipeRefresh?.isRefreshing = false
             when(it) {
                 is UserListState.SuccessGetUserList -> onSuccessGetUserList(it.userListResponse)
                 is UserListState.ErrorGetUserList -> onErrorGetUserList(it.e)
@@ -73,19 +78,38 @@ class RoomFragment: Fragment() {
         }
     }
 
-    private fun onSuccessGetUserList(userList: UsersList) {
-        showUserList(userList.data)
+    private fun onSuccessGetUserList(userList: UsersList?) {
+        if(userList != null) {
+            showUserList(userList.data)
+        } else {
+            showEmptyState()
+        }
     }
 
     private fun onErrorGetUserList(e: Exception) {
-
+        showEmptyState(e.message.toString())
     }
 
     private fun showUserList(users: List<UserData>) {
+        binding?.tvEmptyState?.visibility = View.GONE
+        binding?.rvUsers?.visibility = View.VISIBLE
         binding?.rvUsers?.apply {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
             userAdapter.setUsers(users)
         }
+    }
+
+    private fun showEmptyState(title: String = "") {
+        binding?.tvEmptyState?.visibility = View.VISIBLE
+        binding?.rvUsers?.visibility = View.GONE
+        if (title.isNotEmpty()) {
+            binding?.tvEmptyState?.text = title
+        }
+    }
+
+    private fun loadingState() {
+        binding?.tvEmptyState?.visibility = View.GONE
+        binding?.rvUsers?.visibility = View.GONE
     }
 }

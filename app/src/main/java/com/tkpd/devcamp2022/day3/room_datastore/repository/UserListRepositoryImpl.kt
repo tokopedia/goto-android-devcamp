@@ -9,33 +9,38 @@ import com.tkpd.devcamp2022.day3.room_datastore.repository.state.UserListState
 import com.tkpd.devcamp2022.day3.room_datastore.model.UsersList
 import java.io.IOException
 import java.net.SocketTimeoutException
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import retrofit2.Response
 
 class UserListRepositoryImpl(
     private val service: UserListApiService,
     private val database: CachedUsersListDao
-): UserListRepository {
+) : UserListRepository {
 
-    override suspend fun getUserList(isFromCached: Boolean): UserListState {
-        return if (isFromCached){
+    override suspend fun getUserList(isFromCached: Boolean) = withContext(Dispatchers.IO) {
+        return@withContext if (isFromCached) {
             responseStateUserListFromCached()
         } else {
-            responseStateUserList(service.getUserList())
+            try {
+                responseStateUserList(service.getUserList())
+            } catch (e: SocketTimeoutException) {
+                UserListState.ErrorGetUserList(IOException("Time Out"))
+            } catch (e: Exception) {
+                UserListState.ErrorGetUserList(e)
+            }
         }
     }
 
     private fun responseStateUserList(result: Response<UsersList>): UserListState {
-        return try {
-            if (result.isSuccessful && result.body() != null) {
-                    val userListResponse = result.body() as UsersList
-                    cachedResponse(result)
-                    UserListState.SuccessGetUserList(userListResponse)
+        return if (result.isSuccessful && result.body() != null) {
+                val userListResponse = result.body() as UsersList
+                cachedResponse(result)
+                UserListState.SuccessGetUserList(userListResponse)
             } else {
                 UserListState.ErrorGetUserList(IOException("Error Fetching"))
             }
-        } catch (e: SocketTimeoutException) {
-            UserListState.ErrorGetUserList(IOException("Time Out"))
-        }
+
     }
 
     private fun responseStateUserListFromCached(): UserListState {

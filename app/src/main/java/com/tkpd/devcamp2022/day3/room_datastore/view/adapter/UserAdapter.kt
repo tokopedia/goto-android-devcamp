@@ -1,5 +1,6 @@
 package com.tkpd.devcamp2022.day3.room_datastore.view.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     private var listUser = listOf<UserData>()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setUsers(users: List<UserData>) {
         this.listUser = users
         this.notifyDataSetChanged()

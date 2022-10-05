@@ -6,14 +6,20 @@ import kotlinx.coroutines.withContext
 
 class MockUserApi: UserApi {
 
+    companion object {
+        const val TIMER = 3000L
+        const val MIN_ID_RANDOM = 0
+        const val MAX_ID_RANDOM = 1000
+    }
+
     override suspend fun loginApi(userName: String, password: String): User = withContext(Dispatchers.IO) {
-        Thread.sleep(3000)
+        Thread.sleep(TIMER)
         return@withContext createMockUser(userName, password)
     }
 
     private fun createMockUser(userName: String, password: String): User {
         return User(
-            (0..1000).random().toString(),
+            (MIN_ID_RANDOM..MAX_ID_RANDOM).random().toString(),
             password.isNotEmpty(),
             userName
         )

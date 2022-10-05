@@ -100,6 +100,7 @@ class ProtoDataStoreFragment: Fragment() {
                 withContext(Dispatchers.Main) {
                     if (it.isLoggedIn) {
                         userAlreadyLogin()
+                        setUserName(it.userName)
                     } else {
                         userNotLoggedIn()
                     }
@@ -154,10 +155,16 @@ class ProtoDataStoreFragment: Fragment() {
     }
 
     private fun showLogoutState() {
+        binding?.tvUser?.visibility = View.VISIBLE
         binding?.btnLogout?.visibility = View.VISIBLE
     }
 
     private fun hideLogoutState() {
         binding?.btnLogout?.visibility = View.GONE
+        binding?.tvUser?.visibility = View.GONE
+    }
+
+    private fun setUserName(userName: String) {
+        binding?.tvUser?.text = userName
     }
 }
