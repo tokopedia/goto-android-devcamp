@@ -21,20 +21,20 @@ class UserPreferenceDataStoreManager(val context: Context) {
         val USERNAME = stringPreferencesKey("USERNAME")
     }
 
+    fun getUserPreferenceDataStore() = context.dataStore.data.map {
+        User(
+            id = it[USER_ID] ?: "",
+            isLoggedIn = it[IS_LOGGED_IN] ?: false,
+            userName = it[USERNAME] ?: ""
+        )
+    }
+
     suspend fun saveToPreferenceDataStore(user: User) {
         context.dataStore.edit {
             it[USER_ID] = user.id
             it[IS_LOGGED_IN] = user.isLoggedIn
             it[USERNAME] = user.userName
         }
-    }
-
-    suspend fun getUserPreferenceDataStore() = context.dataStore.data.map {
-        User(
-            id = it[USER_ID] ?: "",
-            isLoggedIn = it[IS_LOGGED_IN] ?: false,
-            userName = it[USERNAME] ?: ""
-        )
     }
 
     suspend fun clearUserPreferenceDataStore() {

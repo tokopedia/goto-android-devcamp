@@ -15,6 +15,14 @@ private val Context.userDataStore : DataStore<UserStore> by dataStore(
 
 class UserProtoDataStoreManager(val context: Context) {
 
+    fun getUserProtoDataStore() = context.userDataStore.data.map {
+        User(
+            id = it.id,
+            isLoggedIn = it.isLoggedIn,
+            userName = it.userName
+        )
+    }
+
     suspend fun saveToProtoDataStore(user: User) {
         context.userDataStore.updateData { userDataStore ->
             userDataStore.toBuilder()
@@ -23,14 +31,6 @@ class UserProtoDataStoreManager(val context: Context) {
                 .setUserName(user.userName)
                 .build()
         }
-    }
-
-    suspend fun getUserProtoDataStore() = context.userDataStore.data.map {
-        User(
-            id = it.id,
-            isLoggedIn = it.isLoggedIn,
-            userName = it.userName
-        )
     }
 
     suspend fun clearUserProtoDataStore() {
