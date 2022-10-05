@@ -10,6 +10,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
 import kotlinx.coroutines.flow.map
 
+//TODO(2,1) - Create Preference Datastore
 private const val USER_DATA_STORE = "USER_DATASTORE"
 private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = USER_DATA_STORE)
 
@@ -21,6 +22,7 @@ class UserPreferenceDataStoreManager(val context: Context) {
         val USERNAME = stringPreferencesKey("USERNAME")
     }
 
+    //TODO(2,2) - Read Preference Datastore
     fun getUserPreferenceDataStore() = context.dataStore.data.map {
         User(
             id = it[USER_ID] ?: "",
@@ -29,6 +31,7 @@ class UserPreferenceDataStoreManager(val context: Context) {
         )
     }
 
+    //TODO(2,3) - Save Preference Datastore
     suspend fun saveToPreferenceDataStore(user: User) {
         context.dataStore.edit {
             it[USER_ID] = user.id
@@ -37,6 +40,7 @@ class UserPreferenceDataStoreManager(val context: Context) {
         }
     }
 
+    //TODO(2,4) - Delete Preference Datastore
     suspend fun clearUserPreferenceDataStore() {
         context.dataStore.edit {
             it.clear()

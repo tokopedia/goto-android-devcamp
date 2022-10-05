@@ -24,6 +24,7 @@ import kotlinx.coroutines.withContext
 class ProtoDataStoreFragment: Fragment() {
 
     private var binding: FragmentDataStoreBinding? = null
+    //TODO(3,7) - Initialize Proto DataStore
     lateinit var dataStoreManager: UserProtoDataStoreManager
 
     private val viewModel by viewModels<UserViewModel>(
@@ -41,6 +42,7 @@ class ProtoDataStoreFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context?.let {
+            //TODO(3,7) - Initialize Proto DataStore
             dataStoreManager = UserProtoDataStoreManager(it)
         }
     }
@@ -77,18 +79,21 @@ class ProtoDataStoreFragment: Fragment() {
         getDataStore()
     }
 
+    //TODO(3,8) - Access Save to Proto DataStore
     private fun saveToDataStore(user: User) {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.saveToProtoDataStore(user)
         }
     }
 
+    //TODO(3,9) - Access Delete from Proto DataStore
     private fun clearDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.clearUserProtoDataStore()
         }
     }
 
+    //TODO(3,10) - Access Fetch from Proto DataStore
     private fun getDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.getUserProtoDataStore().catch { e ->

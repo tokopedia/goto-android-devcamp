@@ -7,6 +7,8 @@ import com.tkpd.devcamp2022.UserStore
 import java.io.InputStream
 import java.io.OutputStream
 
+//TODO(3,1) - Create Schema for Proto DataStore
+//TODO(3,2) - Create Serializer for Proto DataStore
 object UserStoreSerializer: Serializer<UserStore> {
 
     override val defaultValue: UserStore = UserStore.getDefaultInstance()

@@ -24,6 +24,7 @@ import kotlinx.coroutines.withContext
 class PreferenceDataStoreFragment: Fragment() {
 
     private var binding: FragmentDataStoreBinding? = null
+    //TODO(2,5) - Initialize Preference Datastore
     lateinit var dataStoreManager: UserPreferenceDataStoreManager
 
     private val viewModel by viewModels<UserViewModel>(
@@ -41,6 +42,7 @@ class PreferenceDataStoreFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context?.let {
+            //TODO(2,5) - Initialize Preference Datastore
             dataStoreManager = UserPreferenceDataStoreManager(it)
         }
     }
@@ -89,18 +91,21 @@ class PreferenceDataStoreFragment: Fragment() {
         }
     }
 
+    //TODO(2,6) - Access Save To Preference Datastore
     private fun saveToDataStore(user: User) {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.saveToPreferenceDataStore(user)
         }
     }
 
+    //TODO(2,7) - Access Delete To Preference Datastore
     private fun clearDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.clearUserPreferenceDataStore()
         }
     }
 
+    //TODO(2,8) - Access Fetch from Preference Datastore
     private fun getDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
             dataStoreManager.getUserPreferenceDataStore().catch { e ->
