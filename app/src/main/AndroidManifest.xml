@@ -91,6 +91,8 @@
             android:name=".day2.recyclerview.presentation.HomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
 
+        <activity android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
+
     </application>
 
 </manifest>

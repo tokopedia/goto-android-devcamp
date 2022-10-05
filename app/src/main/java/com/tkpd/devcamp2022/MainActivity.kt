@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.databinding.ActivityMainBinding
+import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.presentation.NewsListActivity
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.HomeActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.WeatherActivity
 import com.tkpd.devcamp2022.day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity
@@ -25,8 +26,13 @@ class MainActivity: AppCompatActivity() {
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
 
+
         binding.btnDay3.setOnClickListener {
             startActivity(Intent(this@MainActivity, WeatherActivity::class.java))
+        }
+
+        binding.btnDay3NewsApp.setOnClickListener {
+            startActivity(Intent(this@MainActivity, NewsListActivity::class.java))
         }
 
         binding.btnDay3Mvvm.setOnClickListener {
