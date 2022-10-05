@@ -8,81 +8,95 @@
     android:layout_height="match_parent"
     android:background="#000000">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/icon_settings"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@drawable/ic_settings"
-        android:layout_margin="20dp"
-        tools:ignore="ContentDescription" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/derajat"
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/loader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="45sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        tools:text="22 \u00B0"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"/>
-
-    <ImageView
-        android:id="@+id/icon_refresh"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        app:srcCompat="@drawable/ic_refresh"
-        android:layout_toEndOf="@id/derajat"
-        android:layout_alignBottom="@id/derajat"
-        android:layout_alignTop="@id/derajat"
-        android:layout_marginStart="20dp"
-        tools:ignore="ContentDescription" />
+        android:layout_centerInParent="true"
+        app:indicatorColor="@color/white"/>
 
     <RelativeLayout
-        android:id="@+id/rl_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/derajat">
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/icon_location"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            app:srcCompat="@drawable/ic_pin_location"
-            android:layout_centerVertical="true"
+            android:id="@+id/icon_settings"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/ic_settings"
+            android:layout_margin="20dp"
             tools:ignore="ContentDescription" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/label_location"
+            android:id="@+id/derajat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="45sp"
+            android:textStyle="bold"
             android:textColor="#FFFFFF"
-            tools:text="Jakarta"
-            android:layout_toEndOf="@id/icon_location"
-            android:layout_centerVertical="true"/>
+            tools:text="22 \u00B0"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"/>
+
+        <ImageView
+            android:id="@+id/icon_refresh"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:srcCompat="@drawable/ic_refresh"
+            android:layout_toEndOf="@id/derajat"
+            android:layout_alignBottom="@id/derajat"
+            android:layout_alignTop="@id/derajat"
+            android:layout_marginStart="20dp"
+            tools:ignore="ContentDescription" />
+
+        <RelativeLayout
+            android:id="@+id/rl_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/derajat">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/icon_location"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/ic_pin_location"
+                android:layout_centerVertical="true"
+                tools:ignore="ContentDescription" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/label_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                tools:text="Jakarta"
+                android:layout_toEndOf="@id/icon_location"
+                android:layout_centerVertical="true"/>
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/label_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_location"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/label_next_4_days"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_forecast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/label_forecast"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="20dp"
+            android:orientation="horizontal"/>
 
     </RelativeLayout>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/label_forecast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/rl_location"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="20dp"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:text="@string/label_next_4_days"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_forecast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/label_forecast"
-        android:layout_marginTop="12dp"
-        android:layout_marginStart="20dp"
-        android:orientation="horizontal"/>
 
 </RelativeLayout>

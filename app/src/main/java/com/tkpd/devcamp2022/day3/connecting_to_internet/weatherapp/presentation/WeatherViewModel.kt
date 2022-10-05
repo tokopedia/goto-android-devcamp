@@ -16,10 +16,6 @@ import kotlinx.coroutines.launch
 
 class WeatherViewModel constructor(private val weatherService: WeatherService) : ViewModel() {
 
-    /* region 1 - call each API
-    ------------------------------------------------------------------------------------------------
-     */
-
     private val _weatherResult =
         MutableLiveData<WeatherResponse>()
     val weatherResult: LiveData<WeatherResponse>
@@ -43,31 +39,4 @@ class WeatherViewModel constructor(private val weatherService: WeatherService) :
             _forecastResult.postValue(forecastResponse)
         }
     }
-
-    /*------------------------------------------------------------------------------------------------
-    end of region 1*/
-
-    /* region 2 - call both API with combine
-   ------------------------------------------------------------------------------------------------
-    */
-
-
-    /*private val weather = MutableStateFlow<WeatherResponse?>(null)
-    private val forecast = MutableStateFlow<ForecastResponse?>(null)
-
-    private val _weatherForecast = MutableStateFlow<WeatherForecast?>(null)
-    val weatherForecast = _weatherForecast.asStateFlow()
-
-    init {
-        weather.combine(forecast) { weather, forecast ->
-            _weatherForecast.value = weather?.let {
-                it.name.let { it1 ->
-                    weatherForecast.value?.copy(
-                        areaName = it1,
-
-                        )
-                }
-            }
-        }
-    }*/
 }

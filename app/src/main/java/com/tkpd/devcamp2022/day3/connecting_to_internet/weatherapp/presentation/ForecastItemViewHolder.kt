@@ -6,7 +6,6 @@ import com.tkpd.devcamp2022.databinding.ForecastCardItemBinding
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.data.response.ForecastResponse
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherUtil
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherUtil.toPrettyString
-import java.lang.Math.ceil
 
 class ForecastItemViewHolder(private val binding: ForecastCardItemBinding): RecyclerView.ViewHolder(binding.root) {
     @SuppressLint("SetTextI18n")
