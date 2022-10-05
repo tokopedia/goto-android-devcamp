@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -69,6 +70,14 @@
         </activity>
         <activity
             android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.LocalDataActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.RoomActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity"/>
+        <activity
+            android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
