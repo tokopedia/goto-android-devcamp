@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.FragmentDataStoreBinding
-import com.tkpd.devcamp2022.day3.room_datastore.api.MockUserApi
+import com.tkpd.devcamp2022.day3.room_datastore.api.user.MockUserApi
 import com.tkpd.devcamp2022.day3.room_datastore.datastore.UserProtoDataStoreManager
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
 import com.tkpd.devcamp2022.day3.room_datastore.view.viewmodel.UserViewModel

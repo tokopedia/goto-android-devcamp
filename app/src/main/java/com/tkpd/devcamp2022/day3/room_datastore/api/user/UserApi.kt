@@ -1,4 +1,4 @@
-package com.tkpd.devcamp2022.day3.room_datastore.api
+package com.tkpd.devcamp2022.day3.room_datastore.api.user
 
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
 

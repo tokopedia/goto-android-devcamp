@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tkpd.devcamp2022.day3.room_datastore.api.UserApi
+import com.tkpd.devcamp2022.day3.room_datastore.api.user.UserApi
 import com.tkpd.devcamp2022.day3.room_datastore.model.User
 import kotlinx.coroutines.launch
 
