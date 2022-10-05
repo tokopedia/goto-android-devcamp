@@ -13,12 +13,14 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.Response
 
+//TODO(1,6) - Add Dao to Repository
 class UserListRepositoryImpl(
     private val service: UserListApiService,
     private val database: CachedUsersListDao
 ) : UserListRepository {
 
     override suspend fun getUserList(isFromCached: Boolean) = withContext(Dispatchers.IO) {
+        //TODO(1,6) - Add if from cached
         return@withContext if (isFromCached) {
             responseStateUserListFromCached()
         } else {
@@ -35,6 +37,7 @@ class UserListRepositoryImpl(
     private fun responseStateUserList(result: Response<UsersList>): UserListState {
         return if (result.isSuccessful && result.body() != null) {
                 val userListResponse = result.body() as UsersList
+                //TODO(1,7) - Use Delete Data and Save Data from DB
                 cachedResponse(result)
                 UserListState.SuccessGetUserList(userListResponse)
             } else {
@@ -43,12 +46,14 @@ class UserListRepositoryImpl(
 
     }
 
+    //TODO(1,7) - Use Load data from DB
     private fun responseStateUserListFromCached(): UserListState {
         val jsonResponse = database.load()
         val userListResponse = Gson().fromJson(jsonResponse, UsersList::class.java)
         return UserListState.SuccessGetUserList(userListResponse)
     }
 
+    //TODO(1,7) - Use Delete Data and Save Data from DB
     private fun cachedResponse(result: Response<UsersList>) {
         val gsonBuilder = GsonBuilder().create()
         val jsonBuiled = gsonBuilder.toJson(result.body())

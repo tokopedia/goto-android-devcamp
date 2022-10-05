@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.tkpd.devcamp2022.day3.room_datastore.db.model.CachedUsersList
 
+//TODO(1,3) - Create Database
 @Database(entities = [CachedUsersList::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userListDao(): CachedUsersListDao

@@ -5,6 +5,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.tkpd.devcamp2022.day3.room_datastore.db.model.CachedUsersList
 
+//TODO(1,2) - Create DAO
 @Dao
 interface CachedUsersListDao {
 
