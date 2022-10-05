@@ -14,7 +14,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.ViewHolder>() {
 
     private var listUser = listOf<UserData>()
 
-    fun setNews(users: List<UserData>) {
+    fun setUsers(users: List<UserData>) {
         this.listUser = users
         this.notifyDataSetChanged()
     }

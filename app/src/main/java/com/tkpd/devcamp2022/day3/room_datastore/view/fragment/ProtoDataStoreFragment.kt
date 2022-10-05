@@ -26,6 +26,18 @@ class ProtoDataStoreFragment: Fragment() {
     private var binding: FragmentDataStoreBinding? = null
     lateinit var dataStoreManager: UserProtoDataStoreManager
 
+    private val viewModel by viewModels<UserViewModel>(
+        factoryProducer = {
+            object : ViewModelProvider.Factory {
+                override fun <T : ViewModel> create(
+                    modelClass: Class<T>,
+                ): T {
+                    return UserViewModel(MockUserApi()) as T
+                }
+            }
+        }
+    )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context?.let {
@@ -41,18 +53,6 @@ class ProtoDataStoreFragment: Fragment() {
         binding = FragmentDataStoreBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
-
-    private val viewModel by viewModels<UserViewModel>(
-        factoryProducer = {
-            object : ViewModelProvider.Factory {
-                override fun <T : ViewModel> create(
-                    modelClass: Class<T>,
-                ): T {
-                    return UserViewModel(MockUserApi()) as T
-                }
-            }
-        }
-    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
