@@ -24,6 +24,7 @@ class ImageGalleryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
+        //TODO: [Step 1] register activity result below using registerImageGalleryResult()
         imageGalleryResult = registerImageGalleryResult()
         binding = FragmentImageGalleryBinding.inflate(layoutInflater, container, false)
         return binding?.root
@@ -33,6 +34,7 @@ class ImageGalleryFragment : Fragment() {
         return registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
+            //TODO: [Step 3] check result code data and call checkSelectedImage function to validate clipData value
             when (result.resultCode) {
                 Activity.RESULT_OK -> {
                     clearImageView()
@@ -43,6 +45,7 @@ class ImageGalleryFragment : Fragment() {
     }
 
     private fun openImageGallery() {
+        //TODO: [Step 2] define intent for image gallery below and launch it
         val intentAction = Intent.ACTION_GET_CONTENT
         val mimeType = "image/*"
         val imagePickerIntent = Intent(intentAction).apply {
@@ -68,6 +71,7 @@ class ImageGalleryFragment : Fragment() {
     }
 
     private fun checkSelectedImage(data: Intent?) {
+        //TODO: [Step 4] check whether clipData is null or not and also load the selected image to ImageView
         if (data?.clipData != null) {
             val totalSelectedImage = data.clipData?.itemCount ?: 0
             if (totalSelectedImage > 3) {
