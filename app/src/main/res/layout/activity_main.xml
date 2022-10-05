@@ -41,6 +41,22 @@
             android:text="@string/btn_day_3_mvvm" />
 
         <Button
+            android:id="@+id/btn_day3_image_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/btn_day_3_image_gallery" />
+
+        <Button
+            android:id="@+id/btn_day3_image_upload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/btn_day_3_image_upload" />
+
+        <Button
             android:id="@+id/btn_day3_room"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
