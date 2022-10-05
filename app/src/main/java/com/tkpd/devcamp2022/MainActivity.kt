@@ -10,6 +10,7 @@ import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.
 import com.tkpd.devcamp2022.day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity
 import com.tkpd.devcamp2022.day3.image_gallery_image_upload.image_upload.presentation.ImageUploadActivity
 import com.tkpd.devcamp2022.day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity
+import com.tkpd.devcamp2022.day3.room_datastore.view.activity.LocalDataActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.AnimationViewActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.CustomViewActivity
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.ui.ContactBookActivity
@@ -46,6 +47,10 @@ class MainActivity: AppCompatActivity() {
 
         binding.btnDay3ImageUpload.setOnClickListener {
             startActivity(Intent(this@MainActivity, ImageUploadActivity::class.java))
+        }
+
+        binding.btnDay3Room.setOnClickListener {
+            startActivity(Intent(this@MainActivity, LocalDataActivity::class.java))
         }
 
         binding.btnDay4Customview.setOnClickListener {
