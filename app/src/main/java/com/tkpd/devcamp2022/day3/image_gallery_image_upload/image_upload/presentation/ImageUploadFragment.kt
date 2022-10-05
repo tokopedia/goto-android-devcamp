@@ -144,6 +144,7 @@ class ImageUploadFragment : Fragment() {
     }
 
     private fun getBytesArrayFromUri(uri: Uri): ByteArray {
+        //TODO: [Step 2] convert content uri to byte array using content resolver
         return context?.contentResolver?.openInputStream(uri)?.readBytes() ?: ByteArray(0)
     }
 

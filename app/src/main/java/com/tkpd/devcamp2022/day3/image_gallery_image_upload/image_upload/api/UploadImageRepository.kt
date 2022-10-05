@@ -25,22 +25,23 @@ class UploadImageRepository {
     suspend fun uploadImage(
         imageData: ImageDataForUpload
     ): UploadImageResultResponse {
+        //TODO: [Step 4] call api for upload single image
         val imageFormData = createImageFormData(imageData)
         val apiKeyRequestBody = apiKey.toRequestBody()
         return uploadImageApi.uploadImage(apiKeyRequestBody, imageFormData)
     }
 
     suspend fun uploadMultipleImage(listImageData: List<ImageDataForUpload>): UploadImageResultResponse {
-        val listImageFormData = mutableListOf<MultipartBody.Part>().apply {
-            listImageData.onEach { imageData ->
-                add(createImageFormData(imageData))
-            }
+        //TODO: [Step 5] call api for upload multiple image
+        val listImageFormData = listImageData.map {imageData ->
+            createImageFormData(imageData)
         }
         val apiKeyRequestBody = apiKey.toRequestBody()
         return uploadImageApi.uploadMultipleImage(apiKeyRequestBody, listImageFormData)
     }
 
     private fun createImageFormData(imageData: ImageDataForUpload): MultipartBody.Part {
+        //TODO: [Step 3] convert image data to RequestBody and create MultipartBody.Part using createFormData function
         val imageRequestBody = imageData.imageByteData.toRequestBody()
         return MultipartBody.Part.createFormData("source", imageData.fileName, imageRequestBody)
     }

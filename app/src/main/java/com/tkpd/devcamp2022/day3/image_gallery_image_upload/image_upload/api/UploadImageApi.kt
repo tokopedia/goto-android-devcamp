@@ -7,6 +7,7 @@ import okhttp3.ResponseBody
 import retrofit2.http.*
 
 interface UploadImageApi {
+    //TODO: [Step 1] define api call for both single and multiple upload image
     @Multipart
     @POST("api/1/upload")
     suspend fun uploadImage(
