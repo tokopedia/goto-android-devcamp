@@ -9,9 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.room.Room
+import com.tkpd.devcamp2022.MainApplication
 import com.tkpd.devcamp2022.databinding.FragmentRoomBinding
 import com.tkpd.devcamp2022.day3.room_datastore.api.userlist.UserListApiClient
-import com.tkpd.devcamp2022.day3.room_datastore.domain.UserListState
+import com.tkpd.devcamp2022.day3.room_datastore.db.dao.AppDatabase
+import com.tkpd.devcamp2022.day3.room_datastore.repository.state.UserListState
 import com.tkpd.devcamp2022.day3.room_datastore.model.UserData
 import com.tkpd.devcamp2022.day3.room_datastore.model.UsersList
 import com.tkpd.devcamp2022.day3.room_datastore.repository.UserListRepositoryImpl
@@ -29,15 +32,18 @@ class RoomFragment: Fragment() {
                 override fun <T : ViewModel> create(
                     modelClass: Class<T>,
                 ): T {
-                    return UserListViewModel(UserListRepositoryImpl(UserListApiClient.create())) as T
+                    return UserListViewModel(
+                        UserListRepositoryImpl(
+                            UserListApiClient.create(),
+                            (activity?.application as MainApplication).database.userListDao()
+                        )
+                    ) as T
                 }
             }
         }
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,7 +61,7 @@ class RoomFragment: Fragment() {
     }
 
     private fun fetchUserList() {
-        viewModel.getUserList()
+        viewModel.getUserList(true)
     }
 
     private fun observeUserList() {

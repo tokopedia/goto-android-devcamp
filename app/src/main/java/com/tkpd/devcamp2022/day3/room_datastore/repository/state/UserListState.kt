@@ -1,4 +1,4 @@
-package com.tkpd.devcamp2022.day3.room_datastore.domain
+package com.tkpd.devcamp2022.day3.room_datastore.repository.state
 
 import com.tkpd.devcamp2022.day3.room_datastore.model.UsersList
 

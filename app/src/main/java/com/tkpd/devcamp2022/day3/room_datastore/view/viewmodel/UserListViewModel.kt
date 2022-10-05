@@ -3,7 +3,7 @@ package com.tkpd.devcamp2022.day3.room_datastore.view.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.tkpd.devcamp2022.day3.room_datastore.domain.UserListState
+import com.tkpd.devcamp2022.day3.room_datastore.repository.state.UserListState
 import com.tkpd.devcamp2022.day3.room_datastore.repository.UserListRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -17,9 +17,9 @@ class UserListViewModel(
     val stateUserList: LiveData<UserListState>
         get() = _stateUserList
 
-    fun getUserList() {
+    fun getUserList(isFromCached: Boolean) {
         CoroutineScope(Dispatchers.IO).launch {
-            val state = userListRepository.getUserList()
+            val state = userListRepository.getUserList(isFromCached)
             _stateUserList.postValue(state)
         }
     }

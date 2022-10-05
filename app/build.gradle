@@ -2,6 +2,7 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id "com.google.protobuf" version "0.8.17"
+    id 'kotlin-kapt'
 }
 
 android {
@@ -43,9 +44,6 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.fragment:fragment-ktx:1.5.3'
     implementation "io.coil-kt:coil:2.2.1"
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    implementation  "androidx.datastore:datastore-core:1.0.0"
-    implementation  "com.google.protobuf:protobuf-javalite:3.14.0"
 
     implementation 'com.github.bumptech.glide:glide:4.12.0'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
@@ -66,6 +64,15 @@ dependencies {
 
     //Glide
     implementation "com.github.bumptech.glide:glide:4.12.0"
+
+    //DataStore
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+    implementation  "androidx.datastore:datastore-core:1.0.0"
+    implementation  "com.google.protobuf:protobuf-javalite:3.14.0"
+
+    //Room
+    implementation("androidx.room:room-runtime:2.4.3")
+    kapt("androidx.room:room-compiler:2.4.3")
 }
 
 protobuf {
