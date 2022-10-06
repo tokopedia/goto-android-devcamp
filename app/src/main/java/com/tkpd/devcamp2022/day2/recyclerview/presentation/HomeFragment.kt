@@ -15,8 +15,9 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.day2.recyclerview.factory.HomeFactory
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.HomeAdapter
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.BannerViewHolder
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.ProductViewHolder
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductShimmeringUiModel
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.SquareBannerViewHolder
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
 
 class HomeFragment : Fragment() {
@@ -51,25 +52,36 @@ class HomeFragment : Fragment() {
     }
 
     private val productClickListener = object : ProductViewHolder.Listener {
+        override fun onItemClicked(product: ProductUiModel, position: Int) {
+            gotoDetailProductPage(product)
+        }
+
         override fun onWishlistButtonClicked(product: ProductUiModel, position: Int) {
-            Toast.makeText(
-                requireContext(),
-                R.string.wishlist_success_message,
-                Toast.LENGTH_SHORT
-            ).show()
+            addProductToWishlist(product)
         }
 
         override fun onAddToCartButtonClicked(product: ProductUiModel, position: Int) {
-            Toast.makeText(
-                requireContext(),
-                R.string.add_to_cart_success_message,
-                Toast.LENGTH_SHORT
-            ).show()
+            addProductToCart(product)
         }
     }
 
+    private val bannerClickListener = object : BannerViewHolder.Listener {
+        override fun onItemClicked(image: String, position: Int) {
+        }
+    }
+
+    private val squareBannerClickListener = object : SquareBannerViewHolder.Listener {
+        override fun onItemClicked(image: String, position: Int) {
+        }
+    }
+
+    private val homeAdapter = HomeAdapter(
+        bannerClickListener,
+        productClickListener,
+        squareBannerClickListener
+    )
+
     private val homeRepository = HomeFactory.getRepository()
-    private val homeAdapter = HomeAdapter(productClickListener)
 
     private var page: Int = 1
     private var isLoading: Boolean = false
@@ -120,7 +132,7 @@ class HomeFragment : Fragment() {
 
     private fun showInitialState() {
         homeAdapter.setItems(
-            List(5) { ProductShimmeringUiModel }
+            List(5) { ProductUiModel.Placeholder }
         )
     }
 
@@ -132,12 +144,36 @@ class HomeFragment : Fragment() {
 
     private fun showLoadMore() {
         homeAdapter.insertItemAtLast(
-            ProductShimmeringUiModel
+            ProductUiModel.Placeholder
         )
     }
 
     private fun hideLoadMore() {
         homeAdapter.removeItemAtLast()
+    }
+
+    private fun addProductToCart(product: ProductUiModel) {
+        Toast.makeText(
+            requireContext(),
+            R.string.add_to_cart_success_message,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun addProductToWishlist(product: ProductUiModel) {
+        Toast.makeText(
+            requireContext(),
+            R.string.wishlist_success_message,
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+
+    private fun gotoDetailProductPage(product: ProductUiModel) {
+        Toast.makeText(
+            requireContext(),
+            "barang berhasil disimpan di Wishlist <3",
+            Toast.LENGTH_SHORT
+        ).show()
     }
 
     private fun doSomethingWithDelay(delayInMillis: Long, something: () -> Unit) {
