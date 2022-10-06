@@ -38,4 +38,8 @@
     <string name="empty_state_title">Data kosong</string>
     <string name="is_get_from_cached">GET FROM CACHED</string>
     <string name="is_get_from_rest">GET FROM API</string>
+
+    <!--WeatherApp-->
+    <string name="label_next_4_days">Next 4 days</string>
+    <string name="no_connection">Please check your connection</string>
 </resources>

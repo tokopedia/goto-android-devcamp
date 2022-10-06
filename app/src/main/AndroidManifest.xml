@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tkpd.devcamp2022">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -61,7 +62,7 @@
         </activity>
         <activity
             android:name=".day3.connecting_to_internet.weatherapp.presentation.WeatherActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="id.co.besthome.internal.VIEW" />
 
