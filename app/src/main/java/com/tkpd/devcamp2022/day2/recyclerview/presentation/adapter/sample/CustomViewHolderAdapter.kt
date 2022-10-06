@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
 import com.tkpd.devcamp2022.R
@@ -13,9 +14,9 @@ import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiMode
 
 
 class CustomViewHolderAdapter(
-    context: Context,
-    resourceId: Int
-) : ArrayAdapter<ProductUiModel.Item>(context, resourceId) {
+    private val context: Context,
+    private val itemList: List<ProductUiModel.Item>
+) : BaseAdapter() {
 
     private class ViewHolder {
         var ivProduct: ImageView? = null
@@ -24,7 +25,7 @@ class CustomViewHolderAdapter(
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-        val dataModel = getItem(position) ?: throw IllegalStateException("data can't be null")
+        val dataModel = getItem(position)
 
         var mConvertView = convertView
         val viewHolder: ViewHolder? // view lookup cache stored in tag
@@ -49,5 +50,15 @@ class CustomViewHolderAdapter(
         viewHolder.tvPrice?.text = dataModel.price
 
         return mConvertView ?: throw IllegalStateException("view can't be null")
+    }
+
+    override fun getCount(): Int {
+        TODO("Not yet implemented")
+    }
+
+    override fun getItem(position: Int): ProductUiModel.Item = itemList[position]
+
+    override fun getItemId(p0: Int): Long {
+        TODO("Not yet implemented")
     }
 }

@@ -11,7 +11,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.home_container, HomeFragment.newInstance())
+                .replace(R.id.home_container, CustomListViewFragment.newInstance())
                 .commitNow()
         }
     }

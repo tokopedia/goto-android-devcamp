@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
 
@@ -28,7 +29,9 @@ class CustomAdapter(
         val tvName = itemView.findViewById<TextView>(R.id.tv_product_name)
         val tvPrice = itemView.findViewById<TextView>(R.id.tv_product_price)
 
-        ivProduct.setImageURI(Uri.parse(dataModel.image))
+        Glide.with(itemView.context)
+            .load(dataModel.image)
+            .into(ivProduct)
         tvName.text = dataModel.name
         tvPrice.text = dataModel.price
 
