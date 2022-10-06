@@ -4,8 +4,11 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.commit
+import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.ActivityFirstBinding
 import com.tkpd.devcamp2022.day2.firstapp.data.User
+import com.tkpd.devcamp2022.day2.firstapp.fragments.FirstFragment
 
 class FirstActivity : AppCompatActivity() {
 
@@ -38,7 +41,10 @@ class FirstActivity : AppCompatActivity() {
         }
 
         binding.btnNavigateToFragment.setOnClickListener {
-
+            supportFragmentManager.commit {
+                add(R.id.container, FirstFragment::class.java, null)
+                addToBackStack(null)
+            }
         }
     }
 

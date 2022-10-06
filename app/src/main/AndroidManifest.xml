@@ -22,7 +22,8 @@
         <activity
             android:name=".day2.firstapp.acitivity.FirstActivity"
             android:label="First App - First Activity"
-            android:exported="false"/>
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
         <activity
             android:name=".day2.firstapp.acitivity.SecondActivity"
             android:label="First App - Second Activity"

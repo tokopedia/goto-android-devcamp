@@ -44,6 +44,9 @@
     <string name="btn_navigate_to_activity_with_data">Navigate to Activity with data</string>
     <string name="btn_navigate_to_activity_using_deeplink">Navigate using deeplink</string>
     <string name="btn_navigate_to_fragment">Navigate to Fragment</string>
+    <string name="btn_navigate_to_second_fragment">Navigate to Second Fragment</string>
     <string name="txt_name">Name    : %s</string>
     <string name="txt_age">Age    : %d</string>
+    <string name="first_fragment">First Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
 </resources>
