@@ -25,7 +25,7 @@ class ProtoDataStoreFragment: Fragment() {
 
     private var binding: FragmentDataStoreBinding? = null
     //TODO(3,7) - Initialize Proto DataStore
-    lateinit var dataStoreManager: UserProtoDataStoreManager
+
 
     private val viewModel by viewModels<UserViewModel>(
         factoryProducer = {
@@ -43,7 +43,6 @@ class ProtoDataStoreFragment: Fragment() {
         super.onCreate(savedInstanceState)
         context?.let {
             //TODO(3,7) - Initialize Proto DataStore
-            dataStoreManager = UserProtoDataStoreManager(it)
         }
     }
 
@@ -68,7 +67,7 @@ class ProtoDataStoreFragment: Fragment() {
         }
 
         binding?.btnLogout?.setOnClickListener {
-            clearDataStore()
+            //TODO(3,9) - Access Delete from Proto DataStore
         }
 
         viewModel.user.observe(viewLifecycleOwner) {
@@ -76,48 +75,21 @@ class ProtoDataStoreFragment: Fragment() {
             isLoggedInSucceed(it)
         }
 
-        getDataStore()
+        //TODO(3,10) - Access Fetch from Proto DataStore
     }
 
     //TODO(3,8) - Access Save to Proto DataStore
-    private fun saveToDataStore(user: User) {
-        GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.saveToProtoDataStore(user)
-        }
-    }
+
 
     //TODO(3,9) - Access Delete from Proto DataStore
-    private fun clearDataStore() {
-        GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.clearUserProtoDataStore()
-        }
-    }
 
     //TODO(3,10) - Access Fetch from Proto DataStore
-    private fun getDataStore() {
-        GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.getUserProtoDataStore().catch { e ->
-                e.printStackTrace()
-                withContext(Dispatchers.Main) {
-                    userNotLoggedIn()
-                }
-            }.collect{
-                withContext(Dispatchers.Main) {
-                    if (it.isLoggedIn) {
-                        userAlreadyLogin()
-                        setUserName(it.userName)
-                    } else {
-                        userNotLoggedIn()
-                    }
-                }
-            }
-        }
-    }
+
 
     private fun isLoggedInSucceed(user: User) {
         if (user.isLoggedIn) {
             showToaster(getString(R.string.datastore_login_succeed))
-            saveToDataStore(user)
+            //TODO(3,8) - Access Save to Proto DataStore
             hideLoginState()
             showLogoutState()
         } else {

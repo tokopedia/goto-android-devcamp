@@ -1,8 +1,7 @@
-import org.gradle.internal.os.OperatingSystem
+//TODO(3, 0) Add proto dependencies
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id "com.google.protobuf" version "0.8.17"
 }
 
 android {
@@ -66,36 +65,8 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:4.12.0"
 
     //DataStore
-    implementation("androidx.datastore:datastore-preferences:1.0.0")
-    implementation  "androidx.datastore:datastore-core:1.0.0"
-    implementation  "com.google.protobuf:protobuf-javalite:3.14.0"
-
+    //TODO(2,0) add preference dependencies
+    //TODO(3,0) Add proto dependencies
     //TODO 1,0 add room dependencies
 }
 
-protobuf {
-    protoc {
-        //Please Check your current OS
-        OperatingSystem os = OperatingSystem.current();
-        if (os.isWindows()) {
-            artifact = "com.google.protobuf:protoc:3.14.0:windows-x86_64"
-        } else if (os.isMacOsX()) {
-            artifact = "com.google.protobuf:protoc:3.14.0:osx-x86_64"
-        } else if (os.isLinux()) {
-            artifact = "com.google.protobuf:protoc:3.14.0:linux-x86_64"
-        }
-    }
-
-    // Generates the java Protobuf-lite code for the Protobufs in this project. See
-    // https://github.com/google/protobuf-gradle-plugin#customizing-protobuf-compilation
-    // for more information.
-    generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-                java {
-                    option 'lite'
-                }
-            }
-        }
-    }
-}
