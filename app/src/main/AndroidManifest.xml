@@ -21,6 +21,33 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".day2.firstapp.acitivity.FirstActivity"
+            android:label="First App - First Activity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".day2.firstapp.acitivity.SecondActivity"
+            android:label="First App - Second Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/firstapp"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="example"
+                    android:host="firstapp"/>
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".day4.custom_view_animation.CustomViewAnimationDetailActivity"
             android:exported="false">
             <intent-filter>
@@ -70,16 +97,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.LocalDataActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.RoomActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity"/>
+        <activity android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.LocalDataActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.RoomActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
