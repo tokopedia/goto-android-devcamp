@@ -40,6 +40,10 @@
     <string name="is_get_from_cached">GET FROM CACHED</string>
     <string name="is_get_from_rest">GET FROM API</string>
 
+    <!--WeatherApp-->
+    <string name="label_next_4_days">Next 4 days</string>
+    <string name="no_connection">Please check your connection</string>
+
     <string name="btn_navigate_to_activity">Navigate to Activity</string>
     <string name="btn_navigate_to_activity_with_data">Navigate to Activity with data</string>
     <string name="btn_navigate_to_activity_using_deeplink">Navigate using deeplink</string>

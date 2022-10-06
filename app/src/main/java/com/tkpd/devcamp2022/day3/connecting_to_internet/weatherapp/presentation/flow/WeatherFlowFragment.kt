@@ -1,4 +1,4 @@
-package com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation
+package com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.flow
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -7,23 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chuckerteam.chucker.api.Chucker
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.FragmentWeatherBinding
+import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.data.model.WeatherFlowState
+import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.data.response.WeatherForecast
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.domain.WeatherService
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherConsts.DEFAULT_LAT
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherConsts.DEFAULT_LON
-import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherUtil
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherUtil.clickWithDebounce
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.util.WeatherUtil.isNetworkConnected
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
-class WeatherFragment: Fragment() {
-    private lateinit var weatherViewModel:WeatherViewModel
+class WeatherFlowFragment: Fragment() {
+    private lateinit var weatherFlowViewModel: WeatherFlowViewModel
     private var binding: FragmentWeatherBinding? = null
     private var hasLoaded = false
-    private lateinit var forecastItemAdapter: ForecastItemAdapter
+    private lateinit var forecastItemFlowAdapter: ForecastItemFlowAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -37,18 +43,18 @@ class WeatherFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         prepareLayout()
-        observeWeather()
-        observeForecast()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         context?.let { context ->
             WeatherService.getInstance(context)?.let {
-                val viewModelFactory = WeatherViewModelFactory(it)
-                weatherViewModel = ViewModelProvider(this, viewModelFactory)[WeatherViewModel(it)::class.java]
+                val viewModelFlowFactory = WeatherFlowViewModelFactory(it)
+                weatherFlowViewModel = ViewModelProvider(this, viewModelFlowFactory)[WeatherFlowViewModel(it)::class.java]
             }
         }
+        prepareLayout()
+        setupViewModel()
     }
 
     override fun onStart() {
@@ -72,42 +78,59 @@ class WeatherFragment: Fragment() {
 
         val llManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        forecastItemAdapter = ForecastItemAdapter()
+        forecastItemFlowAdapter = ForecastItemFlowAdapter()
         binding?.run {
             rvForecast.apply {
                 layoutManager = llManager
-                adapter = forecastItemAdapter
+                adapter = forecastItemFlowAdapter
             }
         }
-        forecastItemAdapter.clearList()
+        forecastItemFlowAdapter.clearList()
     }
 
     private fun loadWeatherAndForecast() {
         if (context?.isNetworkConnected == true) {
-            weatherViewModel.loadWeather(DEFAULT_LAT, DEFAULT_LON)
-            weatherViewModel.loadForecast(DEFAULT_LAT, DEFAULT_LON)
+            weatherFlowViewModel.loadWeatherAndForecast(DEFAULT_LAT, DEFAULT_LON)
         } else {
             Toast.makeText(context, resources.getString(R.string.no_connection), Toast.LENGTH_LONG).show()
         }
+    }
 
+    private fun setupViewModel() {
+        weatherFlowViewModel.weatherForecast.flowWithLifecycle(lifecycle, Lifecycle.State.CREATED).onEach { state ->
+            when (state) {
+                is WeatherFlowState.Success -> {
+                    val data = state.data
+                    updateLayout(data)
+                }
+                is WeatherFlowState.Loading -> {
+                    binding?.run {
+                        loader.show()
+                        rlContent.visibility = View.GONE
+                    }
+                }
+                is WeatherFlowState.Failed -> {
+                    Toast.makeText(
+                        context,
+                        state.throwable?.message ?: "Fail to get data",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        }.launchIn(lifecycleScope)
     }
 
     @SuppressLint("SetTextI18n")
-    private fun observeWeather() {
-        weatherViewModel.weatherResult.observe(viewLifecycleOwner) { result ->
-            binding?.run {
-                derajat.text = result.main.temp.toString() + " \u00B0"
-                labelLocation.text = result.name
-            }
-        }
-    }
-
-    private fun observeForecast() {
-        weatherViewModel.forecastResult.observe(viewLifecycleOwner) { result ->
+    private fun updateLayout(data: WeatherForecast) {
+        binding?.run {
+            loader.hide()
+            rlContent.visibility = View.VISIBLE
+            derajat.text = data.temp.toString() + " \u00B0"
+            labelLocation.text = data.location
             for (i in 1..4) {
-                forecastItemAdapter.addList(result.list[i])
+                forecastItemFlowAdapter.addList(data.listForecast[i])
                 if (i == 4) {
-                    forecastItemAdapter.notifyAdapter()
+                    forecastItemFlowAdapter.notifyAdapter()
                 }
             }
         }
