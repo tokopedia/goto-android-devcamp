@@ -3,6 +3,7 @@ package com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.contact
 import android.content.ContentResolver
 import android.provider.ContactsContract
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
+import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.util.PhoneNumberFormatter
 
 
 class ContactDataSourceImpl(
@@ -30,37 +31,17 @@ class ContactDataSourceImpl(
                 val phoneNumber = cursor.getString(numberIndex) ?: ""
 
                 if (phoneNumber.isNotEmpty()) {
-                    contacts.add(Contact(name, formatPrefixClientNumber(phoneNumber)))
+                    contacts.add(
+                        Contact(
+                            name,
+                            phoneNumber
+                        )
+                    )
                 }
             }
         }
         cursor?.close()
 
         return contacts
-    }
-
-    private fun formatPrefixClientNumber(phoneNumber: String?): String {
-        phoneNumber?.run {
-            if ("".equals(phoneNumber.trim { it <= ' ' }, ignoreCase = true)) {
-                return phoneNumber
-            }
-            var phoneNumberWithPrefix = validatePrefixClientNumber(phoneNumber)
-            if (!phoneNumberWithPrefix.startsWith("0")) {
-                phoneNumberWithPrefix = "0$phoneNumber"
-            }
-            return phoneNumberWithPrefix
-        }
-        return ""
-    }
-
-    private fun validatePrefixClientNumber(phoneNumber: String): String {
-        var phoneNumber = phoneNumber
-        if (phoneNumber.startsWith("62")) {
-            phoneNumber = phoneNumber.replaceFirst("62".toRegex(), "0")
-        }
-        if (phoneNumber.startsWith("+62")) {
-            phoneNumber = phoneNumber.replace("+62", "0")
-        }
-        return phoneNumber.replace("[^0-9]+".toRegex(), "")
     }
 }
