@@ -15,9 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.day2.recyclerview.factory.HomeFactory
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.HomeAdapter
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.BannerViewHolder
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.ProductViewHolder
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.SquareBannerViewHolder
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
 
 class HomeFragment : Fragment() {
@@ -35,10 +33,8 @@ class HomeFragment : Fragment() {
             val lastVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition()
 
             if (!isLoading && lastVisibleItem == homeAdapter.itemCount - 1) {
-                showLoadMore()
                 isLoading = true
-                doSomethingWithDelay(1500) { // delay 1.5s
-                    hideLoadMore()
+                doSomethingWithDelay(800) { // delay 1.5s
                     showLoadMoreItems()
                     isLoading = false
                     page += 1
@@ -52,34 +48,12 @@ class HomeFragment : Fragment() {
     }
 
     private val productClickListener = object : ProductViewHolder.Listener {
-        override fun onItemClicked(product: ProductUiModel, position: Int) {
-            gotoDetailProductPage(product)
-        }
-
-        override fun onWishlistButtonClicked(product: ProductUiModel, position: Int) {
+        override fun onWishlistButtonClicked(product: ProductUiModel) {
             addProductToWishlist(product)
         }
-
-        override fun onAddToCartButtonClicked(product: ProductUiModel, position: Int) {
-            addProductToCart(product)
-        }
     }
 
-    private val bannerClickListener = object : BannerViewHolder.Listener {
-        override fun onItemClicked(image: String, position: Int) {
-        }
-    }
-
-    private val squareBannerClickListener = object : SquareBannerViewHolder.Listener {
-        override fun onItemClicked(image: String, position: Int) {
-        }
-    }
-
-    private val homeAdapter = HomeAdapter(
-        bannerClickListener,
-        productClickListener,
-        squareBannerClickListener
-    )
+    private val homeAdapter = HomeAdapter(productClickListener)
 
     private val homeRepository = HomeFactory.getRepository()
 
@@ -117,8 +91,7 @@ class HomeFragment : Fragment() {
 
     private fun showInitialItems(onRefresh: Boolean = false) {
         if (onRefresh) swipeRefreshLayout.isRefreshing = true
-        showInitialState()
-        doSomethingWithDelay(1000) {
+        doSomethingWithDelay(800) {
             if (onRefresh) swipeRefreshLayout.isRefreshing = false
             setInitialItems()
             page = 1
@@ -127,38 +100,14 @@ class HomeFragment : Fragment() {
 
     private fun showLoadMoreItems() {
         homeAdapter.insertItems(
-            homeRepository.getProducts(5, page)
-        )
-    }
-
-    private fun showInitialState() {
-        homeAdapter.setItems(
-            List(5) { ProductUiModel.Placeholder }
+            homeRepository.getProducts(5)
         )
     }
 
     private fun setInitialItems() {
         homeAdapter.setItems(
-            homeRepository.getFirstInitialData()
+            homeRepository.getInitialHomeData()
         )
-    }
-
-    private fun showLoadMore() {
-        homeAdapter.insertItemAtLast(
-            ProductUiModel.Placeholder
-        )
-    }
-
-    private fun hideLoadMore() {
-        homeAdapter.removeItemAtLast()
-    }
-
-    private fun addProductToCart(product: ProductUiModel) {
-        Toast.makeText(
-            requireContext(),
-            R.string.add_to_cart_success_message,
-            Toast.LENGTH_SHORT
-        ).show()
     }
 
     private fun addProductToWishlist(product: ProductUiModel) {
@@ -169,13 +118,6 @@ class HomeFragment : Fragment() {
         ).show()
     }
 
-    private fun gotoDetailProductPage(product: ProductUiModel) {
-        Toast.makeText(
-            requireContext(),
-            "barang berhasil disimpan di Wishlist <3",
-            Toast.LENGTH_SHORT
-        ).show()
-    }
 
     private fun doSomethingWithDelay(delayInMillis: Long, something: () -> Unit) {
         Handler(Looper.getMainLooper()).postDelayed({

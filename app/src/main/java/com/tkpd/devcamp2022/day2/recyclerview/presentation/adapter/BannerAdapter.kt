@@ -7,19 +7,14 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tkpd.devcamp2022.R
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.BannerViewHolder
 
-class BannerAdapter(
-    private val itemList: List<String>,
-    private val bannerListener: BannerViewHolder.Listener
-) : RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
+class BannerAdapter(private val itemList: List<String>) : RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             itemView = LayoutInflater
                 .from(parent.context)
-                .inflate(R.layout.item_banner_child, parent, false),
-            listener = bannerListener
+                .inflate(R.layout.item_banner_child, parent, false)
         )
     }
 
@@ -31,7 +26,7 @@ class BannerAdapter(
         return itemList.size
     }
 
-    class ViewHolder(itemView: View, private val listener: BannerViewHolder.Listener) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val ivBanner = itemView.findViewById<ImageView>(R.id.iv_banner)
 
@@ -39,10 +34,6 @@ class BannerAdapter(
             Glide.with(itemView.context)
                 .load(image)
                 .into(ivBanner)
-
-            itemView.setOnClickListener {
-                listener.onItemClicked(image, adapterPosition)
-            }
         }
     }
 }

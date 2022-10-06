@@ -4,7 +4,6 @@ import com.tkpd.devcamp2022.day2.recyclerview.data.mapper.HomeJsonMapper
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.BannerUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.HomeUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.SquareBannerUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.util.toJsonArray
 
 class HomeDataSource(
@@ -21,11 +20,6 @@ class HomeDataSource(
         return jsonMapper.mapToBanner(jsonArray)
     }
 
-    fun getSquareBanner(): SquareBannerUiModel {
-        val jsonArray = homeSquareBannerData.toJsonArray()
-        return jsonMapper.mapToSquareBanner(jsonArray)
-    }
-
     fun getProducts(): List<ProductUiModel> {
         val jsonArray = homeProductData.toJsonArray()
         return jsonMapper.mapToProduct(jsonArray)
@@ -34,14 +28,6 @@ class HomeDataSource(
     private val homeData = """
         [{
             "type": "banner",
-            "content": null
-        }, {
-            "type": "title",
-            "content": {
-                "label": "Pagi Segar dengan Bunga Segar"
-            }
-        }, {
-            "type": "square_banner",
             "content": null
         }, {
             "type": "title",
@@ -61,14 +47,6 @@ class HomeDataSource(
             "image": "https://images.tokopedia.net/img/cache/564/ymnyfH/2022/9/1/f398118b-20c7-421e-acf3-a6d6fd66eb7d.png"
         }, {
             "image": "https://images.tokopedia.net/img/cache/564/ymnyfH/2022/9/1/092af14b-d294-472f-b5a2-f8a91385422c.jpg"
-        }]
-    """.trimIndent()
-
-    private val homeSquareBannerData = """
-        [{
-            "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/9/10/1490895/1490895_ce376694-7bdb-49d2-93cf-31b0faa0b9f1_1152_1152.jpg"
-        }, {
-            "image": "https://images.tokopedia.net/img/cache/900/product-1/2019/6/17/485254773/485254773_1f8396cb-0085-414c-82a6-ac0f37341ff2_565_565.jpg"
         }]
     """.trimIndent()
 
