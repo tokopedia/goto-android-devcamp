@@ -111,6 +111,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:exported="false"
+            android:name=".day4.unit_test_instrument_test.presentation.ui.ContactDetailActivity" />
+        <activity
             android:name=".day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity"
             android:exported="true" />
         <activity
@@ -119,7 +122,9 @@
         <activity
             android:name=".day2.recyclerview.presentation.HomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-        <activity android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
+        <activity
+            android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
+
     </application>
 
 </manifest>
