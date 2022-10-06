@@ -20,6 +20,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".day2.firstapp.acitivity.SecondActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".day2.firstapp.acitivity.FirstActivity"
+            android:exported="false"/>
+        <activity
             android:name=".day4.custom_view_animation.CustomViewAnimationDetailActivity"
             android:exported="false">
             <intent-filter>
@@ -69,16 +75,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.LocalDataActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.RoomActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity"/>
-        <activity
-            android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity"/>
+        <activity android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.LocalDataActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.RoomActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -94,13 +95,10 @@
         <activity
             android:name=".day3.image_gallery_image_upload.image_upload.presentation.ImageUploadActivity"
             android:exported="true" />
-
         <activity
             android:name=".day2.recyclerview.presentation.HomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
-
         <activity android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
-
     </application>
 
 </manifest>
