@@ -14,10 +14,12 @@ class HomeRepositoryImpl(
         return dataSource.getBanner().images.shuffled()
     }
 
-    override fun getBannerAndTitle(): List<HomeUiModel> {
+    override fun getBannerAndProducts(): List<HomeUiModel> {
         val schema = dataSource.getSchema().toMutableList()
         schema[0] = BannerUiModel(getListOfImage()) // replace with real banners
+        schema.removeAt(1) // remove empty product
         schema.removeAt(2) // remove empty product
+        schema.addAll(getProducts((0 until 10).random())) // add real products
         return schema
     }
 
@@ -31,5 +33,12 @@ class HomeRepositoryImpl(
         val products = dataSource.getProducts()
         return if (page % 2 == 0) products.take(5)
         else products.takeLast(5)
+    }
+
+    private fun getBannerAndTitle(): List<HomeUiModel> {
+        val schema = dataSource.getSchema().toMutableList()
+        schema[0] = BannerUiModel(getListOfImage()) // replace with real banners
+        schema.removeAt(2) // remove empty product
+        return schema
     }
 }
