@@ -20,7 +20,7 @@ class UserListViewModel(
 
     fun getUserList(isFromCached: Boolean) {
         viewModelScope.launch {
-            val state = userListRepository.getUserList(isFromCached)
+            val state = userListRepository.getUserList()
             _stateUserList.value = state
         }
     }

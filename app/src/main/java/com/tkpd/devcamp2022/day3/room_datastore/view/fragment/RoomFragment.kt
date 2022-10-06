@@ -9,11 +9,9 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.room.Room
 import com.tkpd.devcamp2022.MainApplication
 import com.tkpd.devcamp2022.databinding.FragmentRoomBinding
 import com.tkpd.devcamp2022.day3.room_datastore.api.userlist.UserListApiClient
-import com.tkpd.devcamp2022.day3.room_datastore.db.dao.AppDatabase
 import com.tkpd.devcamp2022.day3.room_datastore.repository.state.UserListState
 import com.tkpd.devcamp2022.day3.room_datastore.model.UserData
 import com.tkpd.devcamp2022.day3.room_datastore.model.UsersList
@@ -26,6 +24,7 @@ class RoomFragment: Fragment() {
     private var binding: FragmentRoomBinding? = null
     private val userAdapter: UserAdapter = UserAdapter()
 
+    //TODO(1,8) Add Database to Repository Constructor
     private val viewModel by viewModels<UserListViewModel>(
         factoryProducer = {
             object : ViewModelProvider.Factory {
@@ -34,8 +33,7 @@ class RoomFragment: Fragment() {
                 ): T {
                     return UserListViewModel(
                         UserListRepositoryImpl(
-                            UserListApiClient.create(),
-                            (activity?.application as MainApplication).database.userListDao()
+                            UserListApiClient.create()
                         )
                     ) as T
                 }
@@ -63,9 +61,8 @@ class RoomFragment: Fragment() {
 
     private fun fetchUserList() {
         loadingState()
-        binding?.toggleRoom?.isChecked?.let {
-            viewModel.getUserList(it)
-        }
+        //TODO(1, 9) Get From Cached
+        viewModel.getUserList(false)
     }
 
     private fun observeUserList() {
