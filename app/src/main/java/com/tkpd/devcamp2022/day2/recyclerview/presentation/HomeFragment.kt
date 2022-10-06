@@ -121,6 +121,7 @@ class HomeFragment : Fragment() {
         doSomethingWithDelay(1000) {
             if (onRefresh) swipeRefreshLayout.isRefreshing = false
             setInitialItems()
+            page = 1
         }
     }
 
