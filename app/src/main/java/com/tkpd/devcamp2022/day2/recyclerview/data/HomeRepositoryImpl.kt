@@ -5,7 +5,6 @@ import com.tkpd.devcamp2022.day2.recyclerview.domain.HomeRepository
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.BannerUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.HomeUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
-import kotlin.random.Random
 
 class HomeRepositoryImpl(
     private val dataSource: HomeDataSource
