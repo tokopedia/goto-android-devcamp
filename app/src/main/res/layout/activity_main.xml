@@ -9,6 +9,14 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btn_day2_first_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:text="@string/btn_day_2_first_app" />
+
+        <Button
             android:id="@+id/btn_day2_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

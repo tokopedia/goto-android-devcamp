@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Tokopedia Devcamp 2022</string>
+    <string name="btn_day_2_first_app">Day 2 - First App</string>
     <string name="btn_day_2">Day 2 - Tokopedia Home page</string>
     <string name="btn_day_3">Day 3 - Weather</string>
     <string name="btn_day_3_news_app">Day 3 - News</string>

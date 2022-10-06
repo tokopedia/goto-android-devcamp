@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.databinding.ActivityMainBinding
+import com.tkpd.devcamp2022.day2.firstapp.acitivity.FirstActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.presentation.NewsListActivity
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.HomeActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.WeatherActivity
@@ -23,6 +24,10 @@ class MainActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnDay2FirstApp.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FirstActivity::class.java))
+        }
 
         binding.btnDay2RecyclerView.setOnClickListener {
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
