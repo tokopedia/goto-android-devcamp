@@ -7,7 +7,7 @@ interface HomeRepository {
 
     fun getListOfImage(): List<String>
 
-    fun getBannerAndTitles(): List<HomeUiModel>
+    fun getBannerAndTitle(): List<HomeUiModel>
 
     fun getInitialHomeData(): List<HomeUiModel>
 

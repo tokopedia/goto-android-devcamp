@@ -30,11 +30,11 @@ class HomeFragment : Fragment() {
         setupView(view)
     }
 
-
     private fun setupView(view: View) {
 
     }
 
+    // like its name, it just add delay with everything we wanna do
     private fun doSomethingWithDelay(delayInMillis: Long, something: () -> Unit) {
         Handler(Looper.getMainLooper()).postDelayed({
             something.invoke()
