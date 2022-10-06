@@ -1,3 +1,4 @@
+import org.gradle.internal.os.OperatingSystem
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
@@ -74,7 +75,15 @@ dependencies {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.14.0:osx-x86_64"
+        //Please Check your current OS
+        OperatingSystem os = OperatingSystem.current();
+        if (os.isWindows()) {
+            artifact = "com.google.protobuf:protoc:3.14.0:windows-x86_64"
+        } else if (os.isMacOsX()) {
+            artifact = "com.google.protobuf:protoc:3.14.0:osx-x86_64"
+        } else if (os.isLinux()) {
+            artifact = "com.google.protobuf:protoc:3.14.0:linux-x86_64"
+        }
     }
 
     // Generates the java Protobuf-lite code for the Protobufs in this project. See
