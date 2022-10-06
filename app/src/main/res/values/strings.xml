@@ -4,6 +4,8 @@
     <string name="btn_day_3">Day 3 - Weather</string>
     <string name="btn_day_3_news_app">Day 3 - News</string>
     <string name="btn_day_3_mvvm">Day 3 - MVVM, LiveData, and Coroutine</string>
+    <string name="btn_day_3_image_gallery">Day 3 - Image Gallery</string>
+    <string name="btn_day_3_image_upload">Day 3 - Image Upload</string>
     <string name="btn_day_3_room">Day 3 - Room AND Datastore</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
     <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
