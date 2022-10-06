@@ -11,17 +11,24 @@ class SecondActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+        val intentdata = intent.data
+        if (intent.data == null) {
+            val userData = intent.getParcelableExtra<User>(EXTRA_PARCEL)
 
-        val userData = intent.getParcelableExtra<User>(EXTRA_PARCEL)
+            if (userData == null) {
+                val name = intent.getStringExtra(EXTRA_NAME) ?: "NAMA KOSONG"
+                val age = intent.getIntExtra(EXTRA_AGE, 0)
 
-        if (userData == null) {
-            val name = intent.getStringExtra(EXTRA_NAME) ?: "NAMA KOSONG"
-            val age = intent.getIntExtra(EXTRA_AGE, 0)
-
-            initView(name, age)
+                initView(name, age)
+            } else {
+                initView(userData.name, userData.age)
+            }
         } else {
-            initView(userData.name, userData.age)
+            val name = intentdata?.getQueryParameter(EXTRA_NAME) ?: "empty from deeplink"
+            val age = intentdata?.getQueryParameter(EXTRA_AGE) ?: "0"
+            initView(name, age.toInt())
         }
+
     }
 
     private fun initView(name: String, age: Int) {
@@ -30,8 +37,8 @@ class SecondActivity : AppCompatActivity() {
     }
 
     companion object{
-        const val EXTRA_NAME = "extra_name"
-        const val EXTRA_AGE = "extra_age"
+        const val EXTRA_NAME = "name"
+        const val EXTRA_AGE = "age"
         const val EXTRA_PARCEL = "extra_parcel"
     }
 }

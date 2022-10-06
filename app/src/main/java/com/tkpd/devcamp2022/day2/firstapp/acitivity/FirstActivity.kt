@@ -1,6 +1,7 @@
 package com.tkpd.devcamp2022.day2.firstapp.acitivity
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.databinding.ActivityFirstBinding
@@ -27,6 +28,12 @@ class FirstActivity : AppCompatActivity() {
                 it.putExtra(SecondActivity.EXTRA_AGE, 20)
                 //it.putExtra(SecondActivity.EXTRA_PARCEL, user)
             }
+            startActivity(intent)
+        }
+
+        binding.btnNavigateWithDeeplink.setOnClickListener {
+            val uri = Uri.parse("example://firstapp?name=testnama&age=23")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
             startActivity(intent)
         }
 

@@ -23,6 +23,14 @@
         android:text="@string/btn_navigate_to_activity_with_data" />
 
     <Button
+        android:id="@+id/btn_navigate_with_deeplink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="8dp"
+        android:text="@string/btn_navigate_to_activity_using_deeplink" />
+
+    <Button
         android:id="@+id/btn_navigate_to_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
