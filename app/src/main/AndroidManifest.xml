@@ -3,11 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.tkpd.devcamp2022">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
+        android:name=".MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,6 +20,33 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
+        <activity
+            android:name=".day2.firstapp.acitivity.FirstActivity"
+            android:label="First App - First Activity"
+            android:exported="false"
+            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+        <activity
+            android:name=".day2.firstapp.acitivity.SecondActivity"
+            android:label="First App - Second Activity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="http"
+                    android:host="www.example.com"
+                    android:pathPrefix="/firstapp"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="example"
+                    android:host="firstapp"/>
+            </intent-filter>
+        </activity>
         <activity
             android:name=".day2.workmanager.WorkManagerActivity"
             android:exported="false">
@@ -66,7 +96,7 @@
         </activity>
         <activity
             android:name=".day3.connecting_to_internet.weatherapp.presentation.WeatherActivity"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="id.co.besthome.internal.VIEW" />
 
@@ -74,8 +104,11 @@
                 <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity"/>
+        <activity android:name=".day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.LocalDataActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.RoomActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.PreferenceDataStoreActivity" />
+        <activity android:name=".day3.room_datastore.view.activity.ProtoDataStoreActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -85,10 +118,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:exported="false"
+            android:name=".day4.unit_test_instrument_test.presentation.ui.ContactDetailActivity" />
+        <activity
+            android:name=".day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity"
+            android:exported="true" />
+        <activity
+            android:name=".day3.image_gallery_image_upload.image_upload.presentation.ImageUploadActivity"
+            android:exported="true" />
         <activity
             android:name=".day2.recyclerview.presentation.HomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity
+            android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
 
     </application>
 

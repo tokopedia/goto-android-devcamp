@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Tokopedia Devcamp 2022</string>
+    <string name="btn_day_2_first_app">Day 2 - First App</string>
     <string name="btn_day_2">Day 2 - Tokopedia Home page</string>
     <string name="btn_day_3">Day 3 - Weather</string>
+    <string name="btn_day_3_news_app">Day 3 - News</string>
     <string name="btn_day_3_mvvm">Day 3 - MVVM, LiveData, and Coroutine</string>
+    <string name="btn_day_3_image_gallery">Day 3 - Image Gallery</string>
+    <string name="btn_day_3_image_upload">Day 3 - Image Upload</string>
+    <string name="btn_day_3_room">Day 3 - Room AND Datastore</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
     <string name="btn_day_2_work_manager">Day 2 - WorkManager</string>
 
@@ -22,4 +27,36 @@
 
     <string name="wishlist_success_message">barang berhasil disimpan di Wishlist 💜</string>
     <string name="add_to_cart_success_message">1 barang berhasil ditambahkan ke keranjang belanja 🛒</string>
+
+    <!--    News -->
+    <string name="newsapp_apikey_warning">Masukkan API Key News di NewsListActivity (Variable API_KEY) terlebih dahulu ya </string>
+    <string name="newsapp_apikey_info">INPUT-YOUR-NEWS-API-KEY-HERE</string>
+
+    <!-- Room & Datastore -->
+    <string name="datastore_login_username">Username</string>
+    <string name="datastore_login_password">Password</string>
+    <string name="datastore_login_button">Login</string>
+    <string name="datastore_logout_button">Logout</string>
+    <string name="datastore_login_succeed">Login Succeed</string>
+    <string name="datastore_login_failed">Login Failed</string>
+    <string name="btn_room_title">Room</string>
+    <string name="btn_preference_title">Preference DataStore</string>
+    <string name="btn_proto_title">Proto DataStore</string>
+    <string name="empty_state_title">Data kosong</string>
+    <string name="is_get_from_cached">GET FROM CACHED</string>
+    <string name="is_get_from_rest">GET FROM API</string>
+
+    <!--WeatherApp-->
+    <string name="label_next_4_days">Next 4 days</string>
+    <string name="no_connection">Please check your connection</string>
+
+    <string name="btn_navigate_to_activity">Navigate to Activity</string>
+    <string name="btn_navigate_to_activity_with_data">Navigate to Activity with data</string>
+    <string name="btn_navigate_to_activity_using_deeplink">Navigate using deeplink</string>
+    <string name="btn_navigate_to_fragment">Navigate to Fragment</string>
+    <string name="btn_navigate_to_second_fragment">Navigate to Second Fragment</string>
+    <string name="txt_name">Name    : %s</string>
+    <string name="txt_age">Age    : %d</string>
+    <string name="first_fragment">First Fragment</string>
+    <string name="second_fragment">Second Fragment</string>
 </resources>
