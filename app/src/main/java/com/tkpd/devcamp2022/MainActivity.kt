@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.databinding.ActivityMainBinding
 import com.tkpd.devcamp2022.day2.firstapp.acitivity.FirstActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.presentation.NewsListActivity
+import com.tkpd.devcamp2022.day2.workmanager.WorkManagerActivity
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.HomeActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.WeatherActivity
 import com.tkpd.devcamp2022.day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity
@@ -16,7 +17,7 @@ import com.tkpd.devcamp2022.day4.custom_view_animation.AnimationViewActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.CustomViewActivity
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.ui.ContactBookActivity
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -33,6 +34,9 @@ class MainActivity: AppCompatActivity() {
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
 
+        binding.btnDay2Workmanager.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WorkManagerActivity::class.java))
+        }
 
         binding.btnDay3.setOnClickListener {
             startActivity(Intent(this@MainActivity, WeatherActivity::class.java))

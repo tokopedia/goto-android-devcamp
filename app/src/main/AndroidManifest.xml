@@ -48,6 +48,13 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".day2.workmanager.WorkManagerActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".day4.custom_view_animation.CustomViewAnimationDetailActivity"
             android:exported="false">
             <intent-filter>

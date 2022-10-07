@@ -9,6 +9,12 @@
     <string name="btn_day_3_image_upload">Day 3 - Image Upload</string>
     <string name="btn_day_3_room">Day 3 - Room AND Datastore</string>
     <string name="btn_day_4">Day 4 - Contact Book</string>
+    <string name="btn_day_2_work_manager">Day 2 - WorkManager</string>
+
+
+    <string name="btn_work_manager_once">Run Once</string>
+    <string name="btn_work_manager_cancel">Cancel Periodic</string>
+    <string name="btn_work_manager_periodic">Run Periodic Task</string>
     <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
     <string name="btn_day_4_animation">Day 4 - Animation</string>
 
