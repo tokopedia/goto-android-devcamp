@@ -13,7 +13,11 @@ class WiseWordChangerWidgetView @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : CardView(context, attrs) {
 
-    private var binding: LayoutWiseWordViewWidgetLayoutBinding
+    /**
+     * (Multiple Views - 1) Uncomment this to start the project
+     */
+//    private var binding: LayoutWiseWordViewWidgetLayoutBinding
+
     private var listWiseWord = listOf(
         WiseWordChangerWidgetUiModel(
             name = "Catherine Pulsifer",
@@ -65,20 +69,23 @@ class WiseWordChangerWidgetView @JvmOverloads constructor(
         )
     )
 
+    /**
+    * (Multiple Views - 2) Inflate layout and set data
+    */
     init {
-        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
-        var wise = listWiseWord.first()
-        setWiseWord(wise)
-
-        val random = Random()
-        binding.customvButton.onClickListener = {
-            wise = listWiseWord[random.nextInt(listWiseWord.size)]
-            setWiseWord(wise)
-        }
+//        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+//        var wise = listWiseWord.first()
+//        setWiseWord(wise)
+//
+//        val random = Random()
+//        binding.customvButton.onClickListener = {
+//            wise = listWiseWord[random.nextInt(listWiseWord.size)]
+//            setWiseWord(wise)
+//        }
     }
 
-    private fun setWiseWord(wiseWord: WiseWordChangerWidgetUiModel) {
-        binding.customvWiseWord.textName = wiseWord.name
-        binding.customvWiseWord.textDescription = wiseWord.description
-    }
+//    private fun setWiseWord(wiseWord: WiseWordChangerWidgetUiModel) {
+//        binding.customvWiseWord.textName = wiseWord.name
+//        binding.customvWiseWord.textDescription = wiseWord.description
+//    }
 }
