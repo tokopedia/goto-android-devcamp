@@ -86,6 +86,9 @@ class WiseWordChangerWidgetActivityTansView @JvmOverloads constructor(
 //    init {
 //        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 //
+//        /**
+//         * (Activity Transition - 1) Change property custom view to public, so they can be accessed
+//         */
 //        tvNameWiseWord = binding.customvWiseWord.tvName
 //        tvDescriptionWiseWord = binding.customvWiseWord.tvDescription
 //
@@ -132,6 +135,9 @@ class WiseWordChangerWidgetActivityTansView @JvmOverloads constructor(
 //
 //    private fun setOnWiseWordClickListener() {
 //        binding.customvWiseWord.setOnClickListener {
+//            /**
+//             * (Activity Transition - 2) Get textName and textDescription and put into extras
+//             */
 //            onWiseWordClickListener.invoke(WiseWordChangerWidgetUiModel(
 //                name = binding.customvWiseWord.textName,
 //                description = binding.customvWiseWord.textDescription

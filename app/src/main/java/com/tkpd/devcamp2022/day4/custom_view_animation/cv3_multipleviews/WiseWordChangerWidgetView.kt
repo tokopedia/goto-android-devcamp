@@ -72,7 +72,7 @@ class WiseWordChangerWidgetView @JvmOverloads constructor(
     /**
     * (Multiple Views - 2) Inflate layout and set data
     */
-    init {
+//    init {
 //        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
 //        var wise = listWiseWord.first()
 //        setWiseWord(wise)
@@ -82,8 +82,8 @@ class WiseWordChangerWidgetView @JvmOverloads constructor(
 //            wise = listWiseWord[random.nextInt(listWiseWord.size)]
 //            setWiseWord(wise)
 //        }
-    }
-
+//    }
+//
 //    private fun setWiseWord(wiseWord: WiseWordChangerWidgetUiModel) {
 //        binding.customvWiseWord.textName = wiseWord.name
 //        binding.customvWiseWord.textDescription = wiseWord.description

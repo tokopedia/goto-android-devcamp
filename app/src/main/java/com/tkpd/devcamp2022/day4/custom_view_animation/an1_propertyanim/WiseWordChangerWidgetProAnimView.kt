@@ -25,7 +25,7 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
         const val ANIMATION_DURATION = 500L
     }
 
-    private var binding: LayoutWiseWordViewWidgetLayoutBinding
+//    private var binding: LayoutWiseWordViewWidgetLayoutBinding
 
     private var listWiseWord = listOf(
         WiseWordChangerWidgetUiModel(
@@ -78,11 +78,14 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
         )
     )
 
-    init {
-        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
-
+//    init {
+//        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+//
 //        setWiseWord(listWiseWord.first())
 //
+//        /**
+//         * (Property Animation - 1) Create object animator alpha and translation
+//         */
 //        val alphaAnimation = ObjectAnimator
 //            .ofFloat(binding.customvWiseWord, View.ALPHA, ALPHA_END)
 //            .setDuration(ANIMATION_DURATION)
@@ -96,11 +99,14 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
 //
 //        setAlphaAnimationListener(alphaAnimation, translationAnimation)
 //        setOnClickListener(alphaAnimation)
-    }
+//    }
 
     private fun setAlphaAnimationListener(alphaAnimation: ObjectAnimator, translationAnimation: ObjectAnimator) {
         alphaAnimation.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationStart(animation: Animator?) {
+                /**
+                 * (Property Animation - 3) Translation start
+                 */
                 translationAnimation.start()
             }
 
@@ -114,6 +120,10 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
 //        val random = Random()
 //        binding.customvButton.onClickListener = {
 //            val wise = listWiseWord[random.nextInt(listWiseWord.size)]
+//
+//            /**
+//             * (Property Animation - 2) Alpha animation start
+//             */
 //            binding.customvWiseWord.alpha = ALPHA_START
 //            alphaAnimation.start()
 //            setWiseWord(wise)

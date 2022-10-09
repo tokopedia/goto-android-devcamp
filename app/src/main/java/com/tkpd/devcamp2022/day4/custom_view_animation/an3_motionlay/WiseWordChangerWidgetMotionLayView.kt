@@ -103,6 +103,9 @@ class WiseWordChangerWidgetMotionLayView @JvmOverloads constructor(
 //                repeatMode = ObjectAnimator.REVERSE
 //            }
 //
+//        /**
+//         * (Motion Layout - 1) Set listener to listen motion
+//         */
 //        binding.constraintLayout.setTransitionListener(object : MotionLayout.TransitionListener{
 //                override fun onTransitionStarted(
 //                    motionLayout: MotionLayout?,
@@ -144,18 +147,18 @@ class WiseWordChangerWidgetMotionLayView @JvmOverloads constructor(
 //        setOnButtonClickListener(alphaAnimation)
 //        setOnWiseWordClickListener()
 //    }
-//
-//    private fun setAlphaAnimationListener(alphaAnimation: ObjectAnimator, translationAnimation: ObjectAnimator) {
-//        alphaAnimation.addListener(object : AnimatorListenerAdapter() {
-//            override fun onAnimationStart(animation: Animator?) {
-//                translationAnimation.start()
-//            }
-//
-//            override fun onAnimationEnd(animation: Animator?) {
-//                alphaAnimation.cancel()
-//            }
-//        })
-//    }
+
+    private fun setAlphaAnimationListener(alphaAnimation: ObjectAnimator, translationAnimation: ObjectAnimator) {
+        alphaAnimation.addListener(object : AnimatorListenerAdapter() {
+            override fun onAnimationStart(animation: Animator?) {
+                translationAnimation.start()
+            }
+
+            override fun onAnimationEnd(animation: Animator?) {
+                alphaAnimation.cancel()
+            }
+        })
+    }
 //
 //    private fun setOnButtonClickListener(alphaAnimation: ObjectAnimator) {
 //        val random = Random()
