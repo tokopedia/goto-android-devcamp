@@ -14,9 +14,8 @@ import java.util.Random
 
 class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr) {
+    attrs: AttributeSet? = null
+) : CardView(context, attrs) {
 
     companion object {
         const val TRANSLATION_START = -8f
