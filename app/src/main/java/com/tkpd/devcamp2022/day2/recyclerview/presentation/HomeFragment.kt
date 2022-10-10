@@ -50,7 +50,7 @@ class HomeFragment : Fragment() {
     private val productClickListener = object : ProductViewHolder.Listener {
 
         override fun onWishlistButtonClicked(productUiModel: ProductUiModel, position: Int) {
-            addProductToWishlist(productUiModel, position)
+            addProductToWishlist(productUiModel)
         }
     }
 
@@ -98,10 +98,10 @@ class HomeFragment : Fragment() {
         )
     }
 
-    private fun addProductToWishlist(product: ProductUiModel, position: Int) {
+    private fun addProductToWishlist(product: ProductUiModel) {
         Toast.makeText(
             requireContext(),
-            "${getString(R.string.wishlist_success_message)} \nproduct: ${product.name} position: $position",
+            "${getString(R.string.wishlist_success_message)} \n${product.name}",
             Toast.LENGTH_SHORT
         ).show()
     }
