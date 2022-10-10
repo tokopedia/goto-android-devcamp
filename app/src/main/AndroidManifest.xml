@@ -8,6 +8,9 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
         android:name=".MainApplication"
@@ -22,29 +25,33 @@
         tools:targetApi="31">
         <activity
             android:name=".day2.firstapp.acitivity.FirstActivity"
-            android:label="First App - First Activity"
             android:exported="false"
-            android:theme="@style/Theme.MyApplication.NoActionBar"/>
+            android:label="First App - First Activity"
+            android:theme="@style/Theme.MyApplication.NoActionBar" />
         <activity
             android:name=".day2.firstapp.acitivity.SecondActivity"
-            android:label="First App - Second Activity"
-            android:exported="true">
+            android:exported="true"
+            android:label="First App - Second Activity">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="http"
                     android:host="www.example.com"
-                    android:pathPrefix="/firstapp"/>
+                    android:pathPrefix="/firstapp"
+                    android:scheme="http" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:scheme="example"
-                    android:host="firstapp"/>
+                    android:host="firstapp"
+                    android:scheme="example" />
             </intent-filter>
         </activity>
         <activity
@@ -119,8 +126,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:exported="false"
-            android:name=".day4.unit_test_instrument_test.presentation.ui.ContactDetailActivity" />
+            android:name=".day4.unit_test_instrument_test.presentation.ui.ContactDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity"
             android:exported="true" />
@@ -130,9 +137,20 @@
         <activity
             android:name=".day2.recyclerview.presentation.HomeActivity"
             android:theme="@style/Theme.MyApplication.NoActionBar" />
+        <activity android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
         <activity
-            android:name=".day3.connecting_to_internet.newsapp.presentation.NewsListActivity" />
-
+            android:name=".day4.map_push_notification.map.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".day4.map_push_notification.push_notification.PushNotificationActivity"
+            android:exported="false" />
+        <service
+            android:name=".day4.map_push_notification.push_notification.DevCampMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

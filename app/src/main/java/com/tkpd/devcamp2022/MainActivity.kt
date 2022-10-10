@@ -15,6 +15,8 @@ import com.tkpd.devcamp2022.day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineAc
 import com.tkpd.devcamp2022.day3.room_datastore.view.activity.LocalDataActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.AnimationViewActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.CustomViewActivity
+import com.tkpd.devcamp2022.day4.map_push_notification.map.MapActivity
+import com.tkpd.devcamp2022.day4.map_push_notification.push_notification.PushNotificationActivity
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.ui.ContactBookActivity
 
 class MainActivity : AppCompatActivity() {
@@ -68,6 +70,14 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnDay4Animation.setOnClickListener {
             startActivity(Intent(this@MainActivity, AnimationViewActivity::class.java))
+        }
+
+        binding.btnDay4Map.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MapActivity::class.java))
+        }
+
+        binding.btnDay4PushNotification.setOnClickListener {
+            startActivity(Intent(this@MainActivity, PushNotificationActivity::class.java))
         }
 
         binding.btnDay4.setOnClickListener {
