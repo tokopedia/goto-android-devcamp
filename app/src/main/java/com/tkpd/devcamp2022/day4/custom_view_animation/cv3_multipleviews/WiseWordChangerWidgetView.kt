@@ -10,9 +10,8 @@ import java.util.Random
 
 class WiseWordChangerWidgetView @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr) {
+    attrs: AttributeSet? = null
+) : CardView(context, attrs) {
 
     private var binding: LayoutWiseWordViewWidgetLayoutBinding
     private var listWiseWord = listOf(
