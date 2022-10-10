@@ -14,13 +14,18 @@ class HomeJsonMapper {
             val jsonObj = jsonArray.optJSONObject(index)
             when {
                 jsonObj.optString("type") == "banner" -> {
-                    BannerUiModel.empty
+                    BannerUiModel(emptyList())
                 }
                 jsonObj.optString("type") == "title" -> {
                     mapToTitle(jsonObj.getJSONObject("content"))
                 }
                 jsonObj.optString("type") == "product" -> {
-                    ProductUiModel.empty
+                    ProductUiModel(
+                        "",
+                        "",
+                        "",
+                        ""
+                    )
                 }
                 else -> {
                     null

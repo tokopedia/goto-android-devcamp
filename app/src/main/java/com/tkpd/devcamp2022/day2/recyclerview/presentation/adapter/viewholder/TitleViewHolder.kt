@@ -9,7 +9,7 @@ class TitleViewHolder(itemView: View) : HomeViewHolder(itemView) {
 
     private val tvLabel = itemView.findViewById<TextView>(R.id.tv_title)
 
-    fun bind(item: TitleUiModel) {
-        tvLabel.text = item.label
+    fun bind(titleUiModel: TitleUiModel) {
+        tvLabel.text = titleUiModel.label
     }
 }
