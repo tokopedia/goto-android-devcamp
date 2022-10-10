@@ -57,8 +57,8 @@ class ProductCoroutineViewModel(
         viewModelScope.launch {
             //TODO(3,1) - make both these api calls async
             //TODO(3,2) - await both async functions and combine the result, then set it to livedata
-            val product = async { api.getProductSlower(productId) }
-            val stock = async { api.getProductStock(productId) }
+            val product = async { api.getProductSlower(productId) } //3s
+            val stock = async { api.getProductStock(productId) } //3s
 
             _product.value = product.await().copy(
                 stock = stock.await(),

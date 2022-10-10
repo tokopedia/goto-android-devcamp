@@ -20,7 +20,7 @@ class ProductMVVMViewModel(
         get() = _product
 
     fun getProduct(productId: String) {
-        //TODO(1,4) - Set value from API to product MutableLiveData
+        //TODO(1,4) - Set value from api.getProductById to product MutableLiveData
         _product.value = api.getProductById(productId)
     }
 }
