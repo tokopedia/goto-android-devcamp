@@ -1,9 +1,9 @@
-package com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder
+package com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.tkpd.devcamp2022.R
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.BannerAdapter
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.BannerAdapter
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.BannerUiModel
 
 class BannerViewHolder(itemView: View) : HomeViewHolder(itemView) {

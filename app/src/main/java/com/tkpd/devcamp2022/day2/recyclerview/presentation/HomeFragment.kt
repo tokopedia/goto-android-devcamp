@@ -13,8 +13,9 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.day2.recyclerview.factory.HomeFactory
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.HomeAdapter
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder.ProductViewHolder
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.ProductViewHolder
 
 class HomeFragment : Fragment() {
 

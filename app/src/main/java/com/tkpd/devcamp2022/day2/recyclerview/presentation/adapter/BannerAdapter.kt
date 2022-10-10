@@ -1,4 +1,4 @@
-package com.tkpd.devcamp2022.day2.recyclerview.presentation
+package com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.View

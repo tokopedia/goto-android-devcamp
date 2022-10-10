@@ -1,4 +1,4 @@
-package com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder
+package com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder
 
 import android.view.View
 import android.widget.TextView

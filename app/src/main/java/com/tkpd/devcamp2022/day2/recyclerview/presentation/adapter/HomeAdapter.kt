@@ -1,4 +1,4 @@
-package com.tkpd.devcamp2022.day2.recyclerview.presentation
+package com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,10 +8,10 @@ import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.BannerUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.HomeUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.TitleUiModel
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder.BannerViewHolder
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder.HomeViewHolder
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder.ProductViewHolder
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.viewholder.TitleViewHolder
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.BannerViewHolder
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.HomeViewHolder
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.ProductViewHolder
+import com.tkpd.devcamp2022.day2.recyclerview.presentation.adapter.viewholder.TitleViewHolder
 
 class HomeAdapter(
     private val productListener: ProductViewHolder.Listener
