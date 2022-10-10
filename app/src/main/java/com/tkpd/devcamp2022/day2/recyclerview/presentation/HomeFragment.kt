@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
 
             if (!isLoading && lastVisibleItem == homeAdapter.itemCount - 1) {
                 isLoading = true
-                doSomethingWithDelay(800) { // delay 1.5s
+                doSomethingWithDelay(500) {
                     showLoadMoreHomeData()
                     isLoading = false
                     page += 1
