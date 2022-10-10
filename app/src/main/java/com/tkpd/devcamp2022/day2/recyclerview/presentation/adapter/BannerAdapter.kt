@@ -9,7 +9,7 @@ import com.bumptech.glide.Glide
 import com.tkpd.devcamp2022.R
 
 class BannerAdapter(
-    val bannerList: List<String>
+    private val bannerList: List<String>
 ) : RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

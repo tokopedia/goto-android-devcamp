@@ -23,20 +23,36 @@ class HomeFragment : Fragment() {
         fun newInstance() = HomeFragment()
     }
 
-    private var page: Int = 1
-    private var isLoading: Boolean = false
+    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var recyclerView: RecyclerView
 
     private val repository = HomeFactory.getRepository() // our source of data
 
+    // listener: onWishListButtonClicked
+    private val productClickListener = object : ProductViewHolder.Listener {
+        override fun onWishlistButtonClicked(productUiModel: ProductUiModel, position: Int) {
+            addProductToWishlist(productUiModel)
+        }
+    }
+
+    // listener: onRefresh from SwipeRefreshLayout component
     private val onRefreshListener = SwipeRefreshLayout.OnRefreshListener {
         showInitialHomeData()
     }
 
+    private var page: Int = 1 // page +1, everytime user scroll until last visible item
+    private var isLoading: Boolean = false // indicating if still loading the last task
+
     private val onScrollListener = object : RecyclerView.OnScrollListener() {
         override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+            // because we are using LinearLayoutManager, we cast as LinearLayoutManager
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+
+            // get position of the very last completely visible item
             val lastVisibleItem = layoutManager.findLastCompletelyVisibleItemPosition()
 
+            // if loading is not true
+            // and lastVisibleItem position is same with itemCount-1 in adapter
             if (!isLoading && lastVisibleItem == homeAdapter.itemCount - 1) {
                 isLoading = true
                 doSomethingWithDelay(500) {
@@ -48,13 +64,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private val productClickListener = object : ProductViewHolder.Listener {
-
-        override fun onWishlistButtonClicked(productUiModel: ProductUiModel, position: Int) {
-            addProductToWishlist(productUiModel)
-        }
-    }
-
+    // initializing home adapter with product click listener
+    // you can find implementation of productClickListener in ProductViewHolder
     private val homeAdapter = HomeAdapter(productClickListener)
 
     override fun onCreateView(
@@ -69,31 +80,33 @@ class HomeFragment : Fragment() {
         setupView(view)
     }
 
-    private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-    private lateinit var recyclerView: RecyclerView
-
     private fun setupView(view: View) {
-        swipeRefreshLayout = view.findViewById(R.id.home_swipe_refresh)
-        recyclerView = view.findViewById(R.id.home_recyclerview)
+        swipeRefreshLayout = view.findViewById(R.id.home_swipe_refresh) // init SwipeRefreshLayout
+        recyclerView = view.findViewById(R.id.home_recyclerview) // init RecyclerView
 
-        recyclerView.adapter = homeAdapter
+        recyclerView.adapter = homeAdapter // set home adapter to recyclerview
 
+        // set swipe to refresh listener
         swipeRefreshLayout.setOnRefreshListener(onRefreshListener)
+
+        // set on scroll listener
         recyclerView.addOnScrollListener(onScrollListener)
 
+        // showing first home data
         showInitialHomeData()
     }
 
     private fun showInitialHomeData() {
-        swipeRefreshLayout.isRefreshing = true
+        swipeRefreshLayout.isRefreshing = true // show the loading of the SwipeRefreshLayout
         doSomethingWithDelay(800) {
-            homeAdapter.setItems(homeData = repository.getInitialHomeData())
-            page = 1
-            swipeRefreshLayout.isRefreshing = false
+            homeAdapter.setItems(homeData = repository.getInitialHomeData()) // set the items
+            page = 1 // reset page to 1 every time user refresh the data
+            swipeRefreshLayout.isRefreshing = false // hide the loading of the SwipeRefreshLayout
         }
     }
 
     private fun showLoadMoreHomeData() {
+        // insert items is different with set items (see the difference in HomeAdapter)
         homeAdapter.insertItems(
             repository.getProducts(5)
         )
@@ -109,6 +122,11 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
+
+        // just to be safe, we will setOnRefreshListener of SwipeRefreshLayout to null
+        // and remove the OnScrollListener from RecyclerView
+        // to avoid memory leaks (although with our implementation above, it won't leak)
+        // read more: https://proandroiddev.com/everything-you-need-to-know-about-memory-leaks-in-android-d7a59faaf46a
         swipeRefreshLayout.setOnRefreshListener(null)
         recyclerView.removeOnScrollListener(onScrollListener)
     }
