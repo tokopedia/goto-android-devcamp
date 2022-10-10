@@ -25,7 +25,7 @@ class ProtoDataStoreFragment: Fragment() {
 
     private var binding: FragmentDataStoreBinding? = null
     //TODO(3,7) - Initialize Proto DataStore
-    lateinit var dataStoreManager: UserProtoDataStoreManager
+    //lateinit var dataStoreManager: UserProtoDataStoreManager
 
     private val viewModel by viewModels<UserViewModel>(
         factoryProducer = {
@@ -43,7 +43,7 @@ class ProtoDataStoreFragment: Fragment() {
         super.onCreate(savedInstanceState)
         context?.let {
             //TODO(3,7) - Initialize Proto DataStore
-            dataStoreManager = UserProtoDataStoreManager(it)
+            //dataStoreManager = UserProtoDataStoreManager(it)
         }
     }
 
@@ -82,35 +82,35 @@ class ProtoDataStoreFragment: Fragment() {
     //TODO(3,8) - Access Save to Proto DataStore
     private fun saveToDataStore(user: User) {
         GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.saveToProtoDataStore(user)
+            //dataStoreManager.saveToProtoDataStore(user)
         }
     }
 
     //TODO(3,9) - Access Delete from Proto DataStore
     private fun clearDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.clearUserProtoDataStore()
+            //dataStoreManager.clearUserProtoDataStore()
         }
     }
 
     //TODO(3,10) - Access Fetch from Proto DataStore
     private fun getDataStore() {
         GlobalScope.launch(Dispatchers.IO) {
-            dataStoreManager.getUserProtoDataStore().catch { e ->
-                e.printStackTrace()
-                withContext(Dispatchers.Main) {
-                    userNotLoggedIn()
-                }
-            }.collect{
-                withContext(Dispatchers.Main) {
-                    if (it.isLoggedIn) {
-                        userAlreadyLogin()
-                        setUserName(it.userName)
-                    } else {
-                        userNotLoggedIn()
-                    }
-                }
-            }
+//            dataStoreManager.getUserProtoDataStore().catch { e ->
+//                e.printStackTrace()
+//                withContext(Dispatchers.Main) {
+//                    userNotLoggedIn()
+//                }
+//            }.collect{
+//                withContext(Dispatchers.Main) {
+//                    if (it.isLoggedIn) {
+//                        userAlreadyLogin()
+//                        setUserName(it.userName)
+//                    } else {
+//                        userNotLoggedIn()
+//                    }
+//                }
+//            }
         }
     }
 
