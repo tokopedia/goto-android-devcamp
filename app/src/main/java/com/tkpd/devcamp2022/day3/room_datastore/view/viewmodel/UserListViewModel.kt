@@ -18,9 +18,11 @@ class UserListViewModel(
     val stateUserList: LiveData<UserListState>
         get() = _stateUserList
 
+    //TODO(1,13) Add param isFromCached
     fun getUserList(isFromCached: Boolean) {
         viewModelScope.launch {
-            val state = userListRepository.getUserList(isFromCached)
+            //val state = userListRepository.getUserList(isFromCached)
+            val state = userListRepository.getUserList()
             _stateUserList.value = state
         }
     }

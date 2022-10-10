@@ -5,8 +5,8 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 //TODO(1,1) - Create Data Entities
-@Entity(tableName = "cached_user_list")
-data class CachedUsersList(
-    @PrimaryKey(autoGenerate = true) val cid:Int?,
-    @ColumnInfo(name = "response") val response: String
-)
+//@Entity(tableName = "cached_user_list")
+//data class CachedUsersList(
+//    @PrimaryKey(autoGenerate = true) val cid:Int?,
+//    @ColumnInfo(name = "response") val response: String
+//)
