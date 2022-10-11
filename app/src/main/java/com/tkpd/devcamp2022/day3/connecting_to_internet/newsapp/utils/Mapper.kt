@@ -1,16 +1,13 @@
 package com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils
 
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.ArticlesItem
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.News
-import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.NewsResponse
 
 object Mapper {
 
-    fun toNewsObject(results: List<ArticlesItem?>?): List<News> {
+    fun toNewsObject(results: List<ArticlesItem?>): MutableList<News> {
         val listNews = mutableListOf<News>()
-        results?.forEach { news ->
+        results.forEach { news ->
             val getNews = News(
                 news?.title,
                 news?.source?.name,

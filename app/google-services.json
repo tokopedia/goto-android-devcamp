@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "595117797258",
+    "project_id": "devcamp-2022-c68ff",
+    "storage_bucket": "devcamp-2022-c68ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595117797258:android:ab23f118bcaa8e352fa273",
+        "android_client_info": {
+          "package_name": "com.tkpd.devcamp2022"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595117797258-ailon04bgtng3gsu43hvun22nmfnqp7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCVJK1uPdlh3NWnJp0Czq2dle71vhCP2vU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595117797258-ailon04bgtng3gsu43hvun22nmfnqp7r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
