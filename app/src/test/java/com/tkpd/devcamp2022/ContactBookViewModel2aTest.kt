@@ -16,6 +16,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/** No coroutine-related test cases, without using MainDispatcherRule */
 class ContactBookViewModel2aTest {
 
     @get:Rule

@@ -7,6 +7,7 @@ import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.util.PhoneNumberFormatter
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.viewmodel.ContactBookViewModel2
 import io.mockk.clearAllMocks
+import io.mockk.coEvery
 import io.mockk.every
 import io.mockk.impl.annotations.MockK
 import io.mockk.mockk
@@ -23,6 +24,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
+/** Handle coroutine using with MainDispatcherRule */
 class ContactBookViewModel2bTest {
 
     @get:Rule
@@ -124,7 +126,7 @@ class ContactBookViewModel2bTest {
         )
 
         // When
-        every { contactDataSource.getContactList() } returns data
+        coEvery { contactDataSource.getSuspendingContactList() } returns data
         viewModel.getDelayedContactListWithContext()
         advanceUntilIdle()
 

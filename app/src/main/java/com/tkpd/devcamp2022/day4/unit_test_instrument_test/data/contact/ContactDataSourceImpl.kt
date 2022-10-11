@@ -4,6 +4,7 @@ import android.content.ContentResolver
 import android.provider.ContactsContract
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.model.Contact
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.data.util.PhoneNumberFormatter
+import kotlinx.coroutines.delay
 
 
 class ContactDataSourceImpl(
@@ -43,5 +44,10 @@ class ContactDataSourceImpl(
         cursor?.close()
 
         return contacts
+    }
+
+    override suspend fun getSuspendingContactList(): MutableList<Contact> {
+        delay(1000)
+        return getContactList()
     }
 }
