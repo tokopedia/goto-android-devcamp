@@ -5,13 +5,4 @@ data class ProductUiModel(
     val name: String,
     val price: String,
     val location: String,
-): HomeUiModel() {
-    companion object {
-        val empty = ProductUiModel(
-            image = "",
-            name = "",
-            price = "",
-            location = ""
-        )
-    }
-}
+): HomeUiModel()

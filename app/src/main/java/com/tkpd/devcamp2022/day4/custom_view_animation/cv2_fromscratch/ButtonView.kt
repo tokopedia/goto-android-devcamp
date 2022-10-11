@@ -29,24 +29,7 @@ class ButtonView: View {
     ) {
         obtainAttributes(
             context = context,
-            attrs = attrs,
-            defStyleAttrs = 0
-        )
-    }
-
-    constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyleAttr: Int
-    ) : super(
-        context,
-        attrs,
-        defStyleAttr
-    ) {
-        obtainAttributes(
-            context = context,
-            attrs = attrs,
-            defStyleAttrs = defStyleAttr
+            attrs = attrs
         )
     }
 
@@ -118,7 +101,6 @@ class ButtonView: View {
         canvas.drawPath(pathRoundedCorner, paintButtonShape)
         val xPos = (width / 2).toFloat()
         val yPos = (height / 2 - (paintText.descent() + paintText.ascent()) / 2)
-        //((textPaint.descent() + textPaint.ascent()) / 2) is the distance from the baseline to the center.
         canvas.drawText(buttonText, xPos, yPos, paintText)
         canvas.restore()
     }
@@ -160,12 +142,10 @@ class ButtonView: View {
         setMeasuredDimension(width, height)
     }
 
-    private fun obtainAttributes(context: Context, attrs: AttributeSet, defStyleAttrs: Int) {
+    private fun obtainAttributes(context: Context, attrs: AttributeSet) {
         context.obtainStyledAttributes(
             attrs,
-            R.styleable.ButtonView,
-            defStyleAttrs,
-            R.style.Theme_MyApplication
+            R.styleable.ButtonView
         ).apply {
             try {
                 buttonText = getString(R.styleable.ButtonView_android_text).toString()

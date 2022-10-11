@@ -4,7 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.tkpd.devcamp2022.databinding.ActivityMainBinding
+import com.tkpd.devcamp2022.day2.firstapp.acitivity.FirstActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.presentation.NewsListActivity
+import com.tkpd.devcamp2022.day2.workmanager.WorkManagerActivity
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.HomeActivity
 import com.tkpd.devcamp2022.day3.connecting_to_internet.weatherapp.presentation.WeatherActivity
 import com.tkpd.devcamp2022.day3.image_gallery_image_upload.image_gallery.presentation.ImageGalleryActivity
@@ -13,9 +15,11 @@ import com.tkpd.devcamp2022.day3.mvvm_livedata_coroutine.MvvmLiveDataCoroutineAc
 import com.tkpd.devcamp2022.day3.room_datastore.view.activity.LocalDataActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.AnimationViewActivity
 import com.tkpd.devcamp2022.day4.custom_view_animation.CustomViewActivity
+import com.tkpd.devcamp2022.day4.map_push_notification.map.MapActivity
+import com.tkpd.devcamp2022.day4.map_push_notification.push_notification.PushNotificationActivity
 import com.tkpd.devcamp2022.day4.unit_test_instrument_test.presentation.ui.ContactBookActivity
 
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
@@ -24,10 +28,17 @@ class MainActivity: AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnDay2FirstApp.setOnClickListener {
+            startActivity(Intent(this@MainActivity, FirstActivity::class.java))
+        }
+
         binding.btnDay2RecyclerView.setOnClickListener {
             startActivity(Intent(this@MainActivity, HomeActivity::class.java))
         }
 
+        binding.btnDay2Workmanager.setOnClickListener {
+            startActivity(Intent(this@MainActivity, WorkManagerActivity::class.java))
+        }
 
         binding.btnDay3.setOnClickListener {
             startActivity(Intent(this@MainActivity, WeatherActivity::class.java))
@@ -59,6 +70,14 @@ class MainActivity: AppCompatActivity() {
 
         binding.btnDay4Animation.setOnClickListener {
             startActivity(Intent(this@MainActivity, AnimationViewActivity::class.java))
+        }
+
+        binding.btnDay4Map.setOnClickListener {
+            startActivity(Intent(this@MainActivity, MapActivity::class.java))
+        }
+
+        binding.btnDay4PushNotification.setOnClickListener {
+            startActivity(Intent(this@MainActivity, PushNotificationActivity::class.java))
         }
 
         binding.btnDay4.setOnClickListener {
