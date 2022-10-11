@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tkpd.devcamp2022.R
 
-class BannerAdapter(
-    private val bannerList: List<String>
-) : RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
+class BannerAdapter(private val bannerList: List<String>) : RecyclerView.Adapter<BannerAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageView = itemView.findViewById<ImageView>(R.id.iv_banner)
@@ -30,8 +28,7 @@ class BannerAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val image = bannerList[position]
-        holder.bind(image)
+        holder.bind(bannerList[position])
     }
 
     override fun getItemCount(): Int {

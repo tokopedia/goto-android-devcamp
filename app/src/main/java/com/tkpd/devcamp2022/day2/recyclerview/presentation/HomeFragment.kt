@@ -125,7 +125,7 @@ class HomeFragment : Fragment() {
 
         // just to be safe, we will setOnRefreshListener of SwipeRefreshLayout to null
         // and remove the OnScrollListener from RecyclerView
-        // to avoid memory leaks (although with our implementation above, it won't leak)
+        // to avoid memory leaks (although with our above implementation, it won't leak)
         // read more: https://proandroiddev.com/everything-you-need-to-know-about-memory-leaks-in-android-d7a59faaf46a
         swipeRefreshLayout.setOnRefreshListener(null)
         recyclerView.removeOnScrollListener(onScrollListener)

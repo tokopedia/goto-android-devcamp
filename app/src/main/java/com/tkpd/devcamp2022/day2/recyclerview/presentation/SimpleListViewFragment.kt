@@ -30,10 +30,15 @@ class SimpleListViewFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val listView = view.findViewById<ListView>(R.id.simple_listview) // ListView Component
-
         val dataSource = repository.getProducts(1) // data source
 
         val customAdapter = CustomListViewAdapter(dataSource)
         listView.adapter = customAdapter // set adapter to listview
+
+//        val recyclerView = view.findViewById<RecyclerView>(R.id.home_recyclerview)
+//        val bannerData = repository.getListOfImage()
+//
+//        val bannerAdapter = BannerAdapter(bannerData)
+//        recyclerView.adapter = bannerAdapter
     }
 }

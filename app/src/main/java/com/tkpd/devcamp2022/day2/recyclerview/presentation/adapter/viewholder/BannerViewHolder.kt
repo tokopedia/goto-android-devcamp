@@ -8,7 +8,7 @@ import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.BannerUiModel
 
 class BannerViewHolder(itemView: View) : HomeViewHolder(itemView) {
 
-    private val recyclerView = itemView.findViewById<RecyclerView>(R.id.rv_banner)
+    private val recyclerView = itemView.findViewById<RecyclerView>(R.id.home_banner)
 
     fun bind(bannerUiModel: BannerUiModel) {
         val bannerAdapter = BannerAdapter(bannerUiModel.images)
