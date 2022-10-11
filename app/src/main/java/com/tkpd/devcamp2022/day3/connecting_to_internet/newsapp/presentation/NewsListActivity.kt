@@ -7,12 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tkpd.devcamp2022.R
 import com.tkpd.devcamp2022.databinding.ActivityNewsListBinding
-import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.ApiClient
-import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.NewsResponse
+import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.News
+import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.CommonUtils
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.Mapper
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class NewsListActivity : AppCompatActivity() {
 
@@ -24,7 +21,7 @@ class NewsListActivity : AppCompatActivity() {
      *
      */
     companion object {
-        private const val API_KEY = "ec91e485fad444a8a2678a4d2c6787bb"
+        private const val API_KEY = "INPUT-YOUR-NEWS-API-KEY-HERE"
     }
 
 
@@ -61,23 +58,23 @@ class NewsListActivity : AppCompatActivity() {
         }
     }
 
-    private fun getNewsData() {
-        ApiClient.create().getNews("id", API_KEY)
-            .enqueue(object : Callback<NewsResponse> {
-                override fun onResponse(call: Call<NewsResponse>, response: Response<NewsResponse>) {
-                    if (response.body() != null) {
-                        val newsResponse = response.body() as NewsResponse
-                        val results = newsResponse.articles
-                        if (results != null) {
-                            showLoading(false)
-                            val getNews = Mapper.toNewsObject(results)
-                            newsAdapter.setNews(getNews)
-                        }
-                    }
-                }
 
-                override fun onFailure(call: Call<NewsResponse>, t: Throwable) {}
-            })
+    private fun getNewsData() {
+        //  TODO Connecting to Internet - NewsApp - step 5 - update to hit endpoint
+        //  TODO Connecting to Internet - NewsApp - step 6 - make sure still update ui
+
+        updateUI(getNewsByJsonLocal())
+    }
+
+    private fun updateUI(news: List<News>) {
+        newsAdapter.setNews(news)
+        showLoading(false)
+
+    }
+
+    private fun getNewsByJsonLocal(): MutableList<News> {
+        val data = CommonUtils.getAssetJsonData(this, "newsdata.json")
+        return Mapper.stringToNewsResponse(data)
     }
 
     private fun showLoading(showLoading: Boolean) {

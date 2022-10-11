@@ -67,4 +67,6 @@
     <string name="text_token">FCM token : %s</string>
     <!-- TODO: Add your public token here -->
     <string name="mapbox_access_token" translatable="false"></string>
+
+
 </resources>
