@@ -9,16 +9,16 @@ import java.io.OutputStream
 
 //TODO(3,1) - Create Schema for Proto DataStore
 //TODO(3,2) - Create Serializer for Proto DataStore
-object UserStoreSerializer: Serializer<UserStore> {
-
-    override val defaultValue: UserStore = UserStore.getDefaultInstance()
-    override suspend fun readFrom(input: InputStream): UserStore {
-        try {
-            return UserStore.parseFrom(input)
-        } catch (exception: InvalidProtocolBufferException) {
-            throw  CorruptionException("Cannot read proto", exception)
-        }
-    }
-
-    override suspend fun writeTo(t: UserStore, output: OutputStream) = t.writeTo(output)
-}
+//object UserStoreSerializer: Serializer<UserStore> {
+//
+//    override val defaultValue: UserStore = UserStore.getDefaultInstance()
+//    override suspend fun readFrom(input: InputStream): UserStore {
+//        try {
+//            return UserStore.parseFrom(input)
+//        } catch (exception: InvalidProtocolBufferException) {
+//            throw  CorruptionException("Cannot read proto", exception)
+//        }
+//    }
+//
+//    override suspend fun writeTo(t: UserStore, output: OutputStream) = t.writeTo(output)
+//}
