@@ -10,9 +10,8 @@ import com.tkpd.devcamp2022.databinding.LayoutWiseWordViewLayoutBinding
 
 class WiseWordDifferentView @JvmOverloads constructor(
     context: Context,
-    attrs: AttributeSet? = null,
-    defStyleAttr: Int = 0
-) : CardView(context, attrs, defStyleAttr) {
+    attrs: AttributeSet? = null
+) : CardView(context, attrs) {
 
     private var binding: LayoutWiseWordViewLayoutBinding
 
@@ -25,7 +24,7 @@ class WiseWordDifferentView @JvmOverloads constructor(
         tvName = binding.tvName
 
         if (attrs != null) {
-            obtainAttributes(context, attrs, defStyleAttr)
+            obtainAttributes(context, attrs)
         }
     }
 
@@ -41,12 +40,10 @@ class WiseWordDifferentView @JvmOverloads constructor(
             tvName.text = value
         }
 
-    private fun obtainAttributes(context: Context, attrs: AttributeSet, defStyleAttrs: Int) {
+    private fun obtainAttributes(context: Context, attrs: AttributeSet) {
         context.obtainStyledAttributes(
             attrs,
-            R.styleable.WiseWordDifferentView,
-            defStyleAttrs,
-            R.style.Theme_MyApplication
+            R.styleable.WiseWordDifferentView
         ).apply {
             try {
                 tvDescription.text = getString(R.styleable.WiseWordDifferentView_textDescription)

@@ -2,18 +2,12 @@ package com.tkpd.devcamp2022.day2.recyclerview.data.source
 
 import com.tkpd.devcamp2022.day2.recyclerview.data.mapper.HomeJsonMapper
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.BannerUiModel
-import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.HomeUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.presentation.uimodel.ProductUiModel
 import com.tkpd.devcamp2022.day2.recyclerview.util.toJsonArray
 
 class HomeDataSource(
     private val jsonMapper: HomeJsonMapper
 ) {
-
-    fun getSchema(): List<HomeUiModel> {
-        val jsonArray = homeData.toJsonArray()
-        return jsonMapper.map(jsonArray).filterNotNull()
-    }
 
     fun getBanner(): BannerUiModel {
         val jsonArray = homeBannerData.toJsonArray()
@@ -24,21 +18,6 @@ class HomeDataSource(
         val jsonArray = homeProductData.toJsonArray()
         return jsonMapper.mapToProduct(jsonArray)
     }
-
-    private val homeData = """
-        [{
-            "type": "banner",
-            "content": null
-        }, {
-            "type": "title",
-            "content": {
-                "label": "Rekomendasi Untukmu"
-            }
-        }, {
-            "type": "product",
-            "content": null
-        }]
-    """.trimIndent()
 
     private val homeBannerData = """
         [{
