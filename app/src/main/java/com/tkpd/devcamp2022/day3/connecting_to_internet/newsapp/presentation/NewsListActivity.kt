@@ -10,12 +10,6 @@ import com.tkpd.devcamp2022.databinding.ActivityNewsListBinding
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.News
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.CommonUtils
 import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.Mapper
-import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.ApiClient
-import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.data.NewsResponse
-import com.tkpd.devcamp2022.day3.connecting_to_internet.newsapp.utils.Mapper
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class NewsListActivity : AppCompatActivity() {
 
@@ -29,7 +23,6 @@ class NewsListActivity : AppCompatActivity() {
     companion object {
         private const val API_KEY = "INPUT-YOUR-NEWS-API-KEY-HERE"
     }
-
 
 
     private lateinit var binding: ActivityNewsListBinding

@@ -68,7 +68,5 @@
     <!-- TODO: Add your public token here -->
     <string name="mapbox_access_token" translatable="false"></string>
 
-    <!--    Connecting To Internet -->
-    <string name="newsapp_apikey_warning">Masukkan API Key News terlebih dahulu ya di NewsListActivity</string>
-    <string name="newsapp_apikey_info">INPUT-YOUR-NEWS-API-KEY-HERE</string>
+
 </resources>
