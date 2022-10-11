@@ -25,7 +25,7 @@ class ImageGalleryFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         //TODO: [Step 1] register activity result below using registerImageGalleryResult()
-        imageGalleryResult = registerImageGalleryResult()
+//        imageGalleryResult = registerImageGalleryResult()
         binding = FragmentImageGalleryBinding.inflate(layoutInflater, container, false)
         return binding?.root
     }
@@ -35,24 +35,24 @@ class ImageGalleryFragment : Fragment() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             //TODO: [Step 3] check result code data and call checkSelectedImage function to validate clipData value
-            when (result.resultCode) {
-                Activity.RESULT_OK -> {
-                    clearImageView()
-                    checkSelectedImage(result.data)
-                }
-            }
+//            when (result.resultCode) {
+//                Activity.RESULT_OK -> {
+//                    clearImageView()
+//                    checkSelectedImage(result.data)
+//                }
+//            }
         }
     }
 
     private fun openImageGallery() {
         //TODO: [Step 2] define intent for image gallery below and launch it
-        val intentAction = Intent.ACTION_GET_CONTENT
-        val mimeType = "image/*"
-        val imagePickerIntent = Intent(intentAction).apply {
-            type = mimeType
-        }
-        imagePickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-        imageGalleryResult?.launch(imagePickerIntent)
+//        val intentAction = Intent.ACTION_GET_CONTENT
+//        val mimeType = "image/*"
+//        val imagePickerIntent = Intent(intentAction).apply {
+//            type = mimeType
+//        }
+//        imagePickerIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+//        imageGalleryResult?.launch(imagePickerIntent)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -72,17 +72,17 @@ class ImageGalleryFragment : Fragment() {
 
     private fun checkSelectedImage(data: Intent?) {
         //TODO: [Step 4] check whether clipData is null or not and also load the selected image to ImageView
-        if (data?.clipData != null) {
-            val totalSelectedImage = data.clipData?.itemCount ?: 0
-            if (totalSelectedImage > 3) {
-                showToasterMaximumThreeImages()
-            } else {
-                setMultipleImage(data.clipData, totalSelectedImage)
-            }
-        } else {
-            val uri = data?.data
-            setSingleImage(uri)
-        }
+//        if (data?.clipData != null) {
+//            val totalSelectedImage = data.clipData?.itemCount ?: 0
+//            if (totalSelectedImage > 3) {
+//                showToasterMaximumThreeImages()
+//            } else {
+//                setMultipleImage(data.clipData, totalSelectedImage)
+//            }
+//        } else {
+//            val uri = data?.data
+//            setSingleImage(uri)
+//        }
     }
 
     private fun setMultipleImage(clipData: ClipData?, totalSelectedImage: Int) {

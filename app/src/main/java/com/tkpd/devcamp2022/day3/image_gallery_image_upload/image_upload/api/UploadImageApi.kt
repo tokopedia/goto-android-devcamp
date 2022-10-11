@@ -8,17 +8,17 @@ import retrofit2.http.*
 
 interface UploadImageApi {
     //TODO: [Step 1] define api call for both single and multiple upload image
-    @Multipart
-    @POST("api/1/upload")
-    suspend fun uploadImage(
-        @Part("key") apiKey: RequestBody,
-        @Part imageFormData: MultipartBody.Part,
-    ): UploadImageResultResponse
+//    @Multipart
+//    @POST("api/1/upload")
+//    suspend fun uploadImage(
+//        @Part("key") apiKey: RequestBody,
+//        @Part imageFormData: MultipartBody.Part,
+//    ): UploadImageResultResponse
 
-    @Multipart
-    @POST("api/1/upload")
-    suspend fun uploadMultipleImage(
-        @Part("key") apiKey: RequestBody,
-        @Part multipleImageFormData: List<MultipartBody.Part>,
-    ): UploadImageResultResponse
+//    @Multipart
+//    @POST("api/1/upload")
+//    suspend fun uploadMultipleImage(
+//        @Part("key") apiKey: RequestBody,
+//        @Part multipleImageFormData: List<MultipartBody.Part>,
+//    ): UploadImageResultResponse
 }

@@ -26,23 +26,26 @@ class UploadImageRepository {
         imageData: ImageDataForUpload
     ): UploadImageResultResponse {
         //TODO: [Step 4] call api for upload single image
-        val imageFormData = createImageFormData(imageData)
-        val apiKeyRequestBody = apiKey.toRequestBody()
-        return uploadImageApi.uploadImage(apiKeyRequestBody, imageFormData)
+//        val imageFormData = createImageFormData(imageData)
+//        val apiKeyRequestBody = apiKey.toRequestBody()
+//        return uploadImageApi.uploadImage(apiKeyRequestBody, imageFormData)
+        return UploadImageResultResponse()
     }
 
     suspend fun uploadMultipleImage(listImageData: List<ImageDataForUpload>): UploadImageResultResponse {
         //TODO: [Step 5] call api for upload multiple image
-        val listImageFormData = listImageData.map {imageData ->
-            createImageFormData(imageData)
-        }
-        val apiKeyRequestBody = apiKey.toRequestBody()
-        return uploadImageApi.uploadMultipleImage(apiKeyRequestBody, listImageFormData)
+//        val listImageFormData = listImageData.map {imageData ->
+//            createImageFormData(imageData)
+//        }
+//        val apiKeyRequestBody = apiKey.toRequestBody()
+//        return uploadImageApi.uploadMultipleImage(apiKeyRequestBody, listImageFormData)
+        return UploadImageResultResponse()
     }
 
     private fun createImageFormData(imageData: ImageDataForUpload): MultipartBody.Part {
         //TODO: [Step 3] convert image data to RequestBody and create MultipartBody.Part using createFormData function
-        val imageRequestBody = imageData.imageByteData.toRequestBody()
-        return MultipartBody.Part.createFormData("source", imageData.fileName, imageRequestBody)
+//        val imageRequestBody = imageData.imageByteData.toRequestBody()
+//        return MultipartBody.Part.createFormData("source", imageData.fileName, imageRequestBody)
+        return MultipartBody.Part.createFormData("", "")
     }
 }
