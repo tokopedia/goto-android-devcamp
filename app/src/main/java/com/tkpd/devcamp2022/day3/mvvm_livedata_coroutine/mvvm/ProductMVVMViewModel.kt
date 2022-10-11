@@ -15,12 +15,8 @@ class ProductMVVMViewModel(
 
     //TODO(1,2) - Create product MutableLiveData
     //TODO(1,3) - Expose product MutableLiveData as LiveData
-    private val _product = MutableLiveData<Product>()
-    val product: LiveData<Product>
-        get() = _product
 
     fun getProduct(productId: String) {
         //TODO(1,4) - Set value from api.getProductById to product MutableLiveData
-        _product.value = api.getProductById(productId)
     }
 }

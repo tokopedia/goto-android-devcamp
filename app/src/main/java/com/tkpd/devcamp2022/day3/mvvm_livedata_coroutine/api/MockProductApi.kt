@@ -24,9 +24,9 @@ class MockProductApi : ProductApi {
     }
 
     //TODO(2,2) - call this function with in IO thread
-    override suspend fun getProductSlower(productId: String): Product = withContext(Dispatchers.IO) {
+    override fun getProductSlower(productId: String): Product {
         Thread.sleep(3000)
-        return@withContext getProductById(productId)
+        return getProductById(productId)
     }
 
     override suspend fun getProductStock(productId: String): Int = withContext(Dispatchers.IO) {

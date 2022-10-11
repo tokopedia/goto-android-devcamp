@@ -10,7 +10,7 @@ interface ProductApi {
     fun getProductById(productId: String): Product
 
     //TODO(2,1) - change this function to suspending function
-    suspend fun getProductSlower(productId: String): Product
+    fun getProductSlower(productId: String): Product
 
     suspend fun getProductStock(productId: String): Int
 }
