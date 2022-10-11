@@ -17,6 +17,8 @@
     <string name="btn_work_manager_periodic">Run Periodic Task</string>
     <string name="btn_day_4_custom_view">Day 4 - Custom View</string>
     <string name="btn_day_4_animation">Day 4 - Animation</string>
+    <string name="btn_day_4_map">Day 4 - Map</string>
+    <string name="btn_day_4_push_notification">Day 4 - Push Notification</string>
 
     <!-- Custom View & Animation -->
     <string name="wise_word_view_quote_mark">\"</string>
@@ -60,4 +62,9 @@
     <string name="txt_age">Age    : %d</string>
     <string name="first_fragment">First Fragment</string>
     <string name="second_fragment">Second Fragment</string>
+
+    <!-- Map & Push Notification -->
+    <string name="text_token">FCM token : %s</string>
+    <!-- TODO: Add your public token here -->
+    <string name="mapbox_access_token" translatable="false"></string>
 </resources>

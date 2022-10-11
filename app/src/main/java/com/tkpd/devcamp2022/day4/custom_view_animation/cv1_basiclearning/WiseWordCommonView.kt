@@ -19,24 +19,7 @@ class WiseWordCommonView: CardView {
     ) {
         obtainAttributes(
             context = context,
-            attrs = attrs,
-            defStyleAttrs = 0
-        )
-    }
-
-    constructor(
-        context: Context,
-        attrs: AttributeSet,
-        defStyleAttrs: Int
-    ) : super(
-        context,
-        attrs,
-        defStyleAttrs
-    ) {
-        obtainAttributes(
-            context = context,
-            attrs = attrs,
-            defStyleAttrs = defStyleAttrs
+            attrs = attrs
         )
     }
 
@@ -61,12 +44,10 @@ class WiseWordCommonView: CardView {
             tvName.text = value
         }
 
-    private fun obtainAttributes(context: Context, attrs: AttributeSet, defStyleAttrs: Int) {
+    private fun obtainAttributes(context: Context, attrs: AttributeSet) {
         context.obtainStyledAttributes(
             attrs,
-            R.styleable.WiseWordCommonView,
-            defStyleAttrs,
-            R.style.Theme_MyApplication
+            R.styleable.WiseWordCommonView
         ).apply {
             try {
                 tvDescription.text = getString(R.styleable.WiseWordCommonView_textDescription)
