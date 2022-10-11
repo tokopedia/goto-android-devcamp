@@ -49,7 +49,7 @@ class ContactBookViewModel2(
 
     fun getDelayedContactListWithContext() {
         viewModelScope.launch(dispatcher) {
-            val data = contactDataSource.getContactList()
+            val data = contactDataSource.getSuspendingContactList()
             delay(1000)
             for (contact in data) {
                 contact.number = PhoneNumberFormatter
@@ -58,13 +58,6 @@ class ContactBookViewModel2(
 
             delay(1000)
             _contacts.postValue(data)
-        }
-    }
-
-    fun setDelayedDummyContactList(contacts: List<Contact>) {
-        viewModelScope.launch(dispatcher) {
-            delay(1000)
-            _contacts.value = contacts
         }
     }
 
