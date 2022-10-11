@@ -21,15 +21,6 @@ class ProductMVVMFragment : Fragment() {
     private val binding get() = _binding!!
 
     //TODO(1,1) - Initialize ViewModel with custom ViewModelProvider.Factory
-    private val viewModel by viewModels<ProductMVVMViewModel>(
-        factoryProducer = {
-            object : ViewModelProvider.Factory {
-                override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                    return ProductMVVMViewModel(MockProductApi()) as T
-                }
-            }
-        }
-    )
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,14 +36,9 @@ class ProductMVVMFragment : Fragment() {
 
         binding.btnSearch.setOnClickListener {
             //TODO(1,5) - Call viewModel.getProduct and pass query from edit text as parameter
-            viewModel.getProduct(binding.etSearchProduct.text.toString())
         }
 
         //TODO(1,6) - Observe from viewModel.product livedata and set product data to product card
-        viewModel.product.observe(viewLifecycleOwner) {
-            binding.productCard.setProduct(it)
-            binding.productCard.root.visibility = View.VISIBLE
-        }
     }
 
     override fun onDestroyView() {

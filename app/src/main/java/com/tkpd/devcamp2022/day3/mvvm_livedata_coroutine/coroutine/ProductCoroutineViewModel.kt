@@ -48,20 +48,18 @@ class ProductCoroutineViewModel(
 
     fun getProductSlower(productId: String) {
         //TODO(2,3) - Call the suspending function with a coroutine builder
-        viewModelScope.launch {
-            _product.value = api.getProductSlower(productId)
-        }
+        _product.value = api.getProductSlower(productId)
     }
 
     fun getProductWithStock(productId: String) {
         viewModelScope.launch {
             //TODO(3,1) - make both these api calls async
             //TODO(3,2) - await both async functions and combine the result, then set it to livedata
-            val product = async { api.getProductSlower(productId) } //3s
-            val stock = async { api.getProductStock(productId) } //3s
+            val product = api.getProductSlower(productId) //3s
+            val stock = api.getProductStock(productId) //3s
 
-            _product.value = product.await().copy(
-                stock = stock.await(),
+            _product.value = product.copy(
+                stock = stock,
             )
         }
     }
