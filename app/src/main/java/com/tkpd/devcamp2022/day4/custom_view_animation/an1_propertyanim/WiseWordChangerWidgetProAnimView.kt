@@ -25,7 +25,7 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
         const val ANIMATION_DURATION = 500L
     }
 
-    private var binding: LayoutWiseWordViewWidgetLayoutBinding
+//    private var binding: LayoutWiseWordViewWidgetLayoutBinding
 
     private var listWiseWord = listOf(
         WiseWordChangerWidgetUiModel(
@@ -78,29 +78,35 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
         )
     )
 
-    init {
-        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
-
-        setWiseWord(listWiseWord.first())
-
-        val alphaAnimation = ObjectAnimator
-            .ofFloat(binding.customvWiseWord, View.ALPHA, ALPHA_END)
-            .setDuration(ANIMATION_DURATION)
-
-        val translationAnimation = ObjectAnimator
-            .ofFloat(binding.customvWiseWord, TRANSLATION_X, TRANSLATION_START, TRANSLATION_END)
-            .setDuration(ANIMATION_DURATION).apply {
-                repeatCount = ObjectAnimator.INFINITE
-                repeatMode = ObjectAnimator.REVERSE
-            }
-
-        setAlphaAnimationListener(alphaAnimation, translationAnimation)
-        setOnClickListener(alphaAnimation)
-    }
+//    init {
+//        binding = LayoutWiseWordViewWidgetLayoutBinding.inflate(LayoutInflater.from(context), this, true)
+//
+//        setWiseWord(listWiseWord.first())
+//
+//        /**
+//         * (Property Animation - 1) Create object animator alpha and translation
+//         */
+//        val alphaAnimation = ObjectAnimator
+//            .ofFloat(binding.customvWiseWord, View.ALPHA, ALPHA_END)
+//            .setDuration(ANIMATION_DURATION)
+//
+//        val translationAnimation = ObjectAnimator
+//            .ofFloat(binding.customvWiseWord, TRANSLATION_X, TRANSLATION_START, TRANSLATION_END)
+//            .setDuration(ANIMATION_DURATION).apply {
+//                repeatCount = ObjectAnimator.INFINITE
+//                repeatMode = ObjectAnimator.REVERSE
+//            }
+//
+//        setAlphaAnimationListener(alphaAnimation, translationAnimation)
+//        setOnClickListener(alphaAnimation)
+//    }
 
     private fun setAlphaAnimationListener(alphaAnimation: ObjectAnimator, translationAnimation: ObjectAnimator) {
         alphaAnimation.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationStart(animation: Animator?) {
+                /**
+                 * (Property Animation - 3) Translation start
+                 */
                 translationAnimation.start()
             }
 
@@ -110,18 +116,22 @@ class WiseWordChangerWidgetProAnimView @JvmOverloads constructor(
         })
     }
 
-    private fun setOnClickListener(alphaAnimation: ObjectAnimator) {
-        val random = Random()
-        binding.customvButton.onClickListener = {
-            val wise = listWiseWord[random.nextInt(listWiseWord.size)]
-            binding.customvWiseWord.alpha = ALPHA_START
-            alphaAnimation.start()
-            setWiseWord(wise)
-        }
-    }
-
-    private fun setWiseWord(wiseWord: WiseWordChangerWidgetUiModel) {
-        binding.customvWiseWord.textName = wiseWord.name
-        binding.customvWiseWord.textDescription = wiseWord.description
-    }
+//    private fun setOnClickListener(alphaAnimation: ObjectAnimator) {
+//        val random = Random()
+//        binding.customvButton.onClickListener = {
+//            val wise = listWiseWord[random.nextInt(listWiseWord.size)]
+//
+//            /**
+//             * (Property Animation - 2) Alpha animation start
+//             */
+//            binding.customvWiseWord.alpha = ALPHA_START
+//            alphaAnimation.start()
+//            setWiseWord(wise)
+//        }
+//    }
+//
+//    private fun setWiseWord(wiseWord: WiseWordChangerWidgetUiModel) {
+//        binding.customvWiseWord.textName = wiseWord.name
+//        binding.customvWiseWord.textDescription = wiseWord.description
+//    }
 }

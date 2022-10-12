@@ -25,12 +25,19 @@ class AnimationViewActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_NAME, it.name)
             intent.putExtra(EXTRA_DETAIL, it.description)
 
-            val optionsCompat: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this,
-                androidx.core.util.Pair(binding.customvWireWord.tvNameWiseWord, "name"),
-                androidx.core.util.Pair(binding.customvWireWord.tvDescriptionWiseWord, "description")
-            )
-            startActivity(intent, optionsCompat.toBundle())
+//            /**
+//             * (Activity Transition - 4) Shared Transition
+//             */
+//            val optionsCompat: ActivityOptionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                this,
+//                androidx.core.util.Pair(binding.customvWireWord.tvNameWiseWord, "name"),
+//                androidx.core.util.Pair(binding.customvWireWord.tvDescriptionWiseWord, "description")
+//            )
+//            startActivity(intent, optionsCompat.toBundle())
+
+//            /**
+//             * (Activity Transition - 3) Common Transition
+//             */
 //            startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
         }
     }
