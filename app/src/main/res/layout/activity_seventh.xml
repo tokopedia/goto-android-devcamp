@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:text="section 2 - CustomView + BottomSheet - Calvin, Irpan" />
+            android:text="section 7 - Unit Test / Test Case - Asti Dhiya" />
     </LinearLayout>
+
 </FrameLayout>
