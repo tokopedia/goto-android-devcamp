@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/container"
-    tools:context=".unit_test.SeventhActivity">
+    tools:context=".practice_binding.SixthActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:text="section 2 - CustomView + BottomSheet - Calvin, Irpan" />
+            android:text="section 6 - Practice + Binding View [Swipe to Refresh] - Jonathan Darwin " />
     </LinearLayout>
+
 </FrameLayout>

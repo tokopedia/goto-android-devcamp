@@ -5,43 +5,19 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/container"
-    tools:context=".day2.firstapp.acitivity.FirstActivity">
+    tools:context=".first_app.FirstActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-        <Button
-            android:id="@+id/btn_navigate_to_activity"
+        <TextView
+            android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:text="@string/btn_navigate_to_activity" />
-
-        <Button
-            android:id="@+id/btn_navigate_to_activity_with_data"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:text="@string/btn_navigate_to_activity_with_data" />
-
-        <Button
-            android:id="@+id/btn_navigate_with_deeplink"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:text="@string/btn_navigate_to_activity_using_deeplink" />
-
-        <Button
-            android:id="@+id/btn_navigate_to_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="8dp"
-            android:text="@string/btn_navigate_to_fragment" />
+            android:text="section 1 - Build your first app - Kelvindo Sutan" />
     </LinearLayout>
 
 </FrameLayout>
