@@ -1,28 +1,39 @@
 package com.tkpd.devcamp.customview_bottomsheet
 
 import android.os.Bundle
+import android.widget.LinearLayout.LayoutParams
 import androidx.appcompat.app.AppCompatActivity
-import com.tkpd.devcamp.R
+import androidx.constraintlayout.widget.ConstraintLayout
+import com.tkpd.devcamp.customview_bottomsheet.customview.NewsCard
+import com.tkpd.devcamp.databinding.ActivitySecondBinding
 
 class SecondActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivitySecondBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_second)
 
+        binding = ActivitySecondBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        openBottomSheetDetail(
-            News(
-                "On the eve of Tesla's next major release, Elon Musk gave a bizarre, long-winded interview about everything but the Cybertruck",
-                "Zac Johnson",
-                "businessinsider.com",
-                "https://biztoc.com/x/c191194496ce4396",
-                "https://c.biztoc.com/p/c191194496ce4396/s.webp"
+        binding.root.let {
+            it.addView(
+                NewsCard(this).apply {
+                    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
+                        setMargins(0, 0, 0, 20)
+                    }
+                }
             )
-        )
-    }
 
-    private fun openBottomSheetDetail(news: News) {
-        BottomSheetDetailNews.show(supportFragmentManager, news)
+            it.addView(
+                NewsCard(
+                    this,
+                    newsTitle = "News Title",
+                    newsAuthor = "Me & Friends",
+                    newsDescription = "Lorem ipsum, testing news card"
+                )
+            )
+        }
     }
 }
