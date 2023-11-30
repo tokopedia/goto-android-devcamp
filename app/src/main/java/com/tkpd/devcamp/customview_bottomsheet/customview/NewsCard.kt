@@ -37,28 +37,7 @@ class NewsCard : ConstraintLayout {
     }
 
     private fun initializeViewWithAttribute(attributeSet: AttributeSet) {
-        val attributeArray = context.obtainStyledAttributes(attributeSet, R.styleable.NewsCard)
-
-        // get news_title value from xml
-        val newsTitle = attributeArray.getString(R.styleable.NewsCard_news_title)
-
-        // get news_author from xml
-        val newsAuthor = attributeArray.getString(R.styleable.NewsCard_news_author)
-
-        // get news_description from xml
-        val newsDescription = attributeArray.getString(R.styleable.NewsCard_news_description)
-
-        // get news_description from xml
-        val newsImageUrl = attributeArray.getString(R.styleable.NewsCard_news_img_url)
-
-        setupNewsCard(
-            newsTitle = newsTitle,
-            newsAuthor = newsAuthor,
-            newsDescription = newsDescription,
-            newsImageUrl = newsImageUrl
-        )
-
-        attributeArray.recycle()
+        // TODO: Get all attribute value related to NewsCard and bind it to UI
     }
 
     private fun setupNewsCard(
@@ -67,51 +46,34 @@ class NewsCard : ConstraintLayout {
         newsDescription: CharSequence? = null,
         newsImageUrl: String? = null
     ) {
-        setTitle(newsTitle ?: DEFAULT_TITLE)
-        setAuthor(newsAuthor ?: DEFAULT_AUTHOR)
-        setDescription(newsDescription ?: DEFAULT_DESCRIPTION)
-        newsImageUrl?.let {
-            setImageUrl(it)
-        }
+        // TODO #1: Set provided data to related UI
 
-        setOnClick(newsTitle, newsAuthor, newsImageUrl)
+        // TODO #2: Add listener for bottom sheet
+        // setOnClick(...)
     }
 
     private fun setOnClick(newsTitle: String?, newsAuthor: String?, newsImageUrl: String?) {
-        binding.root.setOnClickListener {
-            openBottomSheetDetail(
-                News(
-                    newsTitle,
-                    "Zac Johnson",
-                    newsAuthor,
-                    "https://biztoc.com/x/c191194496ce4396",
-                    newsImageUrl
-                )
-            )
-        }
+        // TODO: Bind click listener to news card & trigger bottom sheet on click
     }
 
     fun setImageUrl(url: String) {
-        Glide.with(context)
-            .load(url)
-            .centerCrop()
-            .into(binding.contentImg)
+        // TODO: Load image url using Glide
     }
 
     fun setTitle(title: String) {
-        binding.contentTitle.text = title
+        // TODO: Set param title to title textview
     }
 
     fun setAuthor(author: String) {
-        binding.contentAuthor.text = author
+        // TODO: Set param author to author textview
     }
 
     fun setDescription(description: CharSequence) {
-        binding.contentDesc.text = description
+        // TODO: Set param description to description textview
     }
 
     private fun openBottomSheetDetail(news: News) {
-        BottomSheetDetailNews.show((context as AppCompatActivity).supportFragmentManager, news)
+        // TODO: Trigger bottom sheet
     }
 
     companion object {

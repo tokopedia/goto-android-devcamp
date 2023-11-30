@@ -18,22 +18,7 @@ class SecondActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.root.let {
-            it.addView(
-                NewsCard(this).apply {
-                    layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT).apply {
-                        setMargins(0, 0, 0, 20)
-                    }
-                }
-            )
-
-            it.addView(
-                NewsCard(
-                    this,
-                    newsTitle = "News Title",
-                    newsAuthor = "Me & Friends",
-                    newsDescription = "Lorem ipsum, testing news card"
-                )
-            )
+            // TODO: add custom view to activity programmatically
         }
     }
 }
