@@ -3,9 +3,12 @@ package com.tkpd.devcamp.customview_bottomsheet.customview
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.bumptech.glide.Glide
 import com.tkpd.devcamp.R
+import com.tkpd.devcamp.customview_bottomsheet.BottomSheetDetailNews
+import com.tkpd.devcamp.customview_bottomsheet.News
 import com.tkpd.devcamp.databinding.NewsCardLayoutBinding
 
 class NewsCard : ConstraintLayout {
@@ -70,6 +73,22 @@ class NewsCard : ConstraintLayout {
         newsImageUrl?.let {
             setImageUrl(it)
         }
+
+        setOnClick(newsTitle, newsAuthor, newsImageUrl)
+    }
+
+    private fun setOnClick(newsTitle: String?, newsAuthor: String?, newsImageUrl: String?) {
+        binding.root.setOnClickListener {
+            openBottomSheetDetail(
+                News(
+                    newsTitle,
+                    "Zac Johnson",
+                    newsAuthor,
+                    "https://biztoc.com/x/c191194496ce4396",
+                    newsImageUrl
+                )
+            )
+        }
     }
 
     fun setImageUrl(url: String) {
@@ -89,6 +108,10 @@ class NewsCard : ConstraintLayout {
 
     fun setDescription(description: CharSequence) {
         binding.contentDesc.text = description
+    }
+
+    private fun openBottomSheetDetail(news: News) {
+        BottomSheetDetailNews.show((context as AppCompatActivity).supportFragmentManager, news)
     }
 
     companion object {
