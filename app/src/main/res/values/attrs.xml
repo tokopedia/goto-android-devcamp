@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NewsCard">
+        <attr name="news_title" format="string"/>
+        <attr name="news_author" format="string"/>
+        <attr name="news_description" format="string"/>
+        <attr name="news_img_url" format="string"/>
+    </declare-styleable>
+</resources>
