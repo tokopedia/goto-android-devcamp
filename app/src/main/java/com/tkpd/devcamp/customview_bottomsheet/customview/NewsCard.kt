@@ -11,7 +11,6 @@ import com.tkpd.devcamp.customview_bottomsheet.BottomSheetDetailNews
 import com.tkpd.devcamp.customview_bottomsheet.News
 import com.tkpd.devcamp.databinding.NewsCardLayoutBinding
 
-
 class NewsCard : ConstraintLayout {
     private val binding: NewsCardLayoutBinding =
         NewsCardLayoutBinding.inflate(LayoutInflater.from(context), this, true)
