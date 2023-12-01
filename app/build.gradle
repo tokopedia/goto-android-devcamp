@@ -55,6 +55,7 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.1'
+    implementation 'com.google.code.gson:gson:2.8.9'
     
     testImplementation "io.mockk:mockk:1.12.8"
     testImplementation "io.mockk:mockk-agent-jvm:1.12.8"
