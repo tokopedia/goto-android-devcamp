@@ -2,37 +2,29 @@ package com.tkpd.devcamp.recycler_view.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.tkpd.devcamp.customview_bottomsheet.customview.NewsCard
-import com.tkpd.devcamp.recycler_view.utils.customRecyclerViewDimension
-import com.tkpd.devcamp.recycler_view.adapter.viewholder.NewsViewHolder
-import com.tkpd.devcamp.recycler_view.model.Article
 
 class NewsAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val _newsList = mutableListOf<Article>()
-    private val newsList: List<Article>
-        get() = _newsList
-
-    fun insertData(data: List<Article>) {
-        _newsList.clear()
-        _newsList.addAll(data)
-        notifyItemRangeInserted(0, newsList.size)
-    }
+    /*
+    TODO("handle data insert from activity to adapter")
+    */
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return NewsViewHolder(
-            NewsCard(parent.context).apply {
-                layoutParams = customRecyclerViewDimension
-            }
-        )
+        TODO("initialize your recyclerview view-holder")
     }
 
     override fun getItemCount(): Int {
-        return newsList.size
+        TODO(
+            "this function will represent your recyclerview data size" +
+            "return your total data inside recyclerview"
+        )
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as NewsViewHolder).bind(newsList[position])
+        TODO(
+            "your data from activity get translated into recyclerview item as view-holder" +
+                    "insert your list of data in certain position into view-holder"
+        )
     }
 
 }

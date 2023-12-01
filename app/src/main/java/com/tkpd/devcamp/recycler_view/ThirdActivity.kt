@@ -11,9 +11,9 @@ import com.tkpd.devcamp.recycler_view.data.getMockNewsData
 
 class ThirdActivity : AppCompatActivity() {
 
-    private lateinit var newsAdapter: NewsAdapter
-
-    private lateinit var newsRecyclerView: RecyclerView
+    /*
+    TODO("initialize your adapter and views")
+    */
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,18 +26,16 @@ class ThirdActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        newsRecyclerView = findViewById(R.id.rv_news)
+        TODO("initialize your recyclerview")
     }
 
     private fun setupRecyclerView() {
-        newsAdapter = NewsAdapter()
-        newsRecyclerView.adapter = newsAdapter
-        newsRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        TODO("setup your recyclerview")
     }
 
     private fun observeData() {
         val newsMockData = getMockNewsData(this)
-        newsAdapter.insertData(newsMockData.articles)
+        TODO("insert your data into recyclerview adapter")
     }
 
 }

@@ -9,17 +9,7 @@ class NewsViewHolder(
 ) : ViewHolder(newsCardView.rootView) {
 
     fun bind(data: Article) {
-        newsCardView.setTitle(data.title)
-        newsCardView.setAuthor(data.author)
-        newsCardView.setDescription(data.description)
-        newsCardView.setImageUrl(data.urlToImage)
-        newsCardView.setOnClick(
-            newsTitle = data.title,
-            newsSource = data.source.name,
-            newsAuthor = data.author,
-            newsUrl = data.url,
-            newsImageUrl = data.urlToImage,
-        )
+        TODO("bind your data into view-holder item as a views")
     }
 
 }
