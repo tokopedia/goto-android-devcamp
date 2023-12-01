@@ -13,6 +13,13 @@ class NewsViewHolder(
         newsCardView.setAuthor(data.author)
         newsCardView.setDescription(data.description)
         newsCardView.setImageUrl(data.urlToImage)
+        newsCardView.setOnClick(
+            newsTitle = data.title,
+            newsSource = data.source.name,
+            newsAuthor = data.author,
+            newsUrl = data.url,
+            newsImageUrl = data.urlToImage,
+        )
     }
 
 }
