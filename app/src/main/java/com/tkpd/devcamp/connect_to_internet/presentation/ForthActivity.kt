@@ -1,6 +1,9 @@
 package com.tkpd.devcamp.connect_to_internet.presentation
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.tkpd.devcamp.R
@@ -42,14 +45,18 @@ class ForthActivity : AppCompatActivity(), FourthView {
     }
 
     override fun showLoading() {
-//        findViewById<TextView>(R.id.title).text = "Loading nih cuy"
+        findViewById<TextView>(R.id.error).visibility = View.GONE
+        findViewById<ProgressBar>(R.id.loading).visibility = View.VISIBLE
     }
 
     override fun handleError() {
-//        findViewById<TextView>(R.id.title).text = "Errrrorrrr"
+        findViewById<TextView>(R.id.error).visibility = View.VISIBLE
+        findViewById<ProgressBar>(R.id.loading).visibility = View.GONE
+
     }
 
     override fun handleSuccess(articles: List<com.tkpd.devcamp.recycler_view.model.Article>) {
+        findViewById<ProgressBar>(R.id.loading).visibility = View.GONE
         with(findViewById<RecyclerView>(R.id.rv_news)) {
             adapter = newsAdapter
             newsAdapter.submitList(articles)
