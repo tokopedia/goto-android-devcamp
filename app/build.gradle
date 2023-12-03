@@ -6,6 +6,9 @@ plugins {
     id 'kotlin-parcelize'
 }
 
+def props = new Properties()
+file("$rootDir/gradle.properties").withInputStream { props.load(it) }
+
 android {
     compileSdk 32
 
@@ -17,6 +20,8 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "NEWSAPI_API_KEY", "${props.getProperty("NEWSAPI_API_KEY")}"
+        buildConfigField "String", "NEWSAPI_BASE_URL", "${props.getProperty("NEWSAPI_BASE_URL")}"
     }
 
     buildTypes {
@@ -47,6 +52,11 @@ dependencies {
     implementation('androidx.test.espresso:espresso-contrib:3.4.0') {
         exclude module: "protobuf-lite"
     }
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4"
+
     implementation 'androidx.test.espresso:espresso-intents:3.4.0'
     implementation 'androidx.fragment:fragment-ktx:1.5.3'
     implementation "io.coil-kt:coil:2.2.1"

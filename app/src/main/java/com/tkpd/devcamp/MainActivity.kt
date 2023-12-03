@@ -3,7 +3,7 @@ package com.tkpd.devcamp
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.tkpd.devcamp.connect_to_internet.ForthActivity
+import com.tkpd.devcamp.connect_to_internet.presentation.ForthActivity
 import com.tkpd.devcamp.customview_bottomsheet.SecondActivity
 import com.tkpd.devcamp.databinding.ActivityMainBinding
 import com.tkpd.devcamp.first_app.FirstActivity
