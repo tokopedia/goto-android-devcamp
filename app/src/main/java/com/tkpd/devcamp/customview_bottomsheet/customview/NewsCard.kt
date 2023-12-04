@@ -31,9 +31,11 @@ class NewsCard : ConstraintLayout {
         newsTitle: String,
         newsAuthor: String,
         newsDescription: CharSequence,
-        newsImageUrl: String? = null
+        newsImageUrl: String? = null,
+        newsSource: String? = null,
+        newsUrl: String? = null
     ) : super(context) {
-        setupNewsCard(newsTitle, newsAuthor, newsDescription, newsImageUrl)
+        setupNewsCard(newsTitle, newsAuthor, newsDescription, newsImageUrl, newsSource, newsUrl)
     }
 
     private fun initializeViewWithAttribute(attributeSet: AttributeSet) {
@@ -65,7 +67,9 @@ class NewsCard : ConstraintLayout {
         newsTitle: String? = null,
         newsAuthor: String? = null,
         newsDescription: CharSequence? = null,
-        newsImageUrl: String? = null
+        newsImageUrl: String? = null,
+        newsSource: String? = null,
+        newsUrl: String? = null
     ) {
         setTitle(newsTitle ?: DEFAULT_TITLE)
         setAuthor(newsAuthor ?: DEFAULT_AUTHOR)
@@ -76,9 +80,9 @@ class NewsCard : ConstraintLayout {
 
         setOnClick(
             newsTitle = newsTitle,
-            newsSource = "Zac Johnson",
+            newsSource = newsSource,
             newsAuthor = newsAuthor,
-            newsUrl =  "https://biztoc.com/x/c191194496ce4396",
+            newsUrl = newsUrl,
             newsImageUrl = newsImageUrl,
         )
     }

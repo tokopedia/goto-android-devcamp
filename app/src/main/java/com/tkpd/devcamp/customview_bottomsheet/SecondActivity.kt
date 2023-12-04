@@ -31,7 +31,9 @@ class SecondActivity : AppCompatActivity() {
                     this,
                     newsTitle = "News Title",
                     newsAuthor = "Me & Friends",
-                    newsDescription = "Lorem ipsum, testing news card"
+                    newsDescription = "Lorem ipsum, testing news card",
+                    newsSource = "News",
+                    newsUrl = "https://www.google.com/"
                 )
             )
         }
