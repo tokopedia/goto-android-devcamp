@@ -1,4 +1,4 @@
-package com.tkpd.devcamp.viewmodel_livedata
+package com.tkpd.devcamp.practice_binding
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -14,7 +14,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlin.coroutines.CoroutineContext
 
-class FifthViewModel(
+/**
+ * Created By : Jonathan Darwin on December 04, 2023
+ */
+class SixthViewModel(
     private val uiScope: CoroutineContext = Dispatchers.Main,
     override val coroutineContext: CoroutineContext = uiScope + Job()
 ) : ViewModel(), CoroutineScope {
