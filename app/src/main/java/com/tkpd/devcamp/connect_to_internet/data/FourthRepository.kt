@@ -1,6 +1,5 @@
 package com.tkpd.devcamp.connect_to_internet.data
 
-import com.tkpd.devcamp.BuildConfig
 import com.tkpd.devcamp.connect_to_internet.data.model.NewsApiTopHeadlinesResponse
 import com.tkpd.devcamp.connect_to_internet.network.ApiResult
 import com.tkpd.devcamp.connect_to_internet.network.NewsApiRemoteDataSource
