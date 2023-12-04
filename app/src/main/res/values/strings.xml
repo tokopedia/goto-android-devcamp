@@ -7,5 +7,6 @@
     <string name="btn_section_5">Section 5 - MVVM | Simple Clean Architecture</string>
     <string name="btn_section_6">Section 6 - Practice + Binding View</string>
     <string name="btn_section_7">Section 7 - Unit Test</string>
+    <string name="error">Errorrr</string>
 
 </resources>
