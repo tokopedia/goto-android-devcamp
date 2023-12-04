@@ -28,13 +28,25 @@ class SixthActivity : AppCompatActivity() {
         /** TODO: Set the activity content view with view binding root */
         setContentView(binding.root)
 
+        setupView()
+        setupObserver()
+
+        viewModel.getTopHeadline()
+    }
+
+    private fun setupView() {
         val newsApiRemoteDataSource = NewsApiRemoteDataSourceCreator
             .createRetrofit()
             .create(NewsApiRemoteDataSource::class.java)
 
-        viewModel.getTopHeadline()
         viewModel.setupRepository(FourthRepository(newsApiRemoteDataSource))
 
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.getTopHeadline()
+        }
+    }
+
+    private fun setupObserver() {
         viewModel.state.observe(this) {
             when(it) {
                 is ArticleScreenState.Error -> handleError()
@@ -47,16 +59,26 @@ class SixthActivity : AppCompatActivity() {
     private fun showLoading() {
         /** TODO: Access all your view with binding */
         binding.error.visibility = View.GONE
-        binding.loading.visibility = View.VISIBLE
+        binding.loading.visibility = if (binding.swipeRefresh.isRefreshing) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
     }
 
     private fun handleError() {
         binding.error.visibility = View.VISIBLE
         binding.loading.visibility = View.GONE
+        binding.rvNews.visibility = View.GONE
+        binding.swipeRefresh.isRefreshing = false
     }
 
     private fun handleSuccess(articles: List<Article>) {
+        binding.error.visibility = View.GONE
         binding.loading.visibility = View.GONE
+        binding.rvNews.visibility = View.VISIBLE
+        binding.swipeRefresh.isRefreshing = false
+
         with(binding.rvNews) {
             adapter = newsAdapter
             newsAdapter.submitList(articles)
