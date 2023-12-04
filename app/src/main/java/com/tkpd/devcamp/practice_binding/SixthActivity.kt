@@ -14,7 +14,7 @@ import com.tkpd.devcamp.viewmodel_livedata.state.ArticleScreenState
 
 class SixthActivity : AppCompatActivity() {
 
-    /** TODO: Declare object that stores all view reference */
+    /** [ViewBinding] TODO: Declare object that stores all view reference */
     private lateinit var binding: ActivitySixthBinding
 
     private val viewModel by viewModels<SixthViewModel>()
@@ -23,9 +23,9 @@ class SixthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        /** TODO: Initialize the object with inflate() */
+        /** [ViewBinding] TODO: Initialize the object with inflate() */
         binding = ActivitySixthBinding.inflate(layoutInflater)
-        /** TODO: Set the activity content view with view binding root */
+        /** [ViewBinding] TODO: Set the activity content view with view binding root */
         setContentView(binding.root)
 
         setupView()
@@ -41,6 +41,7 @@ class SixthActivity : AppCompatActivity() {
 
         viewModel.setupRepository(FourthRepository(newsApiRemoteDataSource))
 
+        /** [SwipeToRefresh] TODO: Set onRefreshListener */
         binding.swipeRefresh.setOnRefreshListener {
             viewModel.getTopHeadline()
         }
@@ -57,7 +58,7 @@ class SixthActivity : AppCompatActivity() {
     }
 
     private fun showLoading() {
-        /** TODO: Access all your view with binding */
+        /** [ViewBinding] TODO: Access all your view with binding */
         binding.error.visibility = View.GONE
         binding.loading.visibility = if (binding.swipeRefresh.isRefreshing) {
             View.GONE
@@ -70,6 +71,8 @@ class SixthActivity : AppCompatActivity() {
         binding.error.visibility = View.VISIBLE
         binding.loading.visibility = View.GONE
         binding.rvNews.visibility = View.GONE
+
+        /** [SwipeToRefresh] TODO: Remove refreshing indicator when it's not needed anymore */
         binding.swipeRefresh.isRefreshing = false
     }
 
@@ -77,6 +80,8 @@ class SixthActivity : AppCompatActivity() {
         binding.error.visibility = View.GONE
         binding.loading.visibility = View.GONE
         binding.rvNews.visibility = View.VISIBLE
+
+        /** [SwipeToRefresh] TODO: Remove refreshing indicator when it's not needed anymore */
         binding.swipeRefresh.isRefreshing = false
 
         with(binding.rvNews) {
