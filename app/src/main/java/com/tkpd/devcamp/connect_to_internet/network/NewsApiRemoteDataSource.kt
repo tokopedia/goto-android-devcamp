@@ -23,6 +23,8 @@ interface NewsApiRemoteDataSource {
     @GET("/v2/top-headlines")
     suspend fun topHeadlineNews(
         @Query("country") country: String,
+        @Query("page") page: Int,
+        @Query("pageSize") pageSize: Int = 5,
         @Query("apikey") apiKey: String = BuildConfig.NEWSAPI_API_KEY
     ): NewsApiTopHeadlinesResponse
 

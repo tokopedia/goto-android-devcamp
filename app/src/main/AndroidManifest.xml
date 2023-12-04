@@ -48,7 +48,7 @@
         <activity
             android:name=".practice_binding.SixthActivity"
             android:exported="false"
-            android:label="Sixth Activity"/>
+            android:label="View Binding + Swipe to Refresh"/>
         <activity
             android:name=".unit_test.SeventhActivity"
             android:exported="false"

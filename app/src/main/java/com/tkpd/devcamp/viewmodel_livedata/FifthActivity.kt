@@ -14,6 +14,7 @@ import com.tkpd.devcamp.connect_to_internet.network.NewsApiRemoteDataSourceCreat
 import com.tkpd.devcamp.connect_to_internet.presentation.FourthView
 import com.tkpd.devcamp.connect_to_internet.presentation.adapter.NewsAdapter
 import com.tkpd.devcamp.recycler_view.model.Article
+import com.tkpd.devcamp.viewmodel_livedata.state.ArticleScreenState
 
 class FifthActivity : AppCompatActivity(), FourthView {
 
