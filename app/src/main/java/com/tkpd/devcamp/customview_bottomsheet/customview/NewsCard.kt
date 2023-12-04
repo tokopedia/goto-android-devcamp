@@ -11,7 +11,6 @@ import com.tkpd.devcamp.customview_bottomsheet.BottomSheetDetailNews
 import com.tkpd.devcamp.customview_bottomsheet.News
 import com.tkpd.devcamp.databinding.NewsCardLayoutBinding
 
-
 class NewsCard : ConstraintLayout {
     private val binding: NewsCardLayoutBinding =
         NewsCardLayoutBinding.inflate(LayoutInflater.from(context), this, true)
@@ -75,18 +74,30 @@ class NewsCard : ConstraintLayout {
             setImageUrl(it)
         }
 
-        setOnClick(newsTitle, newsAuthor, newsImageUrl)
+        setOnClick(
+            newsTitle = newsTitle,
+            newsSource = "Zac Johnson",
+            newsAuthor = newsAuthor,
+            newsUrl =  "https://biztoc.com/x/c191194496ce4396",
+            newsImageUrl = newsImageUrl,
+        )
     }
 
-    private fun setOnClick(newsTitle: String?, newsAuthor: String?, newsImageUrl: String?) {
+    fun setOnClick(
+        newsTitle: String?,
+        newsSource: String?,
+        newsAuthor: String?,
+        newsUrl: String?,
+        newsImageUrl: String?,
+    ) {
         binding.root.setOnClickListener {
             openBottomSheetDetail(
                 News(
                     newsTitle,
-                    "Zac Johnson",
+                    newsSource,
                     newsAuthor,
-                    "https://biztoc.com/x/c191194496ce4396",
-                    newsImageUrl
+                    newsUrl,
+                    newsImageUrl,
                 )
             )
         }
