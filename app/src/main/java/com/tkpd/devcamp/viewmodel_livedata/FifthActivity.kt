@@ -8,6 +8,9 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.tkpd.devcamp.R
+import com.tkpd.devcamp.connect_to_internet.data.FourthRepository
+import com.tkpd.devcamp.connect_to_internet.network.NewsApiRemoteDataSource
+import com.tkpd.devcamp.connect_to_internet.network.NewsApiRemoteDataSourceCreator
 import com.tkpd.devcamp.connect_to_internet.presentation.FourthView
 import com.tkpd.devcamp.connect_to_internet.presentation.adapter.NewsAdapter
 import com.tkpd.devcamp.recycler_view.model.Article
@@ -23,9 +26,22 @@ class FifthActivity : AppCompatActivity(), FourthView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_forth)
 
+        val newsApiRemoteDataSource = NewsApiRemoteDataSourceCreator
+            .createRetrofit()
+            .create(NewsApiRemoteDataSource::class.java)
+
         //TODO: Call getTopHeadLines() function
+        viewModel.getTopHeadline()
+        viewModel.setupRepository(FourthRepository(newsApiRemoteDataSource))
 
         //TODO: Observe data from LiveData Observer to UI
+        viewModel.state.observe(this) {
+            when(it) {
+                is ArticleScreenState.Error -> handleError()
+                is ArticleScreenState.Loading -> showLoading()
+                is ArticleScreenState.Success -> handleSuccess(it.list)
+            }
+        }
     }
 
     override fun showLoading() {
