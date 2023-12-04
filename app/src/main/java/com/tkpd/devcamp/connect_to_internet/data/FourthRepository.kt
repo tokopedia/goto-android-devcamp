@@ -8,9 +8,12 @@ import com.tkpd.devcamp.connect_to_internet.network.safeApiCall
 class FourthRepository(
     private val remoteDataSource: NewsApiRemoteDataSource
 ) {
-    suspend fun getTopHeadlines(): ApiResult<NewsApiTopHeadlinesResponse> {
+    suspend fun getTopHeadlines(page: Int = 1): ApiResult<NewsApiTopHeadlinesResponse> {
         return safeApiCall {
-            remoteDataSource.topHeadlineNews("us")
+            remoteDataSource.topHeadlineNews(
+                country = "us",
+                page = page,
+            )
         }
     }
 }

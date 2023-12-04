@@ -34,7 +34,7 @@ class SixthViewModel(
     fun getTopHeadline() {
         launch {
             _state.postValue(ArticleScreenState.Loading)
-            when (val result = repository.getTopHeadlines()) {
+            when (val result = repository.getTopHeadlines(page = getRandomPage())) {
                 is ApiResult.Error -> {
                     when (result.apiErrorType) {
                         ApiErrorType.AUTH -> {}
@@ -55,5 +55,9 @@ class SixthViewModel(
                 }
             }
         }
+    }
+
+    private fun getRandomPage(): Int {
+        return (0..2).random()
     }
 }
