@@ -1,6 +1,7 @@
 package com.tkpd.devcamp.customview_bottomsheet.customview
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
@@ -37,7 +38,8 @@ class NewsCard : ConstraintLayout {
     }
 
     private fun initializeViewWithAttribute(attributeSet: AttributeSet) {
-        val attributeArray = context.obtainStyledAttributes(attributeSet, R.styleable.NewsCard)
+
+        val attributeArray: TypedArray = TODO("Initialize custom attribute here")
 
         // get news_title value from xml
         val newsTitle = attributeArray.getString(R.styleable.NewsCard_news_title)
@@ -58,7 +60,7 @@ class NewsCard : ConstraintLayout {
             newsImageUrl = newsImageUrl
         )
 
-        attributeArray.recycle()
+        TODO("Close the attribute when it's not used anymore")
     }
 
     private fun setupNewsCard(
@@ -123,7 +125,7 @@ class NewsCard : ConstraintLayout {
     }
 
     private fun openBottomSheetDetail(news: News) {
-        BottomSheetDetailNews.show((context as AppCompatActivity).supportFragmentManager, news)
+        TODO("Open 'BottomSheetDetailNews' here")
     }
 
     companion object {

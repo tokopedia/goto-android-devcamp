@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import com.tkpd.devcamp.R
 import com.tkpd.devcamp.databinding.ActivitySearchNewsBinding
+import com.tkpd.devcamp.practice.di.DependencyProvider
 import com.tkpd.devcamp.practice.domain.model.NewsArticle
 import com.tkpd.devcamp.practice.presentation.adapter.SearchNewsAdapter
 import com.tkpd.devcamp.practice.presentation.uimodel.SearchNewsState
 import com.tkpd.devcamp.practice.presentation.viewmodel.SearchNewsViewModel
-import com.tkpd.devcamp.practice.presentation.viewmodel.factory.ViewModelFactory
 import java.lang.Exception
 
 /**
@@ -21,14 +21,15 @@ class SearchNewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchNewsBinding
 
-    private val viewModel by viewModels<SearchNewsViewModel> { ViewModelFactory() }
+    /** TODO("Fix this ViewModel initialization, please use our ViewModelFactory as well") */
+    private val viewModel = SearchNewsViewModel(DependencyProvider.provideNewsRepository())
 
     private val adapter = SearchNewsAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySearchNewsBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        TODO("Use ViewBinding")
+        setContentView(R.layout.activity_search_news)
 
         setupView()
         setupObserver()
@@ -48,15 +49,12 @@ class SearchNewsActivity : AppCompatActivity() {
 
             false
         }
-        binding.swipeRefresh.setOnRefreshListener {
-            viewModel.searchNews()
-        }
+
+        TODO("set onRefresh here & call viewModel.searchNews() without argument")
     }
 
     private fun setupObserver() {
-        viewModel.searchNewsState.observe(this) { state ->
-            handleSearchNewsState(state)
-        }
+        TODO("Observe searchNewsState here, please use the existing function below to handle the state")
     }
 
     private fun handleSearchNewsState(state: SearchNewsState) {
@@ -82,7 +80,7 @@ class SearchNewsActivity : AppCompatActivity() {
         binding.error.visibility = View.GONE
         binding.swipeRefresh.isRefreshing = false
 
-        adapter.submitList(newsArticles)
+        TODO("Update data to RecyclerView")
     }
 
     private fun handleErrorState(e: Exception) {

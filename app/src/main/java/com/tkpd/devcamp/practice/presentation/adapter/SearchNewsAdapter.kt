@@ -15,25 +15,21 @@ import com.tkpd.devcamp.recycler_view.utils.customRecyclerViewDimension
 class SearchNewsAdapter : ListAdapter<NewsArticle, RecyclerView.ViewHolder>(ItemDiffer()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return SearchNewsViewHolder(
-            NewsCard(parent.context).apply {
-                layoutParams = customRecyclerViewDimension
-            }
-        )
+        TODO("Complete this function")
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as SearchNewsViewHolder).bind(getItem(position))
+        TODO("Complete this function")
     }
 }
 
 class ItemDiffer : DiffUtil.ItemCallback<NewsArticle>() {
 
     override fun areItemsTheSame(oldItem: NewsArticle, newItem: NewsArticle): Boolean {
-        return oldItem.title == newItem.title
+        TODO("Complete this function")
     }
 
     override fun areContentsTheSame(oldItem: NewsArticle, newItem: NewsArticle): Boolean {
-        return oldItem == newItem
+        TODO("Complete this function")
     }
 }

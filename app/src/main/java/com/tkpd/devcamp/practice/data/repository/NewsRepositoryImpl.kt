@@ -15,6 +15,6 @@ class NewsRepositoryImpl(
 ) : NewsRepository {
 
     override suspend fun searchNews(keyword: String): List<NewsArticle> = withContext(ioDispatcher) {
-        newsRemoteDataSource.searchNews(keyword = keyword).articles
+        TODO("Complete this function")
     }
 }

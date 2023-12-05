@@ -27,8 +27,7 @@ class BottomSheetDetailNews(private val news: News) : BottomSheetDialogFragment(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        binding = BottomsheetDetailNewsBinding.inflate(inflater, container, false)
-        return binding.root
+        TODO("Create BottomSheet view using ViewBinding here")
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
