@@ -55,7 +55,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when error from auth occurs emit error state`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
@@ -67,7 +67,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when error from server occurs emit error state`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
@@ -79,7 +79,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when error from client occurs emit error state`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
@@ -91,7 +91,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when error from unknown occurs emit error state`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
@@ -103,7 +103,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when success return success state`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
@@ -115,7 +115,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when error occurs, observe data`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
@@ -127,7 +127,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when success occurs, observe data`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
