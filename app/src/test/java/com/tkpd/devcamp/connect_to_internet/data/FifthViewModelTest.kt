@@ -43,7 +43,7 @@ class FifthViewModelTest {
     @Test
     fun `test - when error from network occurs emit error state`() {
         //given
-        //TODO() mock data here [expected data]
+        //TODO() mock data here [expected data] and stub repository
 
         //when
         //TODO() call function {viewModel.getTopHeadline()}
