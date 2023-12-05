@@ -1,65 +1,90 @@
 package com.tkpd.devcamp.connect_to_internet.data
 
+import DataHelper
+import com.google.gson.stream.MalformedJsonException
+import com.tkpd.devcamp.connect_to_internet.network.ApiErrorType
+import com.tkpd.devcamp.connect_to_internet.network.ApiResult
+import com.tkpd.devcamp.connect_to_internet.network.NewsApiRemoteDataSource
+import com.tkpd.devcamp.connect_to_internet.network.getApiError
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.mockk
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
+import java.io.IOException
 
 class FourthRepositoryTest {
-    //Declare repository.
+
     private lateinit var repository: FourthRepository
 
-    //TODO() mock Data Source.
+    private val mockRemote: NewsApiRemoteDataSource = mockk(relaxUnitFun = true)
 
     @Before
     fun setup() {
-        //TODO() init Repository here
+        repository = FourthRepository(remoteDataSource = mockRemote)
     }
 
     @Test
     fun `return api success`() = runBlocking {
         //given
-        //TODO() mock data here [expected data], stub data remote source.
+        val expected = DataHelper.createFakeResponse()
+        coEvery { mockRemote.topHeadlineNews(any(), any()) } returns expected
 
         //when
-        //TODO() call function that we want to test [repository.getTopHeadlines()]
+        val actual = repository.getTopHeadlines()
 
         //then
-        //TODO() verify and assert is the actual result == expected?
+        coVerify { mockRemote.topHeadlineNews(any(), any()) }
+        assert(expected.articles == (actual as ApiResult.Success).data.articles)
     }
 
     @Test
     fun `return api error server`() = runBlocking {
         //given
-        //TODO() mock data here [expected data], stub data remote source.
+        val expected = MalformedJsonException("this is server error")
+        coEvery { mockRemote.topHeadlineNews(any(), any()) } throws expected
 
         //when
-        //TODO() call function that we want to test [repository.getTopHeadlines()]
+        val actual = repository.getTopHeadlines()
 
         //then
-        //TODO() verify and assert is the actual result == expected?
+        coVerify { mockRemote.topHeadlineNews(any(), any()) }
+        val mapped = getApiError(expected)
+        assert(actual is ApiResult.Error)
+        assert((actual as ApiResult.Error).apiErrorType == mapped)
+        assert(mapped is ApiErrorType.SERVER)
     }
 
     @Test
     fun `return api error network`() = runBlocking {
         //given
-        //TODO() mock data here [expected data], stub data remote source.
+        val expected = IOException()
+        coEvery { mockRemote.topHeadlineNews(any(), any()) } throws expected
 
         //when
-        //TODO() call function that we want to test [repository.getTopHeadlines()]
+        val actual = repository.getTopHeadlines()
 
         //then
-        //TODO() verify and assert is the actual result == expected?
+        coVerify { mockRemote.topHeadlineNews(any(), any()) }
+        val mapped = getApiError(expected)
+        assert((actual as ApiResult.Error).apiErrorType == mapped)
+        assert(mapped is ApiErrorType.NETWORK)
     }
 
     @Test
     fun `return api error general`() = runBlocking {
         //given
-        //TODO() mock data here [expected data], stub data remote source.
+        val expected = Exception()
+        coEvery { mockRemote.topHeadlineNews(any(), any()) } throws expected
 
         //when
-        //TODO() call function that we want to test [repository.getTopHeadlines()]
+        val actual = repository.getTopHeadlines()
 
         //then
-        //TODO() verify and assert is the actual result == expected?
+        coVerify { mockRemote.topHeadlineNews(any(), any()) }
+        val mapped = getApiError(expected)
+        assert((actual as ApiResult.Error).apiErrorType == mapped)
+        assert(mapped is ApiErrorType.UNKNOWN)
     }
 }
