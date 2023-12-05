@@ -1,4 +1,5 @@
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import com.tkpd.devcamp.connect_to_internet.data.FourthRepository
 import com.tkpd.devcamp.connect_to_internet.network.ApiErrorType
 import com.tkpd.devcamp.connect_to_internet.network.ApiResult
@@ -26,16 +27,19 @@ class FifthViewModelTest {
 
     private lateinit var viewModel: FifthViewModel
 
+    //private val mockObserver: Observer<ArticleScreenState> = mockk(relaxUnitFun = true)
+
     @Before
     fun setup() {
         viewModel = FifthViewModel(mainCoroutineRule.dispatcher, mainCoroutineRule.coroutineContext)
         viewModel.setupRepository(repository)
+
+       // viewModel.state.observeForever(mockObserver)
     }
 
     @After
     fun finish() {
     }
-
 
     /**
      * Test Case 1: initial load -> ArticleScreenState.Loading
@@ -45,12 +49,11 @@ class FifthViewModelTest {
 
     @Test
     fun `test 1 - initial state loading`() {
-        //given
-        val mockData = DataHelper.createFakeClass()
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //use observe forever
+        //given: TODO()
 
         //when
-        viewModel.getTopHeadline()
+        //viewModel.getTopHeadline()
 
         //then
     }
@@ -59,6 +62,63 @@ class FifthViewModelTest {
     fun `test - error network`() {
         //given
         val mockData = DataHelper.createFakeError(error = ApiErrorType.NETWORK)
+        coEvery { repository.getTopHeadlines() } returns mockData
+
+        //when
+        viewModel.getTopHeadline()
+
+        //then
+        val result = viewModel.state.getOrAwaitValue()
+        assert(result is ArticleScreenState.Error)
+    }
+
+    @Test
+    fun `test - error auth`() {
+        //given
+        val mockData = DataHelper.createFakeError(error = ApiErrorType.AUTH)
+        coEvery { repository.getTopHeadlines() } returns mockData
+
+        //when
+        viewModel.getTopHeadline()
+
+        //then
+        val result = viewModel.state.getOrAwaitValue()
+        assert(result is ArticleScreenState.Error)
+    }
+
+    @Test
+    fun `test - error server`() {
+        //given
+        val mockData = DataHelper.createFakeError(error = ApiErrorType.SERVER)
+        coEvery { repository.getTopHeadlines() } returns mockData
+
+        //when
+        viewModel.getTopHeadline()
+
+        //then
+        val result = viewModel.state.getOrAwaitValue()
+        assert(result is ArticleScreenState.Error)
+    }
+
+    @Test
+    fun `test - error client`() {
+        //given
+        val mockData =
+            DataHelper.createFakeError(error = ApiErrorType.CLIENT(errors = listOf(Error("client"))))
+        coEvery { repository.getTopHeadlines() } returns mockData
+
+        //when
+        viewModel.getTopHeadline()
+
+        //then
+        val result = viewModel.state.getOrAwaitValue()
+        assert(result is ArticleScreenState.Error)
+    }
+
+    @Test
+    fun `test - error unknown`() {
+        //given
+        val mockData = DataHelper.createFakeError(error = ApiErrorType.UNKNOWN)
         coEvery { repository.getTopHeadlines() } returns mockData
 
         //when
