@@ -6,5 +6,8 @@ package com.tkpd.devcamp.practice.data.remote
  */
 interface NewsRemoteDataSource {
 
-    /** TODO("Create a function named searchNews with endpoint '/v2/everything' that has 2 queries (q & apikey)") */
+    /** TODO: Create a function named searchNews with endpoint '/v2/everything'
+     * that has 2 queries ([String] q & [String] apikey)
+     * and return SearchNewsResponse
+     * */
 }

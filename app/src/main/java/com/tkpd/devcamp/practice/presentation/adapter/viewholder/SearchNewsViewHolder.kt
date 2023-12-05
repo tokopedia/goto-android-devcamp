@@ -10,5 +10,5 @@ class SearchNewsViewHolder(
     private val newsCardView: NewsCard
 ) : RecyclerView.ViewHolder(newsCardView.rootView) {
 
-    /** TODO("Create a function to bind data to view") */
+    /** TODO: Create a function to bind data to view */
 }

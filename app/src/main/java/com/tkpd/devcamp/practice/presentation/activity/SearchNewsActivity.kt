@@ -21,7 +21,7 @@ class SearchNewsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySearchNewsBinding
 
-    /** TODO("Fix this ViewModel initialization, please use our ViewModelFactory as well") */
+    /** TODO: Fix this ViewModel initialization, please use our ViewModelFactory as well */
     private val viewModel = SearchNewsViewModel(DependencyProvider.provideNewsRepository())
 
     private val adapter = SearchNewsAdapter()
