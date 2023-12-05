@@ -1,11 +1,15 @@
+package com.tkpd.devcamp.connect_to_internet.data
+
+import DataHelper
+import MainCoroutineRule
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.tkpd.devcamp.connect_to_internet.data.FourthRepository
 import com.tkpd.devcamp.connect_to_internet.network.ApiErrorType
 import com.tkpd.devcamp.connect_to_internet.network.ApiResult
 import com.tkpd.devcamp.recycler_view.model.Article
 import com.tkpd.devcamp.viewmodel_livedata.FifthViewModel
 import com.tkpd.devcamp.viewmodel_livedata.state.ArticleScreenState
+import getOrAwaitValue
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verifySequence

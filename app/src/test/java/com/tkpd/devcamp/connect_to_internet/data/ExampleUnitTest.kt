@@ -1,3 +1,5 @@
+package com.tkpd.devcamp.connect_to_internet.data
+
 import junit.framework.TestCase.assertEquals
 import junit.framework.TestCase.assertNotNull
 import junit.framework.TestCase.assertNull

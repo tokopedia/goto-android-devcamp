@@ -5,7 +5,23 @@ import com.tkpd.devcamp.recycler_view.model.Article
 import com.tkpd.devcamp.recycler_view.model.Source
 
 object DataHelper {
-    fun createFakeClass(): ApiResult<NewsApiTopHeadlinesResponse> {
+    fun createFakeResponse(): NewsApiTopHeadlinesResponse = NewsApiTopHeadlinesResponse(
+        articles = listOf(
+            NewsApiTopHeadlinesResponse.Article(
+                author = "",
+                content = "",
+                description = "",
+                publishedAt = "",
+                source = NewsApiTopHeadlinesResponse.Article.Source(id = "", name = ""),
+                title = "",
+                url = "",
+                urlToImage = "",
+            )
+        ),
+        status = "",
+        totalResults = 10,
+    )
+    fun createFakeClass(response: NewsApiTopHeadlinesResponse = createFakeResponse()): ApiResult<NewsApiTopHeadlinesResponse> {
         val data = NewsApiTopHeadlinesResponse(
             articles = listOf(
                 NewsApiTopHeadlinesResponse.Article(
@@ -29,7 +45,7 @@ object DataHelper {
         return ApiResult.Error(error)
     }
 
-    fun mapData (response: NewsApiTopHeadlinesResponse.Article) = Article(
+    fun mapData(response: NewsApiTopHeadlinesResponse.Article) = Article(
         author = response.author.orEmpty(),
         content = response.content.orEmpty(),
         description = response.description.orEmpty(),
