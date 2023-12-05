@@ -42,6 +42,8 @@ class SearchNewsActivity : AppCompatActivity() {
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val keyword = binding.etSearch.text.toString()
                 viewModel.searchNews(keyword)
+
+                return@setOnEditorActionListener true
             }
 
             false
