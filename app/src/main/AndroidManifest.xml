@@ -53,5 +53,9 @@
             android:name=".unit_test.SeventhActivity"
             android:exported="false"
             android:label="Seventh Activity"/>
+        <activity android:name=".practice.presentation.activity.SearchNewsActivity"
+            android:exported="false"
+            android:label="Practice"
+            />
     </application>
 </manifest>

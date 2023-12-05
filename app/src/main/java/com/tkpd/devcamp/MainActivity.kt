@@ -7,6 +7,7 @@ import com.tkpd.devcamp.connect_to_internet.presentation.ForthActivity
 import com.tkpd.devcamp.customview_bottomsheet.SecondActivity
 import com.tkpd.devcamp.databinding.ActivityMainBinding
 import com.tkpd.devcamp.first_app.FirstActivity
+import com.tkpd.devcamp.practice.presentation.activity.SearchNewsActivity
 import com.tkpd.devcamp.practice_binding.SixthActivity
 import com.tkpd.devcamp.recycler_view.ThirdActivity
 import com.tkpd.devcamp.unit_test.SeventhActivity
@@ -47,6 +48,10 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnUnitTest.setOnClickListener {
             startActivity(Intent(this@MainActivity, SeventhActivity::class.java))
+        }
+
+        binding.btnPractice.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SearchNewsActivity::class.java))
         }
     }
 }
