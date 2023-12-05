@@ -1,19 +1,8 @@
 package com.tkpd.devcamp.connect_to_internet.data
 
-import DataHelper
 import MainCoroutineRule
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
-import com.tkpd.devcamp.connect_to_internet.network.ApiErrorType
-import com.tkpd.devcamp.connect_to_internet.network.ApiResult
-import com.tkpd.devcamp.recycler_view.model.Article
 import com.tkpd.devcamp.viewmodel_livedata.FifthViewModel
-import com.tkpd.devcamp.viewmodel_livedata.state.ArticleScreenState
-import getOrAwaitValue
-import io.mockk.coEvery
-import io.mockk.mockk
-import io.mockk.verifySequence
-import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.After
 import org.junit.Before
@@ -21,145 +10,129 @@ import org.junit.Rule
 import org.junit.Test
 
 class FifthViewModelTest {
-    // Set the main coroutines dispatcher for unit testing.
+    //Add MainCoroutineRule
     @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
+    //Add InstantTaskExecutorRule
     @get:Rule
     var instantExecutorRule = InstantTaskExecutorRule()
 
-    private val repository: FourthRepository = mockk()
-
+    //Declare viewModel
     private lateinit var viewModel: FifthViewModel
 
-    private val mockObserver: Observer<ArticleScreenState> = mockk(relaxUnitFun = true)
+    //TODO() mock Repository
+
+    //TODO() mock Observer to observe Live Data
 
     @Before
     fun setup() {
-        viewModel = FifthViewModel(mainCoroutineRule.dispatcher, mainCoroutineRule.coroutineContext)
-        viewModel.setupRepository(repository)
+        //TODO() init viewmodel here
 
-        viewModel.state.observeForever(mockObserver)
+        //TODO() setup Repository
+
+        //TODO() add observer for Live Data here
     }
 
     @After
     fun finish() {
-        viewModel.state.removeObserver(mockObserver)
-    }
-
-    /**
-     * Test Case 1: initial load -> ArticleScreenState.Loading
-     * - Api Error [AUTH, CLIENT (with errors), NETWORK, SERVER, UNKNOWN]
-     * - Api Success: empty list, list with arrar
-     */
-
-    @Test
-    fun `test - error network`() {
-        //given
-        val mockData = DataHelper.createFakeError(error = ApiErrorType.NETWORK)
-        coEvery { repository.getTopHeadlines() } returns mockData
-
-        //when
-        viewModel.getTopHeadline()
-
-        //then
-        val result = viewModel.state.getOrAwaitValue()
-        assert(result is ArticleScreenState.Error)
+        //TODO() remove Live Data observer
     }
 
     @Test
-    fun `test - error auth`() {
+    fun `test - when error from network occurs emit error state`() {
         //given
-        val mockData = DataHelper.createFakeError(error = ApiErrorType.AUTH)
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //TODO() mock data here [expected data]
 
         //when
-        viewModel.getTopHeadline()
+        //TODO() call function {viewModel.getTopHeadline()}
 
         //then
-        val result = viewModel.state.getOrAwaitValue()
-        assert(result is ArticleScreenState.Error)
+        //TODO() assert [compare with actual result with expected]
     }
 
     @Test
-    fun `test - error server`() {
+    fun `test - when error from auth occurs emit error state`() {
         //given
-        val mockData = DataHelper.createFakeError(error = ApiErrorType.SERVER)
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //TODO() mock data here [expected data]
 
         //when
-        viewModel.getTopHeadline()
+        //TODO() call function {viewModel.getTopHeadline()}
 
         //then
-        val result = viewModel.state.getOrAwaitValue()
-        assert(result is ArticleScreenState.Error)
+        //TODO() assert [compare with actual result with expected]
     }
 
     @Test
-    fun `test - error client`() {
+    fun `test - when error from server occurs emit error state`() {
         //given
-        val mockData =
-            DataHelper.createFakeError(error = ApiErrorType.CLIENT(errors = listOf(Error("client"))))
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //TODO() mock data here [expected data]
 
         //when
-        viewModel.getTopHeadline()
+        //TODO() call function {viewModel.getTopHeadline()}
 
         //then
-        val result = viewModel.state.getOrAwaitValue()
-        assert(result is ArticleScreenState.Error)
+        //TODO() assert [compare with actual result with expected]
     }
 
     @Test
-    fun `test - error unknown`() {
+    fun `test - when error from client occurs emit error state`() {
         //given
-        val mockData = DataHelper.createFakeError(error = ApiErrorType.UNKNOWN)
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //TODO() mock data here [expected data]
 
         //when
-        viewModel.getTopHeadline()
+        //TODO() call function {viewModel.getTopHeadline()}
 
         //then
-        val result = viewModel.state.getOrAwaitValue()
-        assert(result is ArticleScreenState.Error)
+        //TODO() assert [compare with actual result with expected]
     }
 
     @Test
-    fun `test - success`() {
+    fun `test - when error from unknown occurs emit error state`() {
         //given
-        val mockData = DataHelper.createFakeClass()
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //TODO() mock data here [expected data]
 
         //when
-        viewModel.getTopHeadline()
+        //TODO() call function {viewModel.getTopHeadline()}
 
         //then
-        val result = viewModel.state.getOrAwaitValue()
-        assert(result is ArticleScreenState.Success)
-        assertEquals(
-            (result as ArticleScreenState.Success).list.size,
-            (mockData as ApiResult.Success).data.articles.size
-        )
+        //TODO() assert [compare with actual result with expected]
     }
 
     @Test
-    fun `test 1 - initial state loading with success return`() {
+    fun `test - when success return success state`() {
         //given
-        val mockData = DataHelper.createFakeClass()
-        coEvery { repository.getTopHeadlines() } returns mockData
+        //TODO() mock data here [expected data]
 
         //when
-        viewModel.getTopHeadline()
+        //TODO() call function {viewModel.getTopHeadline()}
 
         //then
-        verifySequence {
-            mockObserver.onChanged(ArticleScreenState.Loading)
-            mockObserver.onChanged(ArticleScreenState.Success(
-                (mockData as ApiResult.Success).data.articles.map {
-                    Article(it)
-                }
-            ))
-        }
+        //TODO() assert [compare with actual result with expected]
+    }
+
+    @Test
+    fun `test - when error occurs, observe data`() {
+        //given
+        //TODO() mock data here [expected data]
+
+        //when
+        //TODO() call function {viewModel.getTopHeadline()}
+
+        //then
+        //TODO() assert [compare with actual result with expected] - verifu value sequentially
+    }
+
+    @Test
+    fun `test - when success occurs, observe data`() {
+        //given
+        //TODO() mock data here [expected data]
+
+        //when
+        //TODO() call function {viewModel.getTopHeadline()}
+
+        //then
+        //TODO() assert [compare with actual result with expected] - verifu value sequentially
     }
 }
