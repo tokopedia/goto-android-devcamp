@@ -26,16 +26,16 @@ class ThirdActivity : AppCompatActivity() {
     }
 
     private fun setupViews() {
-        TODO("initialize your recyclerview")
+//        TODO("initialize your recyclerview")
     }
 
     private fun setupRecyclerView() {
-        TODO("setup your recyclerview")
+//        TODO("setup your recyclerview")
     }
 
     private fun observeData() {
         val newsMockData = getMockNewsData(this)
-        TODO("insert your data into recyclerview adapter")
+//        TODO("insert your data into recyclerview adapter")
     }
 
 }
