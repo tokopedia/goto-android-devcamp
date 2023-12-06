@@ -8,4 +8,10 @@
 
     <!-- TODO("setup your recyclerview views")-->
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello Devcamp!"
+        android:layout_gravity="center"/>
+
 </FrameLayout>
